@@ -501,7 +501,7 @@ mu$}\hfill
 
     
     \parbox[t][1.2cm][t]{\textwidth}{\xiaoer
-    \begin{center}{哈尔滨工程大学}\end{center} }
+    \begin{center}\kai{哈尔滨工程大学}\end{center} }
     \parbox[t][0.5cm][t]{\textwidth}{
     \begin{center}{\song \xiaoer \@cdate} \end{center} }
 
@@ -609,7 +609,7 @@ mu$}\hfill
     }
     \parbox[t][2cm][t]{\textwidth}{
       \xiaoyi
-      \begin{center}{\hei \@ctitle}\end{center}
+      \begin{center}{\hei Design and Development of an Underwater Cable-Driven Robotic Arm}\end{center}
     }
     \ifxueweidoctor  % TODO: 将来的事
     \parbox[t][3.9cm][t]{\textwidth}{
@@ -617,7 +617,7 @@ mu$}\hfill
       \begin{center} {\bfseries  \@etitle}\end{center}
     }
     \else
-    \parbox[t][3.9cm][t]{\textwidth}{
+    \parbox[t][2.9cm][t]{\textwidth}{
        \centering \
     }
     \fi
@@ -626,50 +626,81 @@ mu$}\hfill
     \parbox[t][1.0cm][t]{\textwidth}{
       \xiaosan
       \makebox[3.0cm][c]{}
-      \makebox[4.0cm][l]{\song 学~~~~生~~~~名~~~~称：}  % 这里用 l 比用 s 效果好，扉页则不是，奇怪
+      \makebox[4.0cm][l]{\hei 学~~生~~~~名~~称：}  % 这里用 l 比用 s 效果好，扉页则不是，奇怪
       \makebox[7cm][l]{\song 倪洪运}
     }
     \parbox[t][1.0cm][t]{\textwidth}{
       \xiaosan
       \makebox[3.0cm][c]{}
-      \makebox[4.0cm][l]{\song 所~~~~在~~~~学~~~~院：}
+      \makebox[4.0cm][l]{\hei 所~~在~~~~学~~院：}
       \makebox[7cm][l]{\song 机电工程学院}
 
     }
     \parbox[t][1.0cm][t]{\textwidth}{
       \xiaosan
       \makebox[3.0cm][c]{}
-      \makebox[4.0cm][l]{\song 所~~~~在~~~~专~~~~业：}
-      \makebox[7cm][l]{\song \@cauthor}
+      \makebox[4.0cm][l]{\hei 所~~在~~~~专~~业：}
+      \makebox[7cm][l]{\song \@csubject}
     }
     \parbox[t][1.0cm][t]{\textwidth}{
       \xiaosan
       \makebox[3.0cm][c]{}
-      \makebox[4.0cm][l]{\song 指~~~~导~~~~教~~~~师：}
+      \makebox[4.0cm][l]{\hei 指~~导~~~~教~~师：}
       \makebox[7cm][l]{\song \@csupervisor}
     }
-    \parbox[t][2.1cm][t]{\textwidth}{
-      \begin{center} \end{center}
-    }
-    \else
-    \parbox[t][2.0cm][t]{\textwidth}{
-      \xiaoer
-      \begin{center} {\song  \@cauthor}  \end{center} }
-    \fi
 
-    \ifxueweibachelor
-    \else  % TODO: 将来的事
-    \parbox[t][8.5cm][t]{\textwidth}{
-        \centering
-        \includegraphics[width = 8cm]{heu_logo}
+    \parbox[t][1.0cm][t]{\textwidth}{
+      \xiaosan
+      \makebox[3.0cm][c]{}
+      \makebox[4.0cm][l]{\hei 职~~~~~~~~~~~~~~~~称：}
+      \makebox[7cm][l]{\song 教授}
     }
-    \fi
+    \parbox[t][1.0cm][t]{\textwidth}{
+      \xiaosan
+      \makebox[3.0cm][c]{}
+      \makebox[4.0cm][l]{\hei 所~~在~~~~单~~位：}
+      \makebox[7cm][l]{\song 哈尔滨工程大学}
+    }
+    \parbox[t][1.0cm][t]{\textwidth}{
+      \xiaosan
+      \makebox[3.0cm][c]{}
+      \makebox[4.0cm][l]{\hei 论文提交日期：}
+      \makebox[7cm][l]{\song 2024年5月25日}
+    }
+    \parbox[t][1.0cm][t]{\textwidth}{
+      \xiaosan
+      \makebox[3.0cm][c]{}
+      \makebox[4.0cm][l]{\hei 论文答辩日期：}
+      \makebox[7cm][l]{\song 2024年6月11日}
+    }
+    \parbox[t][1.0cm][t]{\textwidth}{
+      \xiaosan
+      \makebox[3.0cm][c]{}
+      \makebox[4.0cm][l]{\hei 学位授予单位：}
+      \makebox[7cm][l]{\song 哈尔滨工程大学}
+    }
+    % \parbox[t][2.1cm][t]{\textwidth}{
+    %   \begin{center} \end{center}
+    % }
+    % \else
+    % \parbox[t][2.0cm][t]{\textwidth}{
+    %   \xiaoer
+    %   \begin{center} {\song  \@cauthor}  \end{center} }
+    % \fi
+
+    % \ifxueweibachelor
+    % \else  % TODO: 将来的事
+    % \parbox[t][8.5cm][t]{\textwidth}{
+    %     \centering
+    %     \includegraphics[width = 8cm]{heu_logo}
+    % }
+    % \fi
 
     
-    \parbox[t][1.2cm][t]{\textwidth}{\xiaoer
-    \begin{center}{哈尔滨工程大学}\end{center} }
-    \parbox[t][0.5cm][t]{\textwidth}{
-    \begin{center}{\song \xiaoer \@cdate} \end{center} }
+    % \parbox[t][1.2cm][t]{\textwidth}{\xiaoer
+    % \begin{center}{哈尔滨工程大学}\end{center} }
+    % \parbox[t][0.5cm][t]{\textwidth}{
+    % \begin{center}{\song \xiaoer \@cdate} \end{center} }
 
     \end{center}
 
