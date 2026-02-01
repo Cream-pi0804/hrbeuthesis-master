@@ -217,22 +217,46 @@ mu$}\hfill
 %  根据单双面打印设置不同的页眉；
 %  逻辑变量 oneortwoside 在 setup/type.tex 中定义，twoside 为 true
 %  双面打印工程标准未知，暂时没什么改动
-\ifoneortwoside
-  \fancyhead[CO]{\song \xiaowu\leftmark}
-  \fancyhead[CE]{\song \xiaowu 哈尔滨工程大学\cxueke\cxuewei 学位论文}
-  \fancyfoot[C,C]{\xiaowu --~\thepage~--}
-\else  % 因为变态的本科论文规范是单面的，所以单面必然会复杂
-  \ifxueweibachelor  % 为变态的本科规范单独设置
-    \fancyhead[CO]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
-    \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
-    \fancyfoot[C,C]{\xiaowu ~\thepage~}
-  \else  % 想必是其他要求单面打印的学位，格式没改动
-    \fancyhead[CO]{\song \wuhao 哈尔滨工程大学\cxueke\cxuewei 学位论文}
-    \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxueke\cxuewei 学位论文}
-    \fancyfoot[C,C]{\xiaowu --~\thepage~--}
-  \fi
+% \ifoneortwoside
+%   \fancyhead[CO]{\song \xiaowu\leftmark}
+%   \fancyhead[CE]{\song \xiaowu 哈尔滨工程大学\cxueke\cxuewei 学位论文}
+%   \fancyfoot[C,C]{\xiaowu --~\thepage~--}
+% \else  % 因为变态的本科论文规范是单面的，所以单面必然会复杂
+%   \ifxueweibachelor  % 为变态的本科规范单独设置
+%     \fancyhead[CO]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
+%     \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
+%     \fancyfoot[C,C]{\xiaowu ~\thepage~}
+%   \else  % 想必是其他要求单面打印的学位，格式没改动
+%     \fancyhead[CO]{\song \wuhao 哈尔滨工程大学\cxueke\cxuewei 学位论文}
+%     \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxueke\cxuewei 学位论文}
+%     \fancyfoot[C,C]{\xiaowu --~\thepage~--}
+%   \fi
+% \fi
+  % \fancyhead[CO]{\song \xiaowu\leftmark}
+  % \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
+  % \fancyfoot[C,C]{\xiaowu --~\thepage~--}
+  \ifoneortwoside
+  % --- 双面模式配置 ---
+  \fancyhf{} % 清空原有设置
+  
+  % 奇数页中间 (Center Odd)：显示章节标题
+  \fancyhead[CO]{\song \xiaowu \leftmark}
+  
+  % 偶数页中间 (Center Even)：显示学校和论文类型
+  \fancyhead[CE]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
+  
+  % 页脚中间：显示页码
+  \fancyfoot[C]{\xiaowu --~\thepage~--}
+  
+  % 重新加上页眉线
+  \renewcommand{\headrulewidth}{0pt} % 如果你用了自定义的 \makeheadrule，这里设为0
+  \renewcommand{\headrule}{\makeheadrule} 
+\else
+  % --- 单面模式配置 (作为备选，防止报错) ---
+  \fancyhf{}
+  \fancyhead[C]{\song \wuhao 哈尔滨工程大学\cxuewei 毕业论文}
+  \fancyfoot[C]{\xiaowu --~\thepage~--}
 \fi
-
 \renewcommand\frontmatter{
     \cleardoublepage
   \@mainmatterfalse

@@ -75,9 +75,9 @@
 %   Tip: 各长度的数字后跟 true，如 15true cm 意思是保证尺寸不会随着一些参数变化而变化
 %
 \ifxueweibachelor
-  \usepackage[top=48true mm, bottom=40true mm, left=25true mm, right=45true mm,
+  \usepackage[top=48mm, bottom=40mm, left=25mm, right=25mm, % 左右统一
               headheight=7mm, headsep=3mm, footskip=7mm,
-              bindingoffset=0 pt
+              hmarginratio={1:1} % 强制 1:1 比例
               ]{geometry}
 \fi
 \ifxueweimaster % TODO
