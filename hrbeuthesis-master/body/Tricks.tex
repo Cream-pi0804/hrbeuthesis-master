@@ -95,7 +95,36 @@
 \item \textbf{纯滚动防滑结构}
 
 肘部滚动关节的接触面由两个半径相等的 $1/4$ 圆弧组成。为确保传动的线性度并消除相对滑动，接触表面加工有微细锯齿结构以实现纯滚动过程。定滑轮组与动滑轮组分别对称布置于近端与远端连杆的等距特征点上，保证了运动学上的对称平衡。
-图3.4(a)与(b)分别展示了该关节的完全伸展态与极限位置。
+图\ref{fig:total_figure3}分别展示了该关节的完全伸展态与极限位置。
+
+\begin{figure}[H]
+  \centering
+  % 第一张子图（左侧）
+  \begin{minipage}{0.48\textwidth}
+      \centering
+      \subfigure[完全伸展状态]{
+          \label{fig:sub1}
+          % 调整 width 以适应 minipage 的宽度
+          \includegraphics[width=\textwidth]{figures/伸展.png}
+      }
+      % 这里写第一张图的英文描述（如果需要）
+  \end{minipage}
+  \hfill % 撑开左右间距，使 minipage 分居两侧
+  % 第二张子图（右侧）
+  \begin{minipage}{0.5\textwidth}
+      \centering
+      \subfigure[极端位置状态]{
+          \label{fig:sub2}
+          % 极端位置图较窄，width比例可以设置小一点
+          \includegraphics[width=\textwidth]{figures/极端.png}
+      }
+      % 这里写第二张图的英文描述（如果需要）
+  \end{minipage}
+
+  % 中英文总标题
+  \caption{关节2肘部驱动原理图}
+  \label{fig:total_figure3}
+\end{figure}
 \item \textbf{折叠方案与安全限位}
 
 针对机械臂完全收纳至载体底部的设计要求，本设计将滑轮组采取斜向布局（如图3.5所示），有效消除了结构干涉，实现了关节的深度折叠。
