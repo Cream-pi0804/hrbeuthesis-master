@@ -129,7 +129,66 @@
 
 针对机械臂完全收纳至载体底部的设计要求，本设计将滑轮组采取斜向布局（如图3.5所示），有效消除了结构干涉，实现了关节的深度折叠。
 \end{itemize}
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图（左侧）
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \subfigure[完全伸展状态]{
+            \label{fig:sub1}
+            % 调整 width 以适应 minipage 的宽度
+            \includegraphics[width=\textwidth]{figures/收拢位置.png}
+        }
+        % 这里写第一张图的英文描述（如果需要）
+    \end{minipage}
+    \hfill % 撑开左右间距，使 minipage 分居两侧
+    % 第二张子图（右侧）
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \subfigure[完全折叠状态]{
+            \label{fig:sub2}
+            % 极端位置图较窄，width比例可以设置小一点
+            \includegraphics[width=\textwidth]{figures/折叠位置.png}
+        }
+        % 这里写第二张图的英文描述（如果需要）
+    \end{minipage}
+  
+    % 中英文总标题
+    \caption{关节2可折叠肘部驱动原理图}
+    \label{fig:total_figure4}
+  \end{figure}
+
+
 考虑到水下复杂环境下的作业安全，设计了机械硬限位结构（见图3.6），将肘部关节的可旋转角度精确限制在 $0^\circ \sim 180^\circ$ 范围内。该设计能有效防止机械臂在作业或回收过程中碰撞运载器基座。此外，驱动绳索经由密封舱出发，通过水平旋转关节内部的过绳通道引导至肘部，确保了水下环境下的动力可靠传递。
+\begin{figure}[H]
+    \centering
+    % 第一张子图（左侧）
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \subfigure[完全伸展状态]{
+            \label{fig:sub1}
+            % 调整 width 以适应 minipage 的宽度
+            \includegraphics[width=\textwidth]{figures/最大工作.png}
+        }
+        % 这里写第一张图的英文描述（如果需要）
+    \end{minipage}
+    \hfill % 撑开左右间距，使 minipage 分居两侧
+    % 第二张子图（右侧）
+    \begin{minipage}{0.4\textwidth}
+        \centering
+        \subfigure[完全折叠状态]{
+            \label{fig:sub2}
+            % 极端位置图较窄，width比例可以设置小一点
+            \includegraphics[width=\textwidth]{figures/最小工作.png}
+        }
+        % 这里写第二张图的英文描述（如果需要）
+    \end{minipage}
+  
+    % 中英文总标题
+    \caption{关节2肘部机械限位原理图}
+    \label{fig:total_figure5}
+  \end{figure}
 
 (3)关节3腕关节
 
@@ -137,8 +196,120 @@
 
 基于对自由度布局、关节原理设计，设计出绳驱机械臂的三维结构如下图3.7所示。图3.7(a)为绳驱机械臂完全折叠状态；图3.7(b)为绳驱机械臂最大下探深度状态，最大下探深度730mm；图3.7(c)为机械臂完全伸展状态，前伸长度700mm。
 
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中
+    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = 0.5\textwidth]{装配体新改——22(1)}
+    \caption{水平旋转关节原理} % 图片标题
+    \label{pic22} % 图片标签
+    \end{figure}
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{\textwidth}
+        \centering
+        \subfigure[完全折叠状态]{\label{fig6:sub1}
+            \includegraphics[width =0.7 \textwidth]{figures/完全收拢.jpg}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{\textwidth}
+        \centering
+        \subfigure[完全下探状态]{\label{fig6:sub2}
+            \includegraphics[width = 0.7\textwidth]{figures/下探姿态.jpg}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+  
+    % 中英文总标题
+    \caption{肘部关节增力传动机构}
+    \label{fig:total_figure6}
+  \end{figure}
+
 绳驱机械臂总体长度1115mm，空重1.8Kg，水重0.4Kg。关节1可旋转角度为$-90^\circ \sim 90^\circ$，关节2与关节3可旋转角度为$0^\circ \sim 180^\circ$ 。在运载器寻找作业目标时绳驱机械臂为完全折叠状态，到距离目标物一定距离时开始伸展机械臂进行作业任务。
 \BiSubsection{驱动绳走线及导向设计}{Which Templates I should Select？}
+
+
+在绳驱机械臂中，绳索作为动力与运动的载体，其路径规划与导向方式直接影响系统的传动精度、能量效率及使用寿命。
+
+目前，常用的驱动绳布置方式主要有两类。第一类是采用硬质导管，将驱动绳索直接引导至目标关节处。该方法操作相对简便，只需将按特定弯曲方式加工好的导管固定在机械臂上即可。然而，这种方式存在明显缺陷：导管与驱动绳索之间的滑动摩擦，不仅会造成驱动力损耗，还会显著缩短绳索的使用寿命。
+第二类为滑轮引导方式，即通过安装滑轮，将绳索引导至预定位置。该方法的安装过程较为复杂，且随着机械臂自由度的增加，所需滑轮轮的数量增多，导向难度也随之上升。
+但是，滑轮将绳索与固定结构之间的滑动摩擦转化为滚动摩擦，显著降低了摩擦损耗与绳索磨损，是目前应用最广泛、技术最成熟的导向方案。
+综合对比两种布置方式，并结合本文设计需求，最终选用滑轮导向的方法。
+
+(1)滑轮导向的基本原理
+
+滑轮导向的核心思想是：在绳索路径的每一个转折点或支撑点处，安装一个可绕自身轴线自由旋转的滑轮，绳索绕过滑轮绳槽，通过滑轮与轴之间的滚动轴承实现低摩擦转向。
+
+具体特性如下：
+
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中
+    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = 0.3\textwidth]{滑轮原理}
+    \caption{滑轮特性} % 图片标题
+    \label{pic23} % 图片标签
+    \end{figure}
+
+\begin{itemize}
+\item {力学特性:}
+当绳索绕过理想滑轮（不计轴承摩擦）时，滑轮两侧绳索的张力 $T_1$ 与 $T_2$ 满足：
+\[
+T_1 = T_2
+\]
+即滑轮仅改变力的方向，而不改变力的大小。实际中由于轴承摩擦及绳索与绳槽的微小滑动，存在效率系数 $\eta < 1$，但通过选用低摩擦轴承（如深沟球轴承、陶瓷轴承）可使得 $\eta > 0.95$。
+
+\item{运动特性:}
+绳索与滑轮之间满足无滑动的滚动关系，绳索线速度 $v$ 与滑轮角速度 $\omega$、滑轮半径 $R$ 满足：
+\[
+v = \omega R
+\]
+因此，通过检测滑轮转角可间接推算绳索位移，为关节位置反馈提供一种冗余测量手段。
+\end{itemize}
+
+(2)肩关节绳索导向设计
+肩关节采用绞盘原理驱动。绳索的绕制方式如下：从电机下绞盘开始正绕，到达驱动绞盘后同样正绕，最后以反绕方式缠绕于电机上绞盘。
+
+具体结构如图
+    \begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中
+    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = \textwidth]{肩关节导}
+    \caption{肩关节导向示意图} % 图片标题
+    \label{pic24} % 图片标签
+    \end{figure}
+
+(3)肘关节绳索导向设计
+
+肘关节采用滑轮组原理驱动。绳索的绕制方式如下：共分为两股绳，其中，外侧绳从电机下绞盘开始正绕，在两个肩部导向轮各正绕一圈，到达滑轮组，在滑轮组上正绕四圈结束于定滑轮轮轴上。
+内测绳同理，从电机下绞盘开始反绕，在两个导向轮各反绕一圈，到达滑轮组，在滑轮组上反绕四圈结束于定滑轮轮轴上。
+
+具体结构如下图
+
+
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中
+    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = \textwidth]{肘部外侧走线}
+    \caption{肘部外侧导向示意图} % 图片标题
+    \label{pic25} % 图片标签
+    \end{figure}
+
+
+    \begin{figure}[H] % htbp代表图片插入位置的设置
+        \centering %图片居中
+        %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+        \includegraphics[width = \textwidth]{肘关节内侧走线(1)}
+        \caption{肘部内侧侧导向示意图} % 图片标题
+        \label{pic26} % 图片标签
+        \end{figure}
+(3)腕关节绳索导向设计
+
+腕关节采用绞盘原理驱动。绳索的绕制方式如下：从电机下绞盘开始正绕，在两个肩部导向轮各正绕一圈，之后通过肘部导向轮和腕部导向轮，通过大臂，到达手腕驱动绞盘后同样正绕，最后以相反方式返回病反绕于电机上绞盘。
+
+        具体结构如下图
+
 \BiSubsection{驱动系统密封舱设计}{Which Templates I should Select？}
 \BiSection{水下绳驱机械臂样机集成}{Something About Templates}
 \BiSection{本章小结}{Something About Templates}
