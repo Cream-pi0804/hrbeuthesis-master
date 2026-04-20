@@ -41,7 +41,7 @@
 
 水平旋转关节采用基于欧拉绞盘原理的单绳循环驱动方案。该机构利用绳索与绕线盘之间的摩擦力实现力矩传递，具体设计如下：
 \begin{itemize}
-    \item \textbf{驱动原理与缠绕逻辑}：该关节由单根高强度驱动绳构成闭环传动回路。如图2.X所示，驱动绳起始于驱动绞盘（主动轮），经特定路径绕至关节旋转绞盘（从动轮），最终返回并固定于同一驱动绞盘上。驱动绳在驱动轴上采取“一端正绕、一端反绕”的配置，当电机带动驱动轴旋转时，绳索的一端被收卷，另一端被释放，从而驱动关节绞盘同步转动。
+    \item \textbf{驱动原理与缠绕逻辑}：该关节由单根高强度驱动绳构成闭环传动回路。如图\ref{pic14}所示，驱动绳起始于驱动绞盘（主动轮），经特定路径绕至关节旋转绞盘（从动轮），最终返回并固定于同一驱动绞盘上。驱动绳在驱动轴上采取“一端正绕、一端反绕”的配置，当电机带动驱动轴旋转时，绳索的一端被收卷，另一端被释放，从而驱动关节绞盘同步转动。
     \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
@@ -127,7 +127,7 @@
 \end{figure}
 \item \textbf{折叠方案与安全限位}
 
-针对机械臂完全收纳至载体底部的设计要求，本设计将滑轮组采取斜向布局（如图3.5所示），有效消除了结构干涉，实现了关节的深度折叠。
+针对机械臂完全收纳至载体底部的设计要求，本设计将滑轮组采取斜向布局（如图\ref{fig:total_figure4}所示），有效消除了结构干涉，实现了关节的深度折叠。
 \end{itemize}
 
 \begin{figure}[H]
@@ -160,7 +160,7 @@
   \end{figure}
 
 
-考虑到水下复杂环境下的作业安全，设计了机械硬限位结构（见图3.6），将肘部关节的可旋转角度精确限制在 $0^\circ \sim 180^\circ$ 范围内。该设计能有效防止机械臂在作业或回收过程中碰撞运载器基座。此外，驱动绳索经由密封舱出发，通过水平旋转关节内部的过绳通道引导至肘部，确保了水下环境下的动力可靠传递。
+考虑到水下复杂环境下的作业安全，设计了机械硬限位结构（见图 \ref{fig:total_figure5}），将肘部关节的可旋转角度精确限制在 $0^\circ \sim 180^\circ$ 范围内。该设计能有效防止机械臂在作业或回收过程中碰撞运载器基座。此外，驱动绳索经由密封舱出发，通过水平旋转关节内部的过绳通道引导至肘部，确保了水下环境下的动力可靠传递。
 \begin{figure}[H]
     \centering
     % 第一张子图（左侧）
@@ -194,36 +194,41 @@
 
 关节3腕关节驱动原理同关节1，其驱动绳从驱动轴到达腕关节的驱动绳布置在下节进行详细叙述。
 
-基于对自由度布局、关节原理设计，设计出绳驱机械臂的三维结构如下图3.7所示。图3.7(a)为绳驱机械臂完全折叠状态；图3.7(b)为绳驱机械臂最大下探深度状态，最大下探深度730mm；图3.7(c)为机械臂完全伸展状态，前伸长度700mm。
+基于对自由度布局、关节原理设计，设计出绳驱机械臂的三维结构如下图\ref{pic22}所示。图\ref{fig6:sub1}为绳驱机械臂完全折叠状态；图\ref{fig6:sub2}为绳驱机械臂最大下探深度状态，最大下探深度730mm；图\ref{fig6:sub3}为机械臂完全伸展状态，前伸长度700mm。
 
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
     \includegraphics[width = 0.5\textwidth]{装配体新改——22(1)}
-    \caption{水平旋转关节原理} % 图片标题
+    \caption{三维结构} % 图片标题
     \label{pic22} % 图片标签
     \end{figure}
 
 \begin{figure}[H]
     \centering
     % 第一张子图
-    \begin{minipage}{\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
         \subfigure[完全折叠状态]{\label{fig6:sub1}
-            \includegraphics[width =0.7 \textwidth]{figures/完全收拢.jpg}
+            \includegraphics[width =\textwidth]{figures/完全收拢.jpg}
         }% 这里写第一张图的英文描述
     \end{minipage}
     % \hfill % 撑开左右间距
     % 第二张子图
-    \begin{minipage}{\textwidth}
+    \begin{minipage}{0.45\textwidth}
         \centering
         \subfigure[完全下探状态]{\label{fig6:sub2}
-            \includegraphics[width = 0.7\textwidth]{figures/下探姿态.jpg}
+            \includegraphics[width = \textwidth]{figures/下探姿态.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
-  
+    \begin{minipage}{\textwidth}
+        \centering
+        \subfigure[完全伸展状态]{\label{fig6:sub3}
+            \includegraphics[width = 0.8\textwidth]{figures/装配体(112).jpg}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
     % 中英文总标题
-    \caption{肘部关节增力传动机构}
+    \caption{机械臂各状态}
     \label{fig:total_figure6}
   \end{figure}
 
@@ -242,7 +247,7 @@
 
 滑轮导向的核心思想是：在绳索路径的每一个转折点或支撑点处，安装一个可绕自身轴线自由旋转的滑轮，绳索绕过滑轮绳槽，通过滑轮与轴之间的滚动轴承实现低摩擦转向。
 
-具体特性如下：
+具体特性如图\ref{pic23}：
 
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
@@ -255,16 +260,16 @@
 \begin{itemize}
 \item {力学特性:}
 当绳索绕过理想滑轮（不计轴承摩擦）时，滑轮两侧绳索的张力 $T_1$ 与 $T_2$ 满足：
-\[
-T_1 = T_2
-\]
+\begin{equation}
+      T_1 = T_2
+\end{equation}
 即滑轮仅改变力的方向，而不改变力的大小。实际中由于轴承摩擦及绳索与绳槽的微小滑动，存在效率系数 $\eta < 1$，但通过选用低摩擦轴承（如深沟球轴承、陶瓷轴承）可使得 $\eta > 0.95$。
 
 \item{运动特性:}
 绳索与滑轮之间满足无滑动的滚动关系，绳索线速度 $v$ 与滑轮角速度 $\omega$、滑轮半径 $R$ 满足：
-\[
-v = \omega R
-\]
+\begin{equation}
+      v = \omega R
+\end{equation}
 因此，通过检测滑轮转角可间接推算绳索位移，为关节位置反馈提供一种冗余测量手段。
 \end{itemize}
 
@@ -272,7 +277,7 @@ v = \omega R
 
 肩关节采用绞盘原理驱动。绳索的绕制方式如下：从电机下绞盘开始正绕，到达驱动绞盘后同样正绕，最后以反绕方式缠绕于电机上绞盘。
 
-具体结构如图
+具体结构如图\ref{pic24}
     \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
@@ -286,7 +291,7 @@ v = \omega R
 肘关节采用滑轮组原理驱动。绳索的绕制方式如下：共分为两股绳，其中，外侧绳从电机下绞盘开始正绕，在两个肩部导向轮各正绕一圈，到达滑轮组，在滑轮组上正绕四圈结束于定滑轮轮轴上。
 内测绳同理，从电机下绞盘开始反绕，在两个导向轮各反绕一圈，到达滑轮组，在滑轮组上反绕四圈结束于定滑轮轮轴上。
 
-具体结构如下图
+具体结构如图\ref{fig:total_figure8}
 
 
 
@@ -318,7 +323,7 @@ v = \omega R
 
 腕关节采用绞盘原理驱动。绳索的绕制方式如下：从电机下绞盘开始正绕，在两个肩部导向轮各正绕一圈，之后通过肘部导向轮和腕部导向轮，通过大臂，到达手腕驱动绞盘后同样正绕，最后以相反方式返回并反绕于电机上绞盘。
 
-        具体结构如下图
+        具体结构如图\ref{fig:total_figure7}
 
         \begin{figure}[H]
             \centering
@@ -346,7 +351,7 @@ v = \omega R
 
           为优化安装与拆卸流程，本设计开发了一种基于双向自锁原理的张紧机构。该机构通过在同一传动轴上同轴反向布置两个单向轴承，实现了绳索的顺畅收紧与高效锁止。该配置不仅确保了手动或机械张紧过程的便捷性，且依靠单向轴承的逆向自锁特性，有效防止了绳索张力的松弛，保证了系统的张紧可靠性。
           
-          具体结构如下
+          具体结构如图\ref{fig:total_figure9}
 
           \begin{figure}[H]
             \centering
@@ -372,8 +377,257 @@ v = \omega R
           \end{figure}
 
 \BiSubsection{驱动系统密封舱设计}{Which Templates I should Select？}
+
+驱动密封舱作为水下机械臂的物理载荷中心，其性能直接影响整机的可靠性。在设计过程中，主要考虑了以下几个核心功能：
+\begin{itemize}
+    \item \textbf{环境防护与承压}：确保内部电子元器件、驱动及传动组件与高压海水完全隔离，防止电气故障；
+    \item \textbf{水动力性能优化}：通过流线型构造降低运动阻力，提升机械臂在水下的能源效率；
+    \item \textbf{结构支撑}：为复杂的组件布局提供稳固的安装基准，满足机械臂灵活运动的力学需求。
+\end{itemize}
+
+由于密封舱内集成了控制单元与驱动电机，控制元件需固定于舱体内壁，而电机则需要通过输出轴将转矩传递至舱外，因此该密封舱涉及了静密封与动密封的组合设计。舱内安装的具体组件参数如表 \ref{tab:cabin_components} 所示。
+
+\begin{table}[htbp]
+    \centering
+    \caption{驱动密封舱内部组件参数表}
+    \label{tab:cabin_components}
+    \begin{tabular}{lcl}
+        \hline
+        组件名称 & 数量 & 规格尺寸 / 备注 \\ \hline
+        直流无刷电机 & 3 & Faulhaber 3564K024B, $\Phi 35\text{mm} \times 110\text{mm}$ \\
+        电机驱动器 & 3 & MC 5010S, $115 \times 75 \times 26\text{mm}$ \\
+        机械臂控制板 & 1 & 核心板+扩展板, $98 \times 75 \times 18\text{mm}$ \\
+        电压转换模块 & 1 & 24V 转 8V, $75 \times 75 \times 30\text{mm}$ \\
+        信号转换模块 & 1 & RS232 转 RS485, $87.5 \times 24 \times 59\text{mm}$ \\ \hline
+    \end{tabular}
+\end{table}
+
+
+在动力选择上，采用了 Faulhaber 直流无刷电机（图 \ref{fig11:sub1}），额定电压 24V，减速器型号为 32GPT。与其配套的驱动器（图 \ref{fig11:sub2}）
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[电机3564K024B]{\label{fig11:sub1}
+            \includegraphics[width =\textwidth]{figures/电机.png}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[电机驱动器]{\label{fig11:sub2}
+            \includegraphics[width = 0.8\textwidth]{figures/驱动.png}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+  
+    % 中英文总标题
+    \caption{驱动系统}
+    \label{fig:total_figure11}
+  \end{figure}
+  通过 RS232 接口进行通信。控制系统采用 STM32 F429 核心板（图 \ref{fig:total_figure13}）配合自定义扩展板的方案。考虑到末端手爪舵机采用的是 RS485 协议且工作电压为 8V，舱内集成了信号转换模块（图 \ref{fig13:sub1}）与降压模块（图 \ref{fig13:sub2}），以实现控制板对舵机的统一驱动与电源管理。
+
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[核心板]{\label{fig13:sub1}
+            \includegraphics[width =0.7\textwidth]{figures/主控.png}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[拓展板]{\label{fig13:sub2}
+            \includegraphics[width = 0.7\textwidth]{figures/底板.png}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+    % 中英文总标题
+    \caption{机械臂控制板}
+    \label{fig:total_figure13}
+  \end{figure}
+
+  \begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[信号转换模块RS232转RS485]{\label{fig14:sub1}
+            \includegraphics[width = 0.7\textwidth]{figures/232.png}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[电压转换模块24V转8V]{\label{fig14:sub2}
+            \includegraphics[width = 0.7\textwidth]{figures/电压.png}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+    % 中英文总标题
+    \caption{其他模块}
+    \label{fig:total_figure14}
+  \end{figure}
+
+  
+
+%   在静密封结构设计上，舱体电气接口采用专用探测级水密接插件，以取代传统的电缆贯穿密封，从而提升机械臂装卸与维护的灵活性。在静密封实现上，接插件通过端面 O 型圈与端盖精加工面配合。装配过程中在密封面辅以真空硅脂，以补偿微观表面缺陷。此外，上、下端盖对接插件进行了分类布局，将电源线与信号线物理隔离，有效降低了电磁干扰对控制系统的影响。
+
+  在静密封结构设计上，
+  密封舱的静密封主要分布于端盖与筒体连接处、以及水密接头的安装接口。为确保密封性能，设计中重点考量了以下两点：
+  
+  \begin{enumerate}
+      \item \textbf{端盖静密封设计}：端盖与舱体接口处采用标准 O 型密封圈（图 \ref{fig16:sub1}）规格为 $400 \times 5 \text{mm}$，其材质选用耐腐蚀、抗老化的丁腈橡胶（NBR）。在槽位设计时，严格按照 15\%--25\% 的径向压缩率进行计算，以确保在深水压力下，O 型圈能够充分发生弹性形变填充密封间隙。同时，端盖采用八点法螺栓紧固，保证密封面受力均匀，防止在非对称载荷下产生缝隙。
+      
+      \item \textbf{水密接口布局}：针对电力供应与信号传输的需求，密封舱共使用了多组水密接插件（图 \ref{fig16:sub2}）。接插件通过端面 O 型圈与端盖精加工面配合。设计中充分考虑了安装孔的密封面粗糙度，并在装配时辅以真空硅脂，以确保在高压环境下的密封可靠性。此外，上端盖与下端盖对接插件进行了分类布局，将电源线与信号线物理隔离，有效降低了电磁干扰对控制系统的影响。
+  \end{enumerate}
+  
+  \begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[o型圈]{\label{fig16:sub1}
+            \includegraphics[width = 0.7\textwidth]{figures/oring.jpg}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[水密接插件]{\label{fig16:sub2}
+            \includegraphics[width = 0.7\textwidth]{figures/接插件.jpg}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+    % 中英文总标题
+    \caption{静密封组件}
+    \label{fig:total_figure16}
+  \end{figure}
+
+在动密封结构设计上，针对直径 10mm 的电机输出轴，本设计选用旋转轴用格莱圈（图 \ref{fig15:sub1}）实现动密封，规格为 $10 \times 14.9 \times 2.2\text{mm}$。在实际装配过程中考虑到，由于小尺寸格莱圈在整体式密封槽中安装困难，极易产生扭转或损坏，因此本设计将密封内槽改进为分体式结构（如图 \ref{fig15:sub2} 所示）。这种改进显著降低了装配难度，并提高了密封的可靠性。
+% \begin{figure}[H] % htbp代表图片插入位置的设置
+%     \centering %图片居中
+%     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+%     \includegraphics[width = 0.3\textwidth]{格莱圈}
+%     \caption{旋转轴用格莱圈} % 图片标题
+%     \label{pic24} % 图片标签
+%     \end{figure}
+
+%     \begin{figure}[H] % htbp代表图片插入位置的设置
+%         \centering %图片居中
+%         %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+%         \includegraphics[width = 0.3\textwidth]{组件}
+%         \caption{旋转轴用格莱圈} % 图片标题
+%         \label{pic25} % 图片标签
+%         \end{figure}
+
+        \begin{figure}[H]
+            \centering
+            % 第一张子图
+            \begin{minipage}{0.45\textwidth}
+                \centering
+                \subfigure[旋转轴用格莱圈]{\label{fig15:sub1}
+                    \includegraphics[width = 0.7\textwidth]{figures/格莱圈.png}
+                }% 这里写第一张图的英文描述
+            \end{minipage}
+            % \hfill % 撑开左右间距
+            % 第二张子图
+            \begin{minipage}{0.45\textwidth}
+                \centering
+                \subfigure[动密封组件]{\label{fig15:sub2}
+                    \includegraphics[width = 0.7\textwidth]{figures/组件.png}
+                } % 这里写第二张图的英文描述
+            \end{minipage}
+            % 中英文总标题
+            \caption{动密封组件}
+            \label{fig:total_figure15}
+            \end{figure}
+整体结构与装配
+
+综合内部元件尺寸、电机排布及密封要求，密封舱的最终设计如图 \ref{fig:total_figure17} 所示：
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[外部构造]{\label{fig17:sub1}
+            \includegraphics[width = 0.7\textwidth]{figures/内部.png}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[内部构造]{\label{fig17:sub2}
+            \includegraphics[width = 0.7\textwidth]{figures/外部.png}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+    % 中英文总标题
+    \caption{密封舱结构}
+    \label{fig:total_figure17}
+    \end{figure}
+
+\begin{enumerate}
+    \item \textbf{端盖设计}：上端盖设有四个密封接头通孔，用于主电源输入和上位机通信；下端盖设有两组接口供手爪使用，并布置了三组电机动力输出位及动密封安装孔。
+    \item \textbf{内部布局}：舱体内壁预留了六组安装孔位，用于固定驱动器和控制板等模块，确保在运动过程中内部组件的稳固。
+    \item \textbf{外部接线}：密封舱外部设有24V电源输入、信号输入输出接口、机械手爪舵机的电源与信号接口。
+\end{enumerate}
+
+整机装配后的内部结构如图 \ref{pic26} 所示。该密封舱尺寸为 $300 \times 220 \times 246\text{mm}$，空气中质量为 5.40kg。经过排水体积计算，其在水中的有效重量仅为 0.32kg，良好的浮力配置极大地减轻了机械臂关节的驱动负担。
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中
+    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = \textwidth]{内部布局}
+    \caption{机械臂舱内组成} % 图片标题
+    \label{pic26} % 图片标签
+    \end{figure}
 \BiSection{水下绳驱机械臂样机集成}{Something About Templates}
+在完成本体结构设计与驱动密封舱研制后，本节开展了水下绳驱机械臂的样机集成与系统调试工作。集成过程主要分为硬件装配、绳索张紧调校及控制系统联调三个阶段。
+
+首先，按照“先内部、后外部”的原则进行装配。在驱动密封舱内部，完成 STM32 控制核心、驱动器及电压转换模块的紧凑堆叠与接线；随后，通过分体式动密封组件将三组 Faulhaber 电机输出轴引出舱外，并安装驱动绞盘。为确保密封可靠性，所有静密封界面均均匀涂抹真空硅脂，并利用压力测试系统验证了密封舱在 0.5MPa 环境下的气密性。
+
+其次，进行关键的绳索路径布设。驱动绳索通过水平旋转关节内部的过绳通道，经由各级导向滑轮组引导至肘部与腕部关节。利用本章设计的同轴反向单向轴承张紧机构，对每组驱动回路进行了初始预紧力调节。通过这种方式，有效消除了绳索在传动过程中的非线性迟滞，确保了驱动力矩的线性传递。
+
+最后，进行了系统级联调。通过上位机发送控制指令，验证了机械臂从完全折叠姿态到最大下探深度姿态（730mm）的平稳切换。实测样机总质量为 1.8kg，完全符合设计指标中对于微小型运载器载荷限制的要求。集成完成后的水下绳驱机械臂样机实物如图 \ref{fig:total_figure18} 所示。
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[轴测图]{\label{fig18:sub1}
+            \includegraphics[width = 0.7\textwidth]{figures/轴测图.jpg}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{0.45\textwidth}
+        \centering
+        \subfigure[侧视图]{\label{fig18:sub2}
+            \includegraphics[width = \textwidth]{figures/侧视图.jpg}
+        } % 这里写第二张图的英文描述
+    \end{minipage}
+    % 中英文总标题
+    \caption{样机实物}
+    \label{fig:total_figure18}
+    \end{figure}
+
 \BiSection{本章小结}{Something About Templates}
+本章针对微小型水下运载器对作业机械臂轻量化、紧凑化及低扰动的迫切需求，完成了一款三自由度水下绳驱机械臂的研制工作，主要研究成果如下：
+
+\begin{enumerate}
+    \item \textbf{总体与本体设计}：提出了一种可完全折叠的绳驱构型方案，通过关联双铰链滚动机构解决了常规关节收拢空间受限的问题，实现了机械臂在运载器底部的紧凑嵌套。
+    \item \textbf{传动与导向优化}：针对绳驱系统的摩擦损耗问题，设计了基于全滑轮导向的走线方案；并创新性地利用单轴差动缠绕布局与滑轮组增力机构，在不增加电机功率的前提下显著提升了关节的负载能力。
+    \item \textbf{可靠性密封研制}：研制了高度集成的驱动密封舱，通过分体式动密封结构解决了小尺寸格莱圈的安装难题。实测样机在保证 730mm 下探深度的同时，水中重量仅为 0.4kg，各项指标均满足预设的技术要求。
+\end{enumerate}
+
+本章研究成果为后续开展水下机械臂的运动学建模及精细化控制奠定了坚实的硬件基础。
 %\fi
 
 %%% Local Variables: 
