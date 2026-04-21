@@ -19,7 +19,7 @@ MDH 法与传统 D-H 法的主要区别在于坐标系固定位置的不同：MD
 \begin{figure}[H] % htbp代表图片插入位置的设置
   \centering %图片居中
   %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-  \includegraphics[width = 0.5\textwidth]{DH(1)}
+  \includegraphics[width = 0.7\textwidth]{figures/装配体3轴1(1).eps}
   \caption{改进DH示意图} % 图片标题
   \label{pic24} % 图片标签
   \end{figure}
@@ -338,7 +338,19 @@ Z = \begin{bmatrix}
     
 
 \subsection{驱动空间与关节空间关系}
-在已知电机输出转角 $\phi_i$ 的前提下，求解机械臂末端位姿的关键在于建立从驱动空间至关节空间的运动转换模型。由于系统中存在多组导向轮，且导向轮具有一定半径，机械臂各关节之间将产生运动耦合，即某一关节的运动将引起后续关节的附加运动。本节将针对肘关节与腕关节之间的耦合现象进行详细阐述。
+在已知电机输出转角 $\phi_i$ 的前提下，求解机械臂末端位姿的关键在于建立从驱动空间至关节空间的运动转换模型。
+
+在绳驱机构中，各关节由独立的电机通过绳索传动驱动。基于运动学分析与几何推导,各关节转角与驱动电机转角的关系，具体表达为：
+\begin{equation}
+  \left\{\begin{array}{c}
+  q_1=\frac{R_1}{r_1} \theta_1 \\
+  q_2=\frac{2 N\left(D_{\max }-D_{\min }\right)}{\pi r_2} \theta_2 \\
+  q_3=\frac{R_3}{r_3} \theta_3
+  \end{array}\right.
+  \end{equation}
+
+
+但是，由于系统中存在多组导向轮，且导向轮具有一定半径，机械臂各关节之间将产生运动耦合，即某一关节的运动将引起后续关节的附加运动。本节将针对肘关节与腕关节之间的耦合现象进行详细阐述。
 
 (1)肘关节
 肘关节的耦合现象主要发生在肩部导向轮，如图\ref{fig:total_figure32}
@@ -364,18 +376,44 @@ Z = \begin{bmatrix}
     \caption{肘关节耦合原理}
     \label{fig:total_figure32}
   \end{figure}
-如图所示，当肩关节旋转$\theta_1$时，肘关节的两根驱动绳会伸长和缩短长为$\theta_1R_1$的一个弧长（绿色为缩短，紫色为伸长），为了保证肘关节不动，肘关节电机需要在和肩关节旋转的方向上旋转$\frac{\theta_1R_1}{r_1}$
+如图所示，当肩关节旋转$\theta_1$时，肘关节的两根驱动绳会伸长和缩短长为$\theta_1R_1$的一个弧长（绿色为缩短，紫色为伸长），为了保证肘关节不动，肘关节电机需要在肩关节旋转的方向上旋转$\frac{R_2\theta_1}{r_1}$弧度
 
 (2)腕关节
 
-在该绳驱机构中，各关节由独立的电机通过绳索传动驱动。基于运动学分析与几何推导,各关节转角与驱动电机转角的关系，具体表达为：
+由于腕关节驱动绳也经过肩部导向轮，所以腕关节也会存在耦合现象且原理和肘关节相同，同时腕关节驱动绳同时绕过肘部导向轮上方如图\ref{fig:total_figure33}，当肘部关节旋转的时候腕关节驱动绳会同时伸长或缩短，所以肘部导向轮对腕关节无耦合影响，腕关节电机只需在肩关节旋转的方向上旋转$\frac{R_4\theta_1}{r_3}$弧度
+
+\begin{figure}[H]
+    \centering
+    % 第一张子图
+    \begin{minipage}{\textwidth}
+        \centering
+        \subfigure[肘关节未旋转]{\label{fig33:sub1}
+            \includegraphics[width =0.5 \textwidth]{figures/腕关节解耦.eps}
+        }% 这里写第一张图的英文描述
+    \end{minipage}
+    % \hfill % 撑开左右间距
+    % 第二张子图
+    \begin{minipage}{\textwidth}
+        \centering
+        \subfigure[肘关节旋转$\theta_2$]{\label{fig33:sub2}
+            \includegraphics[width = 0.5 \textwidth]{figures/腕关节耦合2.eps}
+        } % 这里写第二张图的英文描述
+             % 第一张子图
+            \end{minipage}
+    % 中英文总标题
+    \caption{腕关节耦合原理}
+    \label{fig:total_figure33}
+  \end{figure}
+结合几何推导和耦合关系各关节转角与驱动电机转角的关系，具体表达为：
 \begin{equation}
-  \left\{\begin{array}{c}
-  q_1=\frac{R_1}{r_1} \theta_1 \\
-  q_2=\frac{2 N\left(D_{\max }-D_{\min }\right)}{\pi r_2} \theta_2 \\
-  q_3=\frac{R_3}{r_3} \theta_3
-  \end{array}\right.
-  \end{equation}
+    \left\{\begin{array}{c}
+    q_1=\frac{R_1}{r_1} \theta_1 \\
+    q_2=\frac{2 N\left(D_{\max }-D_{\min }\right)}{\pi r_2} \theta_2+\frac{R_2\theta_1}{r_1} \\
+    q_3=\frac{R_3}{r_3} \theta_3+\frac{R_3\theta_1}{r_3}
+    \end{array}\right.
+    \end{equation}
+  
+
 驱动电机转角矢量 $\boldsymbol{\Phi} = [\phi_1, \phi_2, \phi_3]^T$ 与关节角矢量 $\boldsymbol{\Theta} = [\theta_1, \theta_2, \theta_3]^T$ 的线性映射关系可表示为：
 \begin{equation}
 \begin{bmatrix} \phi_1 \\ \phi_2 \\ \phi_3 \end{bmatrix} = 
@@ -383,22 +421,22 @@ Z = \begin{bmatrix}
 \begin{bmatrix} \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix} =
 \begin{bmatrix} 
 \frac{R_1}{r_1} & 0 & 0 \\
-0 & \frac{2 N\left(D_{\max }-D_{\min }\right)}{\pi r_2} \theta_2  & 0 \\
-0 & 0 & \frac{R_3}{r_3}
+\frac{R_2}{r_1} & \frac{2 N\left(D_{\max }-D_{\min }\right)}{\pi r_2} \theta_2  & 0 \\
+\frac{R_4}{r_3} & 0 & \frac{R_3}{r_3}
 \end{bmatrix}
 \begin{bmatrix} \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix}
 \label{eq:mapping_matrix}
 \end{equation}
 
-式中：$r_1, r_2, r_3$ 分别为电机端驱动绞盘的半径；$R_1$ 与 $R_3$ 分别为关节 1 与关节 3 的被驱动绞盘半径；对于关节 2，其传动比受绕线圈数 $N$ 及绕线轴中心距 $D$ 的综合影响。
+式中：$r_1, r_2, r_3$ 分别为电机端驱动绞盘的半径；$R_1$ 为肩关节驱动绞盘 ；$R_2$，$R_3$ 分别为肘关节和腕关节肩部导向轮半径；$R_4$为腕关节驱动绳肘部导向轮半径；对于肘关节，其传动比受绕线圈数 $N$ 及绕线轴中心距 $D$ 的综合影响。
 
-根据实验样机的实际物理参数，取 $r_1=r_2=r_3=13\text{mm}$，$R_1=32\text{mm}$，$R_3=20\text{mm}$，$N=2$，$D=28\text{mm}$。将其代入式 (\ref{eq:mapping_matrix}) 可得最终的传动映射矩阵：
+根据实验样机的实际物理参数，取 $r_1=r_2=r_3=13\text{mm}$，$R_1=32\text{mm}$，$R_2=20\text{mm}$，$R_3=20\text{mm}$，$R_4=15\text{mm}$，$N=2$，$D=28\text{mm}$。将其代入式 (\ref{eq:mapping_matrix}) 可得最终的传动映射矩阵：
 \begin{equation}
 \begin{bmatrix} \phi_1 \\ \phi_2 \\ \phi_3 \end{bmatrix} = 
 \begin{bmatrix} 
 2.46 & 0 & 0 \\
-0 & 13.53 & 0 \\
-0 & 0 & 1.54
+1.53 & 13.53 & 0 \\
+1.15 & 0 & 1.54
 \end{bmatrix}
 \begin{bmatrix} \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix}
 \end{equation}
@@ -446,4 +484,10 @@ Z = \begin{bmatrix}
       \end{figure}
 根据仿真结果来看，对于工作空间内的目标点迭代法可以求得各关节角度且误差控制在0.005\% 以内 
 
-\BiSection{本章小结}{Introduction}
+\BiSection{本章小结}{Summary of Chapter}
+
+本章围绕水下绳驱机械臂的运动学建模问题展开了系统研究。首先，针对传统 D-H 法的局限性，采用改进 D-H 法（MDH）建立了机械臂的连杆坐标系，明确了各关节的几何参数与运动范围，并给出了从基座到末端执行器的齐次变换矩阵。在此基础上，推导了机械臂的正运动学模型，得到了末端执行器位置与姿态关于关节变量的解析表达式。
+
+针对逆运动学求解，考虑到绳驱机械臂自由度耦合较深、解析解推导复杂的特点，选用基于雅可比矩阵的牛顿-拉夫逊数值迭代法，实现了由期望末端位姿到关节空间的反向映射。进一步，分析了绳驱传动系统中的运动耦合现象，建立了驱动电机转角与关节转角之间的线性映射矩阵，为后续控制系统中的驱动指令解算提供了理论依据。
+
+最后，通过 MATLAB 数值仿真验证了逆运动学算法的有效性。仿真结果表明，在工作空间内的目标点处，迭代求解的关节角度误差可控制在 0.005\% 以内，满足水下作业对运动学精度的要求。本章所建立的运动学模型与求解方法，为机械臂的轨迹规划、动力学分析及水下精细控制奠定了坚实的理论基础。
