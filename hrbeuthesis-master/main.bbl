@@ -10,72 +10,98 @@
   \textsc{Annotation:}\ #2\end{quotation}}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem{Chen1992}
-谌颖.
-\newblock 空间最优交会控制理论与方法研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 1992:8--13.
+\bibitem{Wang2026}
+Y.~Wang, B.~Zhang, M.~Shan.
+\newblock Dynamic Modeling and Analysis of an In-space Cable-driven Manipulator for On-orbit Servicing[J].
+\newblock Chinese Journal of Aeronautics, 2026, 39(02):614--630.
 
-\bibitem{Niwa1990}
-S.Niwa, M.~Suzuki, K.~Kimura.
-\newblock Electrical Shock Absorber for Docking System Space[C]//IEEE International Workshop on Intelligent Motion Control. Istenbul: Bogazici University, 1990:825--830.
+\bibitem{Tang2025}
+唐炫铭, 全伟才, 刘博, et~al.
+\newblock 多关节绳驱机械臂动力学响应分析[J].
+\newblock 机械制造与自动化, 2025, 54(04):224--230.
 
-\bibitem{wu1997}
-吴葳, 洪炳熔.
-\newblock 自由浮游空间机器人捕捉目标的运动规划研究[C]//{ 中国第五届机器人学术会议论文集 }. 哈尔滨: 某某出版社, 1997:75--80.
+\bibitem{Wang2025_1}
+王兴涛.
+\newblock 水下柔性绳驱机械臂运动学建模及轨迹规划研究[D].
+\newblock 哈尔滨:哈尔滨工程大学, 2025.
 
-\bibitem{Lin1992}
-林来兴.
-\newblock 空间控制技术[M].
-\newblock 哈尔滨: 宇航出版社, 1992:25--42.
+\bibitem{Wang2025_2}
+王禄, 赵栋杰, 张伟涛, et~al.
+\newblock 绳驱柔性轮椅机械臂解耦设计与运动学分析[J].
+\newblock 机械传动, 2025, 49(01):98--104.
 
-\bibitem{McDonnell1994}
-J.~R. McDonnell, D.~Wagen.
-\newblock Evolving Recurrent Perceptions for Time-{S}eries Modeling[J].
-\newblock IEEE Trans. on Neural Networks, 1994, 5(1):24--38.
+\bibitem{Chen2025}
+陈彦霖, 邓小恒, 张宪民, et~al.
+\newblock 绳驱机器人动力学建模与控制研究综述[J].
+\newblock 机械工程学报, 2025, 61(19):1--17.
 
-\bibitem{Yao1993}
-X.Yao.
-\newblock Evolutionary Artifitial Neural Networks[J].
-\newblock J. Of Neural Systems, 1993, (4):203--222.
+\bibitem{Sun2025_1}
+孙绍祖.
+\newblock 基于绳索驱动的小型协作机械臂系统设计及柔顺控制研究[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2025.
 
-\bibitem{BEZOS02}
-J.~Bezos.
-\newblock The Titlesec and Titletoc Packages[M].
-\newblock 2nd ed., Cityname: University of SomeName, 2002:10--20.
+\bibitem{Luo2025}
+H.~Luo, J.~Xu, S.~Li, et~al.
+\newblock D3-arm: High-dynamic, Dexterous and Fully Decoupled Cable-driven Robotic Arm[J].
+\newblock IEEE Robotics and Automation Letters, 2025:1--7.
 
-\bibitem{OOSTRUM01}
-{P. Oostrum, ifuleyou@bbs.ctex.org~译}.
-\newblock {\LaTeX}下的页面布局[M].
-\newblock 哈尔滨: 某某大学出版社, 2001:10--20.
+\bibitem{Liu2024}
+刘博.
+\newblock 水下绳驱多关节机械臂轨迹规划与避障控制研究[D].
+\newblock 湘潭:湖南科技大学, 2024.
 
-\bibitem{SHELL02}
-M.~Shell.
-\newblock How to Use the {IEEEtran} {\LaTeX} Class[J].
-\newblock Journal of {\LaTeX} Class Files, 2002, 1(11):10--20.
+\bibitem{Ou2022}
+欧定超.
+\newblock 水下绳驱多关节机械手设计与控制研究[D].
+\newblock 湘潭:湖南科技大学, 2022.
 
-\bibitem{TEXGURU99}
-{\TeX}Guru.
-\newblock {\LaTeX 2$\varepsilon$}用户手册[M].
-\newblock 哈尔滨: 某某大学出版社, 1999:10--20.
+\bibitem{Chen2011}
+W.~Chen, S.~Yu, Y.~Jin, et~al.
+\newblock Dynamic Modeling and Tension Analysis of a 7-dof Cable-driven Robotic Arm[C]//Proceedings of 2011 International Conference on Intelligent Computing and Integrated Systems (ICISS 2011). Beijing: IEEE, 2011:377--382.
 
-\bibitem{WANG00}
-{K. Reckdahl~原著, 王磊~译}.
-\newblock Using Import Graphics in {\LaTeX 2$\varepsilon$}, {\LaTeX 2$\varepsilon$}插图指南[M].
-\newblock 哈尔滨: 某某大学出版社, 2000:10--20.
+\bibitem{Li2023}
+李伟杰, 王振宇, 李岩.
+\newblock 绳驱冗余机械臂研究综述[J].
+\newblock 机械科学与技术, 2023.
 
-\bibitem{Zhang2002}
-张三, 李四, 王五, 等.
-\newblock 七仙女下凡除妖记[M].
-\newblock 第二版., 哈尔滨: 某某大学出版社, 2002:1--200.
+\bibitem{Li2022}
+李家磊.
+\newblock 六自由度差分式绳驱机械臂的研制[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2022.
 
-\bibitem{zhangsanfeng}
-S.~F. Zhang.
-\newblock Tai Ji Jian and Tai Ji Quan[D].
-\newblock Harbin:wu dang university, 1783:15--16.
+\bibitem{Yan2022}
+彦飞.
+\newblock 绳驱动水下机械臂动力学与控制研究[D].
+\newblock 南京:南京航空航天大学, 2022.
 
-\bibitem{wwwlixing}
-李兴, 吴诗其.
-\newblock 宽带ip卫星通信技术[J].
-\newblock \url{http://www.opnet.com/products/home.html}.
+\bibitem{Deng2021}
+邓孝伟.
+\newblock 一类绳驱机械臂的控制系统设计与实现[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2021.
+
+\bibitem{Li2024}
+李君祥.
+\newblock 绳驱分段多级联动机械臂设计与运动控制方法研究[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2024.
+
+\bibitem{Lu2022}
+路帅博.
+\newblock 绳驱张拉机械臂的变刚度与形状控制研究[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2022.
+
+\bibitem{Wen2023}
+温要强.
+\newblock 绳驱动解耦机械臂的设计与运动控制[D].
+\newblock 杭州:浙江理工大学, 2023.
+
+\bibitem{Tang2024}
+唐炫铭.
+\newblock 水下多关节绳驱机械臂动力学分析与运动控制研究[D].
+\newblock 湘潭:湖南科技大学, 2024.
+
+\bibitem{Dai2024}
+代一诚.
+\newblock 绳驱柔性机械臂刚度-张力耦合建模及刚度调控方法研究[D].
+\newblock 哈尔滨:哈尔滨工业大学, 2024.
 
 \end{thebibliography}

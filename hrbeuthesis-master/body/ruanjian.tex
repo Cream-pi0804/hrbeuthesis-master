@@ -6,7 +6,58 @@
 
 \BiChapter{试验样机搭建与试验研究}{To Template Maintainers}
 \BiSection{引言}{Simple Introduction about This Template}
-\BiSection{试验样机硬件系统组成}{Subsubsection}
+\BiSection{试验样机硬件系统组成}{Hardware System Composition of Experimental Prototype}
+
+试验样机的硬件系统是实现机械臂底层驱动、多维状态感知与内外通信的物理载体。针对水下密闭舱体的特殊运行环境，本系统在硬件选型与系统集成上采用了强弱电隔离、主从式控制的设计原则。整体硬件架构可划分为电源分配网络、核心控制与执行单元、以及环境感知与外部交互链路三个模块。
+
+图\ref{fig:hardware_topo}展示了试验样机硬件系统的总体拓扑结构。
+
+\begin{figure}[H]
+    \centering
+    % 请在此处替换为您的硬件连接拓扑图/框图
+    \includegraphics[width = 0.85\textwidth]{figures/接线.eps}
+    \caption{样机硬件系统拓扑图}
+    \label{fig:hardware_topo}
+\end{figure}
+
+\textbf{（1）分级电源分配网络}
+
+系统采用 24\,V 直流总电源集中供电，并根据不同模块的工作特性设计了分级配电网络。
+\begin{itemize}
+    \item \textbf{动力供电链路}：24\,V 总电源直接馈入 3 个电机驱动器。这种高压直供模式保证了伺服电机在瞬态加速和重载工况下具备充足的功率冗余。
+    \item \textbf{控制供电链路}：为了满足低压数字逻辑电路的需求，总电源通过高效率 DC-DC 降压模块转换为稳定的 5\,V 电压，集中为 STM32 扩展主控板、舵机、485转232通信模块以及树莓派（Raspberry Pi）提供工作电源。该设计有效隔离了电机启停带来的总线电压波动对微控制器造成的干扰。
+\end{itemize}
+
+\textbf{（2）核心控制与执行单元}
+
+系统构建了“树莓派 + STM32”的异构主从控制架构：
+\begin{itemize}
+    \item \textbf{主从通信总线}：树莓派作为舱内的上位运算节点，通过 USB 接口与下位机 STM32 建立高带宽的串行数据通信，负责下发规划轨迹并接收底层实时状态。
+    \item \textbf{执行器控制总线}：STM32 扩展板作为底层控制中枢，集成了 RS485/RS232 通信转换模块。3 个电机驱动器与 1 个末端执行器（舵机）均通过 RS232 物理接口汇聚于 STM32 扩展板。单片机通过内部定时器与硬件串口阵列，实现对多自由度关节指令的高频并发分发与闭环控制。
+\end{itemize}
+
+\textbf{（3）环境感知与穿舱交互链路}
+
+为了满足水下作业的监控与人机交互需求，系统设计了基于以太网的宽带数据链路：
+\begin{itemize}
+    \item \textbf{视觉感知接口}：搭载的高分辨率单目相机通过标准网线直连至树莓派的千兆网口。高速以太网接口保证了无压缩图像帧的低延迟采集，为后续的 ROS 2 视觉目标解算提供了高质量的数据源。
+    \item \textbf{外部监控链路}：树莓派通过另一路局域网线，经由防水接插件穿透水下密封舱壁，连接至水面或岸基的监视与控制台（外部计算机）。该链路不仅承载了高帧率的视频流图传，还负责双向传输 ROS 2 话题控制指令，使操作人员能够对舱内硬件进行实时健康监测与远程干预。
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \BiSection{STM32底层电机驱动系统}{Subsubsection}
 为了实现高层轨迹规划到底层电机的精准驱动，本研究设计并实现了基于 STM32 的多轴协同
 控制系统。该系统向上对接 ROS 2 高级指令，向下通过精简的指令集控制伺服驱动器，构建
@@ -43,7 +94,7 @@
     为未来机械臂自由度的平滑扩展提供了软件接口保障。
 \end{itemize}
 
-\BiSubsection{多级通信协议与解析机制设计}{Multi-level Communication Protocol and Parsing}
+\BiSubsection{通信协议与解析系统设计}{Multi-level Communication Protocol and Parsing}
 为了确保异构系统间（Linux 实时环境与嵌入式裸机环境）控制流的语义一致性，系统设计了
 双层通信协议架构。
 

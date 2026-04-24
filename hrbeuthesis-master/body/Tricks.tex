@@ -194,14 +194,14 @@
 
 关节3腕关节驱动原理同关节1，其驱动绳从驱动轴到达腕关节的驱动绳布置在下节进行详细叙述。
 
-基于对自由度布局、关节原理设计，设计出绳驱机械臂的三维结构如下图\ref{pic22}所示。图\ref{fig6:sub1}为绳驱机械臂完全折叠状态；图\ref{fig6:sub2}为绳驱机械臂最大下探深度状态，最大下探深度730mm；图\ref{fig6:sub3}为机械臂完全伸展状态，前伸长度700mm。
+基于对自由度布局、关节原理设计，设计出绳驱机械臂的三维结构如下图\ref{pic2222}所示。图\ref{fig66:sub1}为绳驱机械臂完全折叠状态；图\ref{fig66:sub2}为绳驱机械臂最大下探深度状态，最大下探深度730mm；图\ref{fig6:sub3}为机械臂完全伸展状态，前伸长度700mm。
 
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
     \includegraphics[width = 0.5\textwidth]{装配体新改——22(1)}
     \caption{三维结构} % 图片标题
-    \label{pic22} % 图片标签
+    \label{pic2222} % 图片标签
     \end{figure}
 
 \begin{figure}[H]
@@ -209,7 +209,7 @@
     % 第一张子图
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[完全折叠状态]{\label{fig6:sub1}
+        \subfigure[完全折叠状态]{\label{fig66:sub1}
             \includegraphics[width =\textwidth]{figures/完全收拢.jpg}
         }% 这里写第一张图的英文描述
     \end{minipage}
@@ -217,7 +217,7 @@
     % 第二张子图
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[完全下探状态]{\label{fig6:sub2}
+        \subfigure[完全下探状态]{\label{fig66:sub2}
             \includegraphics[width = \textwidth]{figures/下探姿态.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
@@ -331,7 +331,7 @@
             \begin{minipage}{\textwidth}
                 \centering
                 \subfigure[手腕导向上部]{\label{fig7:sub1}
-                    \includegraphics[width =0.7 \textwidth]{figures/手腕导向上.eps}
+                    \includegraphics[width =0.6 \textwidth]{figures/手腕导向上.eps}
                 }% 这里写第一张图的英文描述
             \end{minipage}
             % \hfill % 撑开左右间距
@@ -339,7 +339,7 @@
             \begin{minipage}{\textwidth}
                 \centering
                 \subfigure[手腕导向下部]{\label{fig7:sub2}
-                    \includegraphics[width = 0.7\textwidth]{figures/手腕导向下.eps}
+                    \includegraphics[width = 0.6\textwidth]{figures/手腕导向下.eps}
                 } % 这里写第二张图的英文描述
             \end{minipage}
           
@@ -587,6 +587,371 @@
     \caption{机械臂舱内组成} % 图片标题
     \label{pic26} % 图片标签
     \end{figure}
+\BiSection{关键部件计算校核与有限元分析}{Something About Templates}
+本章将基于前文构建的水下绳驱机械臂三维实体模型，对其关键零部件的力学
+性能与结构强度进行校核。针对常规的传动轴、紧固件等标准件，主要依据经
+典材料力学与应力强度理论进行理论计算与验算；而针对受力情况复杂、几何
+特征不规则的核心非标件（如水下密封仓、肘部双铰链机构及导向轮支架等），
+则导入 ANSYS 有限元分析软件开展静力学模拟仿真。通过提取并分析求解得到的
+等效应力云图与位移变形云图，评估其在水下环境及绳索张紧力共同作用下的结构
+安全性，从而验证机械臂设计的合理性。
+\BiSubsection{绳索张力计算}{Which Templates I should Select？}
+绳索张力是绳驱机械臂结构受力分析的基础边界条件。本节将依据机械臂
+的各项设计要求，针对各自由度展开计算。通过先求解各关节所需的驱动
+力矩，再反推得出传动绳索的拉力分布，为下文关键零部件的强度校核提
+供可靠的力学依据。
+
+(1)肩关节驱动力及绳索张力计算
+
+
+根据系统作业设计要求，机械臂末端在水下的最大运行线速度设定为 
+$v_{max} = 100\text{ mm/s} = 0.1\text{ m/s}$。在水平完全伸展的最
+恶劣姿态下,对机械臂整条手臂进行受力分析，如图\ref{pic210},计算出所需力矩;
+
+
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中%添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = 0.7\textwidth]{zhou1i} % 建议将图片名改为基座关节相关的名称
+    
+    
+    \caption{肩关节受力示意图} % 图片标题\label{pic27} % 图片标签
+    \label{pic210} % 图片标签
+
+\end{figure}
+
+
+
+负载 $m_p = 1 \text{ kg}$的负载转动惯量 ($J_p$)为
+\begin{equation}
+    J_p = m_p \cdot L_{max}^2 = 1 \cdot 0.77667^2 \approx 0.6032 \text{ kg} \cdot \text{m}^2
+\end{equation}
+
+同时,基座旋转关节达到该线速度所需的最大角速度
+ $\dot{q}_{1max}$ 为：
+ \begin{equation}
+    \dot{q}{1max} = \frac{v{max}}{L_{max}} = \frac{0.1}{0.77667} 
+    \approx 0.1288 \text{ rad/s}
+\end{equation}
+为避免机械臂启停时对水体产生剧烈冲击并有效抑制柔性绳索的瞬态颤振，
+系统需采用平滑加速策略。设机械臂由静止加速至最大运行速度的过渡时间
+为 $t_a$（本文工程设定 $t_a = 0.5\text{ s}$），则基座旋转关节的
+最大工作角加速度 $\ddot{q}_{1max}$ 为：
+\begin{equation}
+    \ddot{q}{1max} = \frac{\dot{q}{1max}}{t_a} = 
+    \frac{0.0644}{0.5} = 0.2576 \text{ rad/s}^2
+\end{equation}
+将该工作角加速度代入前式，结合前文由三维模型测量导出的机械臂整体空载转
+    动惯量 $J_{arm} = 0.6765 \text{ kg}\cdot\text{m}^2$，基座旋转关
+    节在极限偏航加速工况下需克服的系统总惯性力矩 $M_1$ 为：
+    \begin{equation}
+        M_1 = (J_{arm} + J_p) \cdot \ddot{q}_{1max} = (0.6765 + 0.603) 
+        \times 0.2576 \approx 0.3296 \text{ N}\cdot\text{m}
+    \end{equation}
+    针对基座回转机构的传动特性，对基座驱动绞盘进行受力分析。
+    如图 \ref{pic27} 所示，$M_1$ 为关节需克服的系统总惯性力矩，$T_1$ 
+    与 $T_2$ 分别为绳驱系统中牵引侧绳索与松弛侧绳索的张力，$R_1$ 与 
+    $r_1$ 分别是关节端被动绞盘和电机端主动绞盘的有效半径。
+    \begin{figure}[H] % htbp代表图片插入位置的设置
+        \centering %图片居中%添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+        \includegraphics[width = 0.7\textwidth]{jianguanj1} % 建议将图片名改为基座关节相关的名称
+        
+        
+        \caption{肩关节受力示意图} % 图片标题\label{pic27} % 图片标签
+        \label{pic27} % 图片标签
+    
+    \end{figure}
+        以基座关节旋转轴线为原点，建立该工况下的力矩平衡方程：
+        \begin{equation}
+            M_1 = (T_1 - T_2) \cdot R_1
+        \end{equation}
+        在极限加速工况下，若忽略松弛侧为防止脱轨而施加的微小预紧力
+        （即假设 $T_2 \approx 0$）以及轴承等机械摩擦损耗，单根牵引
+        绳索此时需承受的动态极限拉力 $T_1$ 可简化解算为：
+        \begin{equation}T_1 = \frac{M_1}{R_1}\end{equation}
+将基座驱动绞盘的有效半径 32 mm（即 0.032 m）代入上述力矩平衡方程中，计算得出
+单根牵引绳索在极限加速工况下的理论拉力为 $T_1 =$ 10.3 N。考虑到水下复杂作业环
+境，工程设计中需引入静载安全系数 $K_s$。本文选取 $K_s = 5.0$，则绳驱系统实际需
+要达到的极限设计张力 $T_{max}$ 为：
+\begin{equation}
+T_{max} = K_s \cdot T_1 = 5.0 \times 10.3 = 51.5 \text{ N}
+\end{equation}
+
+电机驱动绞盘半径 $r_1=22.5mm$,电机所需提供转矩为:
+
+\begin{equation}
+    M_{1max} = T_{max} \cdot r_1 = 51.5 \times 0.0225 = 1.2875 \text{ N}\cdot\text{m}
+    \end{equation}
+
+(2)肘关节驱动力及绳索张力计算
+
+与肩关节主要克服系统惯性不同，肘关节在作业过程中需要持续克服自身结构件及末端负载产生的重力矩。因此，其最恶劣的静力学受力工况发生在机械臂处于水平完全伸展姿态时，此时重力的有效力臂达到最大。
+
+如图\ref{pic29}对肘关节进行受力分析，对机械臂整条大臂进行受力分析，计算出所需力矩
+
+
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中%添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = 0.7\textwidth]{457} % 建议将图片名改为基座关节相关的名称
+    \caption{肘关节受力示意图} % 图片标题\label{pic27} % 图片标签
+    \label{pic29} % 图片标签
+\end{figure}
+
+
+
+
+经三维模型质量属性分析，该肘关节及关联小臂总成的主体质量约为 $m_{2\_arm} = 1.96\text{ kg}$，其重心距离关节真旋转轴的距离 $L_{2\_arm} = 203.987\text{ mm} \approx 0.204\text{ m}$。设定末端执行器搭载额定负载 $m_p = 1.0\text{ kg}$，根据前文 D-H 参数，该负载针对肘部旋转中心的力臂 $L_{2 \_ p} = a_3 = 0.43881\text{ m}$。
+
+在极值水平伸展位姿下，由结构自重产生的静力矩 $M_{2\_arm}$ 与由末端负载产生的静力矩 $M_{2\_p}$ 分别为：
+\begin{equation}
+    M_{2\_arm} = m_{2\_arm} \cdot g \cdot L_{2\_arm} = 1.96 \times 9.8 \times 0.204 \approx 3.92 \text{ N}\cdot\text{m}
+\end{equation}
+\begin{equation}
+    M_{2\_p} = m_p \cdot g \cdot L_{p} = 1.0 \times 9.8 \times 0.43881 \approx 4.30 \text{ N}\cdot\text{m}
+\end{equation}
+
+为了保证机械臂在水下执行任务时的动态响应能力，系统还需克服加速阶段的转动惯量。直接提取三维软件输出坐标系下的 X 轴主惯性张量 $I_{xx} = 0.167\text{ kg}\cdot\text{m}^2$ 作为肘关节空载转动惯量。结合前文设定的峰值工作角加速度 $\ddot{q}_{2max} = 0.0644\text{ rad/s}^2$，动态惯性力矩 $M_{2\_inertia}$ 为：
+\begin{equation}
+    M_{2\_i} = (I_{xx} + m_p \cdot L_{p}^2) \cdot \ddot{q}_{2max} = (0.167 + 0.193) \times 0.0644 \approx 0.023 \text{ N}\cdot\text{m}
+\end{equation}
+
+由此可见，在此低速工况下惯性力矩占比极微。肘关节所需克服的总驱动力矩 $M_2$ 主要由重力矩主导：
+\begin{equation}
+    M_2 = M_{2\_arm} + M_{2\_p} + M_{2\_i} = 3.92 + 4.30 + 0.023 \approx 8.24 \text{ N}\cdot\text{m}
+\end{equation}
+
+如图\ref{pic28}对肘关节处的传动机构进行受力分析。假设由于机构自锁或单向受力特性，松弛侧牵引绳不产生明显反向拉力，单根主驱动绳索通过四组动滑轮在极限姿态下所需提供的理论拉力 $T_3$，由肘关节导向轮有效半径 $R_2 = 50\text{ mm} = 0.05\text{ m}$ 决定：
+\begin{equation}
+    T_3 = \frac{M_2}{N \cdot R_2} = \frac{8.24}{8 \times 0.05} = 20.6 \text{ N}
+\end{equation}
+
+
+\begin{figure}[H] % htbp代表图片插入位置的设置
+    \centering %图片居中%添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    \includegraphics[width = 0.7\textwidth]{肘受力1} % 建议将图片名改为基座关节相关的名称
+    \caption{肘关节受力示意图} % 图片标题\label{pic27} % 图片标签
+    \label{pic28} % 图片标签
+\end{figure}
+
+考虑到作业环境,工程设计中选取静载安全系数 $K_s = 5.0$。经修正，肘部主驱动绳索的极限设计张力 $T_{3\_max}$ 标定为：
+\begin{equation}
+    T_{2\_max} = K_s \cdot T_3 = 5.0 \times 20.5 = 103 \text{ N}
+\end{equation}
+
+
+电机驱动绞盘半径 $r_2=22.5mm$,电机所需提供转矩为:
+
+\begin{equation}
+    M_{2max} =  T_{2\_max} \cdot r_1 = 103 \times 0.0225 = 2.3175 \text{ N}\cdot\text{m}
+    \end{equation}
+
+
+
+该计算结果 ($102.5\text{ N}$) 清晰地量化了大臂对绳驱系统造成的峰值拉力。此极限张力将作为下文针对肘部双铰链机构、滑轮轴及承载外壳等关键部件进行强度校核的额定载荷输入边界。
+
+(3) 腕关节驱动力及绳索张力计算
+
+腕关节作为机械臂的末端执行关节，其受力模型与肩关节相同。在作业过程中，腕关节需要持续克服自身结构件及末端负载产生的重力矩，其最恶劣静力学工况同样发生在水平完全伸展姿态时。
+
+如图 \ref{pic30} 所示，对机械臂腕部及手爪组件进行受力分析。
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width = 0.7\textwidth]{腕关节受力.eps} 
+    \caption{腕关节受力示意图} 
+    \label{pic30} 
+\end{figure}
+
+经三维模型质量属性分析，该腕关节及手爪总成的主体质量 $m_{3\_arm} = 0.462\text{ kg}$。水平伸展时，其重心至腕关节旋转轴的力臂 $L_{3\_arm} \approx 0.0847\text{ m}$。设定末端负载 $m_p = 1.0\text{ kg}$，力臂 $L_{3\_p} = 0.12286\text{ m}$。其各自产生的静重力矩为：
+\begin{equation}
+    M_{3\_arm} = m_{3\_arm} \cdot g \cdot L_{3\_arm} = 0.462 \times 9.8 \times 0.0847 \approx 0.383 \text{ N}\cdot\text{m}
+\end{equation}
+\begin{equation}
+    M_{3\_p} = m_p \cdot g \cdot L_{3\_p} = 1.0 \times 9.8 \times 0.12286 \approx 1.204 \text{ N}\cdot\text{m}
+\end{equation}
+
+提取三维软件输出的腕部绝对转动惯量 $I_{xx\_3} = 0.0056 \text{ kg}\cdot\text{m}^2$。结合设定的角加速度 $\ddot{q}_{3max} = 0.0644\text{ rad/s}^2$，动态惯性力矩 $M_{3\_i}$ 为：
+\begin{equation}
+    M_{3\_i} = (I_{xx\_3} + m_p \cdot L_{3\_p}^2) \cdot \ddot{q}_{3max} = (0.0056 + 0.0151) \times 0.0644 \approx 0.0013 \text{ N}\cdot\text{m}
+\end{equation}
+
+腕关节所需克服的总驱动力矩 $M_3$ 为：
+\begin{equation}
+    M_3 = M_{3\_arm} + M_{3\_p} + M_{3\_i} = 0.383 + 1.204 + 0.0013 \approx 1.588 \text{ N}\cdot\text{m}
+\end{equation}
+
+如图 \ref{pic31} 对腕关节传动机构进行分析。且腕关节导向轮有效半径 $R_3 = 20\text{ mm} = 0.02\text{ m}$，理论拉力 $T_4$ 决定为：
+\begin{equation}
+    T_3 = \frac{M_3}{N_w \cdot R_3} = \frac{1.588}{1 \times 0.02} \approx 79.4 \text{ N}
+\end{equation}
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width = 0.5\textwidth]{腕张力} 
+    \caption{腕关节传动机构受力示意图} 
+    \label{pic31} 
+\end{figure}
+
+考虑水下作业不确定性，选取静载安全系数 $K_s = 5.0$。经修正，腕部主驱动绳索极限设计张力 $T_{4\_max}$ 标定为：
+\begin{equation}
+    T_{3\_max} = K_s \cdot T_3 = 5.0 \times 79.4 = 397.0 \text{ N}
+\end{equation}
+电机驱动绞盘半径 $r_3=22.5mm$,电机所需提供转矩为:
+
+\begin{equation}
+    M_{3max} =  T_{3\_max} \cdot r_1 = 397.0 \times 0.0225 = 8.9325 \text{ N}\cdot\text{m}
+    \end{equation}
+此张力计算结果明确了末端腕部执行系统的结构承载极限，为手爪连接件及腕部转轴的三维有限元强度校核提供了重要边界条件。
+\BiSubsection{关键部件计算校核}{Which Templates I should Select？}
+
+（1）肘关节滑轮轴
+
+由于肘关节滑轮轴受力最大，因此需要校核该零件的材料强度能否满足要求。滑轮轴的材质选用7075铝合金，下面进行计算分析。
+
+如图\ref{211},对滑轮轴进行受力分析，计算出支反力$F_{x2}，F_{y2}，F_{x1}，F_{y1}$，其中$T_{2\_max}$为上文求出的绳索最大张力
+
+
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width = 0.5\textwidth]{滑轮zhou} 
+    \caption{肘关节滑轮轴受力示意图} 
+    \label{pic211} 
+\end{figure}
+
+\begin{equation}
+    \left\{\begin{array}{l}
+    F_{y_1} \cdot L_1=2 \cdot T_{2\_\max }\left(4 \left(L_1-L_2-3 \cdot L_3\right)+ 6 L_3\right) \\
+    F_{y_2} \cdot L_1=2 \cdot T_{2 \_ \max }\left(4 L_2+6 L_3\right)
+    \end{array}\right.
+    \end{equation}
+其中，$L_{1}=79mm，L_{2}=49mm，L_{3}=5.5mm,T_{2\_max}=103N$,代入得；
+
+\begin{equation}
+    \left\{\begin{array}{l}
+    F_{y_1}=226.86 \text{ N}\\
+    F_{y_2}=597.13 \text{ N}
+    \end{array}\right.
+    \end{equation}
+根据支反力结果画出剪力，弯矩图
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width = 0.7\textwidth]{剪力1} 
+    \caption{剪力图} 
+    \label{pic32} 
+\end{figure}
+
+
+\begin{figure}[H] 
+    \centering 
+    \includegraphics[width = 0.7\textwidth]{弯矩11} 
+    \caption{弯矩图} 
+    \label{pic33} 
+\end{figure}
+
+在得出滑轮轴的剪力图与弯矩图后，需对受力最恶劣的危险截面进行强度校核。根据弯矩图可
+知，轴上的最大弯矩 $M_{max}$ 通常发生在集中载荷的作用点处。由于该滑轮轴主要作为支
+撑心轴使用（不传递主动扭矩），本节主要依据最大正应力理论对其进行弯曲强度校核。
+
+本文设计的滑轮轴材质选用 6065 铝合金。该型号铝合金具备优异的抗海水腐蚀性能与较高
+的比强度，非常适用于水下轻量化装备。经过热处理（如 T6 状态）后，其典型屈服强度 
+$\sigma_s$ 约为 $250\text{ MPa}$。考虑到水下环境的动态冲击、交变载荷以及防止结
+构发生塑性变形，本文选取弯曲疲劳安全系数 $n = 3.0$，则该材料的许用弯曲应
+力 $[\sigma]$ 为：
+\begin{equation}
+    [\sigma] = \frac{\sigma_s}{n} = \frac{250}{3.0} \approx 83.3 \text{ MPa}
+\end{equation}
+
+对于实心圆轴，其危险截面处的抗弯截面模量 $W$ 计算公式为：
+\begin{equation}
+    W = \frac{\pi d^3}{32} \approx 0.1 d^3
+\end{equation}
+
+本滑轮轴在危险截面处的直径$d=8mm$，代入公式得$W=5.12X10^7m^3$。
+
+为确保结构安全，该截面承受的最大弯曲正应力 $\sigma_{max}$ 必须严格满足：
+\begin{equation}
+    \sigma_{max} = \frac{M_{max}}{W} = \frac{M_{max}}{0.1 d^3} \le [\sigma]
+\end{equation}
+本滑轮轴的最大弯矩为$11.23 \text{N} \cdot \text{m}$代入公式得$\sigma_{max}  \approx 21 \text{ MPa} < 83.3\text{ MPa}$
+证明该 6065 铝合金滑轮轴的满足水下绳驱机械臂的极限工况设计要求
+
+（2）其他复杂零件的有限元分析
+
+为确保机械臂在极限负载下的结构可靠性，本文利用有限元分析软件（如 ANSYS）对受力最为恶劣的关键连接件进行了三维静力学仿真。
+
+（1）大臂零件有限元分析
+
+
+
+为保证计算精度与求解效率的平衡，设定全局网格基础尺寸为 $2\text{ mm}$，并在孔轴交
+界等应力集中区域自动适应划分。
+
+在连接销孔内圆柱面上施加全自由度的固定支撑约束，以模拟实际装
+配固定状态；在手腕段承载表面，施加垂直向下、大小为 $200\text{ N}$ 的集中载荷。具
+体的边界条件与载荷分布设置如图 \ref{pic_boundary} 所示。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{边界} % 请替换为您真实的图片名称
+    \caption{大臂有限元边界条件与载荷设置}
+    \label{pic_boundary}
+\end{figure}
+
+提交求解器运算后，分别提取该零件在上述载荷约束下的等效应力和等效弹性应变分布云图，分别如图 \ref{pic_stress} 和图 \ref{pic_strain} 所示。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{大臂} % 请替换为您真实的图片名称
+    \caption{大臂等效应力分布云图}
+    \label{pic_stress}
+\end{figure}
+
+由图 \ref{pic_stress} 的等效应力云图分析可知，零件整体的应力水平处于较低状态。结构的最大等效应力 $\sigma_{max}$ 出现在固定连接孔的边缘或过渡圆角等截面突变处，存在明显的应力集中现象，其最大应力值为 $\mathbf{72.483 \text{ MPa}}$。充分满足工程设计的静强度要求。
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width = 0.7\textwidth]{应变} % 请替换为您真实的图片名称
+    \caption{大臂等效弹性应变分布云图}
+    \label{pic_strain}
+\end{figure}
+
+同时，由图 \ref{pic_strain} 的等效弹性应变云图可知，结构的最大弹性应变 $\varepsilon_{max}$ 同样发生于应力集中的固定孔根部区域，其最大值为 $\mathbf{233.8 \times 10^{-3} \text{ mm/mm}}$。该微小应变表明零件在承受极限 $200\text{ N}$ 瞬态载荷时，结构表现出极高的刚度，不会发生影响传动精度的变形。
+
+
+电机驱动轴有限元分析
+
+电机驱动轴作为动力传递的核心部件，其在运行过程中承受电机输出扭矩与绳索张力的复合作用。为验证驱动轴在极端工况下的抗失效能力，本文利用 ANSYS Workbench 对其进行有限元数值仿真。
+
+在网格划分阶段，采用四面体高阶单元，网格尺寸设定为 $2\text{ mm}$。针对轴肩、键槽等几何突变区域进行局部网格细化，以捕捉可能存在的应力集中现象。经检测，网格质量平均值在 $0.8$ 以上，具有良好的计算收敛性。
+
+根据电机轴的实际安装与受力情况，设定如下边界条件：
+\begin{enumerate}
+    \item \textbf{固定约束（Fixed Support）}：在驱动轴与电机联轴器连接的端部施加固定约束，限制其六个自由度。
+    \item \textbf{径向载荷（Radial Force）}：在绞盘位置施加垂直于轴线的径向力 $F = 51.5\text{ N}$，模拟绳索极限张力对轴的弯曲作用。
+\end{enumerate}
+具体的边界条件设置如图 \ref{pic_motor_boundary} 所示。
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width = 0.7\textwidth]{电机边界条件} 
+    \caption{电机驱动轴有限元边界条件设置} 
+    \label{pic_motor_boundary} 
+\end{figure}
+
+仿真计算得出的等效应力（von Mises Stress）分布如图 \ref{pic_motor_stress} 所示。
+
+\begin{figure}[H]
+    \centering 
+    \includegraphics[width = 0.7\textwidth]{应力1} 
+    \caption{电机驱动轴等效应力分布云图} 
+    \label{pic_motor_stress} 
+\end{figure}
+
+根据云图分析，电机轴的最大等效应力 $\sigma_{max}$ 出现在靠近电机侧的轴肩过渡圆角处，最大值为 $\mathbf{13.665 \text{ MPa}}$。选用材料为 6065 铝合金（屈服强度 $\sigma_s \approx 250\text{ MPa}$），最大应力远小于材料的屈服极限,可以保证机械臂在水下恶劣环境中的长期可靠运行。
+
+
+
 \BiSection{水下绳驱机械臂样机集成}{Something About Templates}
 在完成本体结构设计与驱动密封舱研制后，本节开展了水下绳驱机械臂的样机集成与系统调试工作。集成过程主要分为硬件装配、绳索张紧调校及控制系统联调三个阶段。
 
@@ -618,9 +983,21 @@
     \label{fig:total_figure18}
     \end{figure}
 
-\BiSection{本章小结}{Something About Templates}
-本章针对微小型水下运载器对作业机械臂轻量化、紧凑化及低扰动的迫切需求，完成了一款三自由度水下绳驱机械臂的研制工作。在总体与本体设计方面，提出了一种可完全折叠的绳驱构型方案，通过关联双铰链滚动机构有效解决了常规关节收拢空间受限的问题，实现了机械臂在运载器底部的紧凑嵌套；在传动与导向优化方面，针对绳驱系统的摩擦损耗问题，设计了基于全滑轮导向的走线布局，并创新性地利用单轴差动缠绕结构与滑轮组增力机构，在不增加电机功率的前提下显著提升了关节的负载能力；在可靠性密封研制方面，研制了高度集成的驱动密封舱，通过分体式动密封结构解决了小尺寸格莱圈的安装难题。实测样机在保证730 mm下探深度的同时，水中重量仅为0.4 kg，各项指标均满足预设技术要求。本章研究成果为后续开展水下机械臂的运动学建模及精细化控制奠定了坚实的硬件基础。
-%\fi
+    \BiSection{本章小结}{Summary}
+
+    本章针对微小型水下运载器对作业机械臂轻量化、紧凑化及低扰动的迫切需求，详细论述了三自由度水下绳驱机械臂的结构设计、计算校核与样机研制过程。主要研究内容与成果总结如下：
+    
+    \begin{enumerate}
+        \item \textbf{在总体构型与关节结构设计方面}：提出了一种将动力源集中后置于基座的绳驱总体方案，极大降低了前端运动部件的质量与水下扰动。针对整机完全折叠的安装需求，创新设计了关联双铰链纯滚动机构；同时结合滑轮组增力与单轴差动缠绕布局，在不增加电机功率的前提下，显著提升了机械臂的末端承载能力与空间紧凑性。
+        
+        \item \textbf{在传动走线与驱动舱密封研制方面}：确立了全滑轮导向的低摩擦损耗走线方案，并开发了基于单向轴承的双向自锁张紧机构，以保障传动系统的刚度。此外，研制了高度集成的驱动控制密封舱，通过优化静密封水密接口布局与独创的分体式动密封槽设计，有效解决了小尺寸格莱圈的装配易损难题，实现了舱体的高可靠性防护。
+        
+        \item \textbf{在关键部件理论计算与有限元校核方面}：基于极限水下作业工况（最大运行速度与 1kg 额定负载），系统推导了解算了各关节的受力模型与驱动绳索的峰值张力。以此为边界条件，利用 ANSYS 软件对肘部滑轮轴、大臂关键连接件及电机驱动轴开展了三维静力学仿真。结果表明，各受载部件的最大等效应力均远低于 6065 铝合金的屈服极限，且结构应变微小，充分证明了本体结构设计的安全性与合理性。
+        
+        \item \textbf{在样机集成与系统测试方面}：完成了水下绳驱机械臂样机的硬件装配、绳索预紧与控制系统联调。实测物理样机最大下探深度达到 730mm，空气中整体质量仅为 1.8kg（水中有效视重为 0.4kg），各项物理与运动学指标均圆满达成了预设的技术要求。
+    \end{enumerate}
+    
+    综上所述，本章的研究工作不仅验证了该轻型可折叠绳驱机械臂在复杂水下环境作业的物理可行性，更为后续开展机械臂的运动学建模拟合、轨迹规划以及高精度闭环控制奠定了坚实的硬件支撑与力学基础。%\fi
 
 %%% Local Variables: 
 %%% mode: latex
