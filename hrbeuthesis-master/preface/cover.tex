@@ -39,7 +39,7 @@
 \csubject{机械设计制造及其自动化}  % 学科
 \caffil{机电工程学院}  % 院系
 \cauthor{倪洪运}  % 或{某~~~~某}或超过三个字亦可
-\csupervisor{刘星~~教授}  % 导师名字
+\csupervisor{刘星~~副教授}  % 导师名字
 %\cassosupervisor{某~~~~某~~~~教授}  % 副导师, 如无可以不列此项
 %\ccosupervisor{某某某~~~~教授~}  % 联合培养导师, 如无可以不列此项
 \cdate{\chinesethesistime}  % 中文日期
@@ -80,13 +80,34 @@
 \cabstract{
   随着海洋探测技术的不断发展，微小型无缆水下运载器（ROV/AUV）对轻量化、紧凑化及低扰动作业机械臂的需求日益迫切。传统刚性水下机械臂存在自身质量大、运动惯性显著以及对运载器姿态扰动强等问题。为此，本文设计并研制了一款具有高负载自重比的三自由度水下绳驱机械臂，并对其结构、运动学、视觉定位及控制系统进行了系统深入的研究。
 
-  首先，提出了一种将驱动源集中后置于基座独立密封舱的绳驱总体方案，极大降低了前端运动部件的质量与水下流体扰动。针对机械臂在运载器底部的完全折叠收纳需求，创新设计了关联双铰链纯滚动肘部机构；通过滑轮组增力机构与单轴差动缠绕的导向走线方案，在不增加电机功率的前提下显著提升了机械臂的承载能力。同时，基于极限受力工况，对核心轴类与连接件进行理论静力学计算与 ANSYS 有限元仿真，验证了本体结构的高可靠性。
+  首先，提出一种将驱动源集中后置于基座独立密封舱的绳驱总体方案，
+  极大降低前端运动部件的质量与水下流体扰动。
+  针对机械臂在运载器底部的完全折叠收纳需求，
+  创新设计关联双铰链纯滚动肘部机构；
+  通过滑轮组增力机构与单轴差动缠绕的导向走线方案，
+  在不增加电机功率的前提下显著提升机械臂的承载能力。
+  同时，基于极限受力工况，对核心轴类与连接件进行理论静力学计算与 ANSYS 有限元仿真，
+  验证了本体结构的高可靠性。
   
-  其次，开展了绳驱机械臂的运动学建模与轨迹规划研究。基于改进 D-H 法建立了机械臂正运动学模型，采用牛顿-拉夫逊数值迭代法结合驱动-关节空间映射关系，成功解算了复杂的逆运动学。在关节空间与笛卡尔空间内，分别设计了平滑的梯形/多项式速度规划与直线/圆弧插补算法，通过 MATLAB 仿真验证了所提算法能够有效抑制加速度突变，减小运动对水体的冲击。
+  其次，开展绳驱机械臂的运动学建模与轨迹规划研究。
+  基于改进 D-H 法建立了机械臂正运动学模型，
+  采用牛顿-拉夫逊数值迭代法结合驱动-关节空间映射关系，
+  成功解算了复杂的逆运动学。在关节空间与笛卡尔空间内，
+  分别设计了平滑的梯形/多项式速度规划与直线/圆弧插补算法，
+  通过 MATLAB 仿真验证所提算法能够有效抑制加速度突变，
+  减小运动对水体的冲击。
   
-  再次，构建了基于单目视觉的目标定位与自主抓取策略。建立了水下相机的针孔成像与畸变校正模型，基于 ArUco 特征标记与“眼在手外（Eye-to-Hand）”构型，通过 Tsai-Lenz 法完成了高精度的手眼标定，得到了从二维图像到机械臂物理基坐标系的空间位姿的映射。
+  再次，构建基于单目视觉的目标定位与自主抓取策略。
+  建立水下相机的针孔成像与畸变校正模型，
+  基于 ArUco 特征标记与“眼在手外（Eye-to-Hand）”构型，通过 
+  Tsai-Lenz 法完成了高精度的手眼标定，
+  得到从二维图像到机械臂物理基坐标系的空间位姿的映射。
   
-  最后，完成了试验样机的系统集成与性能测试。搭建了以“树莓派 + STM32”异构主从架构为核心的硬件平台，开发了基于 ROS 2 框架的分布式软件控制系统。样机实测最大下探深度达 730mm，具备 1.0kg 的额定有效负载能力。基础运动与视觉闭环抓取实验表明，该机械臂具备优异的运动响应性能与定位精度，验证了整套系统的物理可行性与理论模型的正确性
+  最后，完成试验样机的系统集成与性能测试。
+  搭建以“树莓派 + STM32”异构主从架构为核心的硬件平台，开发了基于 ROS 2 框架的分布式软件控制系统。
+  样机实测最大下探深度达 730mm，
+  具备 1.0kg 的额定有效负载能力。基础运动与视觉闭环抓取实验表明，
+  该机械臂具备优异的运动响应性能与定位精度，验证整套系统的物理可行性与理论模型的正确性
 }
 
 % 关键词
@@ -96,11 +117,19 @@
 
 % 英文摘要
 \eabstract{
-This is a \LaTeX{} dissertation template of Harbin Engineering University, which is built according to the required format.
+  With the continuous development of marine exploration technology, the demand for lightweight, compact, and low-disturbance manipulators for micro/small Remotely Operated Vehicles (ROVs) and Autonomous Underwater Vehicles (AUVs) is becoming increasingly urgent. Traditional rigid underwater manipulators suffer from large self-weight, significant motion inertia, and strong attitude disturbance to the vehicle. To address these issues, this thesis designs and develops a 3-DOF (Degree of Freedom) underwater cable-driven manipulator with a high payload-to-weight ratio, and systematically investigates its structure, kinematics, visual positioning, and control system.
+
+  Firstly, a cable-driven overall scheme is proposed, in which the driving sources are centralized and placed in an independent sealed cabin at the base. This significantly reduces the mass of the front-end moving parts and the underwater fluid disturbance. To meet the requirement of complete folding and storage at the bottom of the vehicle, a novel pure rolling elbow mechanism with associated double hinges is designed. Through a pulley block force-amplifying mechanism and a guiding routing scheme with single-axis differential winding, the payload capacity of the manipulator is significantly improved without increasing the motor power. Meanwhile, based on extreme load conditions, theoretical static calculations and ANSYS finite element simulations are performed on the core shafts and connectors, verifying the high reliability of the main body structure.
+  
+  Secondly, the kinematics modeling and trajectory planning of the cable-driven manipulator are studied. The forward kinematics model of the manipulator is established based on the modified D-H method. By combining the Newton-Raphson numerical iteration method with the driving-joint space mapping relationship, the complex inverse kinematics is successfully solved. Smooth trapezoidal/polynomial velocity planning and linear/circular interpolation algorithms are designed in the joint space and Cartesian space, respectively. MATLAB simulations verify that the proposed algorithms can effectively suppress acceleration mutations and reduce the impact of motion on the water body.
+  
+  Furthermore, a target positioning and autonomous grasping strategy based on monocular vision is constructed. A pinhole imaging and distortion correction model for the underwater camera is established. Based on ArUco fiducial markers and an "Eye-to-Hand" configuration, high-precision hand-eye calibration is accomplished using the Tsai-Lenz method, obtaining the spatial pose mapping from the 2D image to the physical base coordinate system of the manipulator.
+  
+  Finally, the system integration and performance testing of the experimental prototype are completed. A hardware platform with a heterogeneous master-slave architecture based on "Raspberry Pi + STM32" is built, and a distributed software control system is developed based on the ROS 2 framework. The actual measurement of the prototype shows a maximum reaching depth of 730mm and a rated effective payload capacity of 1.0kg. Basic motion and vision-based closed-loop grasping experiments indicate that the manipulator possesses excellent motion response performance and positioning accuracy, validating the physical feasibility of the entire system and the correctness of the theoretical models.
 }
 
 % 关键词
-\ekeywords{\LaTeX{}; dissertation template; harbin engineering university; (Attention: 3 $\sim$ 6 key words, lower-case!)}
+\ekeywords{Underwater Manipulator; Cable-Driven; Structural Design; Kinematics Modeling; Visual Grasping}
 
 
 

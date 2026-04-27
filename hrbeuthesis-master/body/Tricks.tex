@@ -1,4 +1,10 @@
 % -*-coding: utf-8 -*-
+
+
+% XeTeX
+\special{dvipdfmx:config z 0} %取消PDF压缩，加快速度，最终版本注释掉此行
+
+
 \defaultfont
 \BiChapter{水下绳驱机械臂结构研制}{Some Tricks of Using this Template}
 \label{Tricks}
@@ -23,7 +29,7 @@
   \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.7\textwidth]{机构简图1}
+    \includegraphics[width = 0.65\textwidth]{机构简图1}
     \caption{绳驱机械臂机构简图} % 图片标题
     \label{pic12} % 图片标签
     \end{figure}
@@ -31,7 +37,7 @@
   \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.8\textwidth]{机构简图2}
+    \includegraphics[width = 0.7\textwidth]{机构简图2}
     \caption{可折叠绳驱机械臂机构简图} % 图片标题
     \label{pic13} % 图片标签
     \end{figure}
@@ -78,7 +84,7 @@
   \begin{minipage}{\textwidth}
       \centering
       \subfigure[肘部关节外侧]{\label{fig:sub1}
-          \includegraphics[width = \textwidth]{figures/动滑轮.eps}
+          \includegraphics[width = 0.8\textwidth]{figures/动滑轮.eps}
       }% 这里写第一张图的英文描述
   \end{minipage}
   % \hfill % 撑开左右间距
@@ -86,7 +92,7 @@
   \begin{minipage}{\textwidth}
       \centering
       \subfigure[肘部关节内侧]{\label{fig:sub2}
-          \includegraphics[width = \textwidth]{figures/动滑轮2.eps}
+          \includegraphics[width = 0.8\textwidth]{figures/动滑轮2.eps}
       } % 这里写第二张图的英文描述
   \end{minipage}
 
@@ -106,7 +112,7 @@
 \begin{figure}[H]
   \centering
   % 第一张子图（左侧）
-  \begin{minipage}{0.48\textwidth}
+  \begin{minipage}{0.45\textwidth}
       \centering
       \subfigure[完全伸展状态]{
           \label{fig:sub1}
@@ -117,7 +123,7 @@
   \end{minipage}
   \hfill % 撑开左右间距，使 minipage 分居两侧
   % 第二张子图（右侧）
-  \begin{minipage}{0.5\textwidth}
+  \begin{minipage}{0.45\textwidth}
       \centering
       \subfigure[极端位置状态]{
           \label{fig:sub2}
@@ -209,28 +215,29 @@
     \caption{三维结构} % 图片标题
     \label{pic2222} % 图片标签
     \end{figure}
-
+    
 \begin{figure}[H]
     \centering
     % 第一张子图
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.3\textwidth}
         \centering
         \subfigure[完全折叠状态]{\label{fig66:sub1}
             \includegraphics[width =\textwidth]{figures/完全收拢.jpg}
         }% 这里写第一张图的英文描述
     \end{minipage}
-    % \hfill % 撑开左右间距
+    \hfill % 添加弹性间距
     % 第二张子图
-    \begin{minipage}{0.45\textwidth}
+    \begin{minipage}{0.3\textwidth}
         \centering
         \subfigure[完全下探状态]{\label{fig66:sub2}
             \includegraphics[width = \textwidth]{figures/下探姿态.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
-    \begin{minipage}{\textwidth}
+    \hfill % 添加弹性间距
+    \begin{minipage}{0.3\textwidth}
         \centering
         \subfigure[完全伸展状态]{\label{fig6:sub3}
-            \includegraphics[width = 0.8\textwidth]{figures/装配体(112).jpg}
+            \includegraphics[width = \textwidth]{figures/装配体(112).jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
     % 中英文总标题

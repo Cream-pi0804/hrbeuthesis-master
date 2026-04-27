@@ -15,8 +15,18 @@
 
 \usepackage{etex}
 
+\usepackage{listings}
+\usepackage{xcolor} % 颜色宏包
 
-
+\lstset{
+    basicstyle=\ttfamily\small, % 基本字体
+    breaklines=true,            % 自动换行（极其重要，否则长代码会超出页面）
+    frame=single,               % 给代码加个单线边框
+    numbers=left,               % 在左侧显示行号
+    keywordstyle=\color{blue},  % 关键字变蓝
+    commentstyle=\color{green!50!black}, % 注释变绿
+    showstringspaces=false      % 不显示字符串里的空格符号
+}
 %% 图形支持宏包 graphicx
 
 % ifpdf 的命令 \ifpdf 可判断 pdftex 的模式(pdf 模式或 dvi 模式)

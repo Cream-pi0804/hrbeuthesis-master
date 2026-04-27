@@ -2,28 +2,30 @@
 
 \defaultfont
 \appendix
-
+\BiAppendixChapter{附~~~~录}{Acknowledgements}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\BiAppChapter{带章节的附录}{Full Appendix}%
-完整的附录内容，包含章节，公式，图表等
-
+\BiAppChapter{ROS2节点代码}{Full Appendix}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\BiSection{附录节的内容}{Section in Appendix}
-这是附录的节的内容
+\BiSection{motor\_serial节点}{Section in Appendix}
 
-附录中图的示例：
-\begin{figure}[h]
-\centering
-\includegraphics[width = 0.3\textwidth]{golfer}
-\FigureBiCaption{打高尔夫球的人}{Golfer}
-\label{Figure:Appendix:Example1}
-\end{figure}
+% 使用 \lstinputlisting 直接读取外部的 Python 文件
+% 假设你的 Python 文件和 main.tex 放在同一个目录下：
+\lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{motor_serial.py}
+\BiSection{solve\_arm\_ik节点}{Section in Appendix}
+\lstinputlisting[language=Python, caption={solve\_arm\_ik 节点完整实现代码}]{solve_arm_ik.py}
+\BiSection{linear\_move节点}{Section in Appendix}
+\lstinputlisting[language=Python, caption={linear\_move 节点完整实现代码}]{linear_move.py}
+\BiSection{circular\_move节点}{Section in Appendix}
+\lstinputlisting[language=Python, caption={circular\_move 节点完整实现代码}]{circular_move.py}
+% 如果你把代码放在了专门的 code 文件夹里，就写成：
+% \lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{code/motor_serial.py}
+ \BiAppChapter{STM32底层代码}{appendix 2}
+ \BiSection{电机底层驱动}{Section in Appendix}
+ \lstinputlisting[language=C, caption={joint.c}]{joint.c}
+ 
 
-附录中公式的示例：
-\begin{align}
-a & = b \times c \\
-E & = m c^2
-\end{align}
 
-%\BiAppChapter{附录二}{appendix 2}
-%\BiAppChapter{附录三}{appendix 3}
+
+
+
+% \BiAppChapter{附录三}{appendix 3}

@@ -26,7 +26,7 @@
 % TODO: 目前只测试了 xelatex
 
 \def\usewhat{xelatex}
-
+\special{dvipdfmx:config z 0}
 
 
 %% 定义 xelatex 的中间临时变量
@@ -329,7 +329,7 @@
 % 作品, 承诺, 致谢, 附录, 简历
 
 %\include{appendix/publications}    % 所发文章
-%\include{appendix/Authorization}   % 承诺
+\include{appendix/Authorization}   % 承诺
 \include{appendix/acknowledgements} % 致谢
 \include{appendix/appA}             % 附录A
 %\include{appendix/Resume}          % 个人简历
