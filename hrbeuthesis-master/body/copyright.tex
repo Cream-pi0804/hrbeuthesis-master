@@ -10,24 +10,27 @@
 标定与 ArUco 手眼标定，构建了从图像像素坐标系到机械臂坐标系的空间映射关系。
 
 \BiSection{单目相机成像模型}{Subsubsection}
-针孔成像模型是视觉定位的几何基础，其描述了三维空间点与二维图像像素点之间的透射投影关系。
-  \BiSubsection{坐标系定义与转换}{Subsubsection}
+针孔成像模型是视觉定位的几何基础，其描述了三维空间点与二维图像像素点之间的透射投影关系。该模型将世界坐标系中的点经刚体变换和相似三角形投影映射到成像平面，再由像素采样转换为离散坐标。整个过程可借助内参矩阵与外参矩阵，以齐次线性方程的形式紧凑表达。
+%   \BiSubsection{坐标系定义与转换}{Subsubsection}
+
   为了描述目标位姿，本研究定义了四个关键坐标系，其转换逻辑如表 \ref{tab:coordinates} 所示。
 
-\begin{table}[htbp]
+  \begin{table}[htbp]
     \centering
     \caption{视觉系统坐标系定义}
     \label{tab:coordinates}
     \begin{tabular}{cccc}
-        \hline
-        坐标系名称 & 符号 & 单位 & 物理意义 \\ \hline
+        \toprule[2pt]   % 上粗线
+        坐标系名称 & 符号 & 单位 & 物理意义 \\
+        \midrule
         世界坐标系 & $\{W\}$ & m & 描述目标在环境或基座中的绝对位置 \\
         相机坐标系 & $\{C\}$ & mm & 以相机光心为原点，光轴为 $Z$ 轴 \\
         图像物理坐标系 & $\{p\}$ & mm & 投影点在感光元件上的连续物理位置 \\
-        像素坐标系 & $\{uv\}$ & pixel & 图像在计算机存储中的离散像素索引 \\ \hline
+        像素坐标系 & $\{uv\}$ & pixel & 图像在计算机存储中的离散像素索引 \\
+        \bottomrule[2pt] % 下粗线
     \end{tabular}
 \end{table}
-\BiSubsection{相机变换方程}{Subsubsection}
+% \BiSubsection{相机变换方程}{Subsubsection}
 如图\ref{pic51}设空间目标点在相机坐标系下的坐标为 $\mathbf{P}_c = [X_c, Y_c, Z_c]^T$，其映射至像素坐标系下齐次坐标 $\mathbf{p} = [u, v, 1]^T$ 的变换过程可表示为：
 \begin{equation}
     Z_c \begin{bmatrix} u \\ v \\ 1 \end{bmatrix} = \mathbf{K} \begin{bmatrix} X_c \\ Y_c \\ Z_c \end{bmatrix} = \begin{bmatrix} f_x & 0 & c_x \\ 0 & f_y & c_y \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} X_c \\ Y_c \\ Z_c \end{bmatrix}
@@ -37,9 +40,10 @@
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.7\textwidth]{figures/xianji.jpg}
+    \includegraphics[width = 0.4\textwidth]{figures/xianji.jpg}
     \caption{相机变化示意图} % 图片标题
     \label{pic51} % 图片标签
+    \vspace{-0.5cm}
     \end{figure}
   
 
@@ -76,16 +80,17 @@
      过每张棋盘格图像提供的两个基本约束方程，在拍摄 3 张以上不同角度的照片后，即可线
      性解算出内参矩阵 $\mathbf{K}$。
 
-     实验采用 ROS 2 环境下的标准标定工具包\texttt{camera\_calibration}，通过实机采集数据并在线计算，获取相机的内参矩阵与畸变系数。
+     实验采用 ROS 2 环境下的标准标定工具包，通过实机采集数据并在线计算，获取相机的内参矩阵与畸变系数。
 
 
 实验采用高平整度的黑白棋盘格作为标定板如图\ref{pic52}。
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.7\textwidth]{figures/5c90b1d64026c1610617104461e4ffd6.jpg}
+    \includegraphics[width = 0.6\textwidth]{figures/5c90b1d64026c1610617104461e4ffd6.jpg}
     \caption{标定板} % 图片标题
     \label{pic52} % 图片标签
+    \vspace{-0.5cm}
     \end{figure}
 为了标定算法可以订阅到正确的图像流并解析其物理尺度，标定程序的启动参数配置如表 \ref{tab:ros_calib_params} 所示。
 
@@ -94,29 +99,34 @@
     \caption{ROS 2 标定程序指令参数说明}
     \label{tab:ros_calib_params}
     \begin{tabular}{lp{3cm}l}
-        \hline
-        参数名称 & 实验设定值 & 功能描述 \\ \hline
-        \texttt{--size} & $7 \times 8$ & 棋盘格内部角点数量 \\
-        \texttt{--square} & $0.017$ & 单个方格物理边长 (m) \\
-        \texttt{-p} & \texttt{chessboard} & 指定标定板类型为棋盘格 \\
-        \texttt{remap} & \texttt{/raw\_image} & 映射相机原始图像话题 \\ \hline
+        \toprule[2pt]
+        参数名称 & 实验设定值 & 功能描述 \\
+        \midrule
+        \texttt{size} & $7 \times 8$ & 棋盘格内部角点数量 \\
+        \texttt{square} & $0.017$ & 单个方格物理边长 (m) \\
+        \texttt{p} & \texttt{chessboard} & 指定标定板类型为棋盘格 \\
+        \texttt{remap} & \texttt{/raw\_image} & 映射相机原始图像话题 \\
+        \bottomrule[2pt]
     \end{tabular}
 \end{table}
 
 
 
 标定过程中，如图\ref{pic53}通过手动变换标定板相对于相机镜头的位姿，标定工具箱实时监测四个关键维度的样本覆盖率：
-\begin{enumerate}
-    \item \textbf{X \& Y}：反映标定板在图像视野水平与垂直方向上的偏移量；
-    \item \textbf{Size}：反映标定板相对于相机的远近变化，用于校核尺度因子；
-    \item \textbf{Skew}：反映标定板的倾斜角度，用于解算成像平面的旋转约束。
-\end{enumerate}
+
+（1）X \& Y：反映标定板在图像视野水平与垂直方向上的偏移量。
+
+（2）Size：反映标定板相对于相机的远近变化，用于校核尺度因子。
+
+（3）Skew：反映标定板的倾斜角度，用于解算成像平面的旋转约束。
+
 
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
     \includegraphics[width = 0.9\textwidth]{figures/标定.png}
     \caption{标定工具} % 图片标题
+    \vspace{-0.5cm}
     \label{pic53} % 图片标签
     \end{figure}
 
@@ -126,11 +136,12 @@
 
 标定计算完成后，系统生成包含内参矩阵 $\mathbf{K}$、畸变系数 $\mathbf{D}$ 以及投影矩阵 $\mathbf{P}$ 的配置文件。
 
-\begin{figure}[H] % htbp代表图片插入位置的设置
+\begin{figure}[htbp] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.9\textwidth]{figures/标定结果.png}
+    \includegraphics[width = 0.7\textwidth]{figures/标定结果.png}
     \caption{标定结果} % 图片标题
+    \vspace{-0.5cm}
     \label{pic54} % 图片标签
     \end{figure}
 
@@ -140,17 +151,19 @@
 
 \BiSubsection{ArUco 特征检测原理}{Subsubsection}
 ArUco 是一种正方形的二进制特征标记。本系统采用的为\texttt{DICT\_6X6\_250} 字典。检测过程如下：
-\begin{itemize}
-    \item \textbf{图像阈值化}：将灰度图进行自适应二值化以提取轮廓；
-    \item \textbf{位姿估计}：提取标记物的四个顶点坐标，结合已知标记物物理边长 $L$，利用 \texttt{solvePnP} 算法解算出标记物相对于相机的变换矩阵 $\mathbf{T}_{C}^{Target}$。
-\end{itemize}
+
+（1）图像阈值化：将灰度图进行自适应二值化以提取轮廓。
+
+（2）位姿估计：提取标记物的四个顶点坐标，结合已知标记物物理边长 $L$，利用 \texttt{solvePnP} 算法解算出标记物相对于相机的变换矩阵 $\mathbf{T}_{C}^{Target}$。
 
 
-\begin{figure}[H] % htbp代表图片插入位置的设置
+
+\begin{figure}[htbp] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.5\textwidth]{figures/Amm.jpg}
+    \includegraphics[width = 0.3\textwidth]{figures/Amm.jpg}
     \caption{ArUco码ID:6} % 图片标题
+    \vspace{-0.5cm}
     \label{pic54} % 图片标签
     \end{figure}
 
@@ -165,14 +178,14 @@ ArUco 是一种正方形的二进制特征标记。本系统采用的为\texttt{
          映射）。参数 $\mathbf{A}_i$ 与 $\mathbf{B}_i$ 分别对应相邻两次采样动作中，机械
          臂末端在基座系下的运动增量，以及相机视场内标记物的相对位姿变化量。鉴于直接对包
          含旋转、平移强耦合的高维非线性齐次方程求取解析解过于繁冗，本文选用 Tsai-Lenz 两
-         步法开展分步标定。**借助变换矩阵的解耦特性，原计算过程被降维划分为姿态计算和位
+         步法开展分步标定。借助变换矩阵的解耦特性，原计算过程被降维划分为姿态计算和位
          置计算两大独立步骤。第一步操作需抽取 $\mathbf{A}_i$、$\mathbf{B}_i$ 内部的纯旋
          转分量 $\mathbf{R}_{A_i}$ 及 $\mathbf{R}_{B_i}$，借此构建专用于求解目标旋转变
          量 $\mathbf{R}_X$ 的约束等式如下：
     \begin{equation}
             \mathbf{R}_{A_i} \mathbf{R}_X = \mathbf{R}_X \mathbf{R}_{B_i}
         \end{equation}        
-    采用改进的罗德里格斯参数（Modified Rodrigues Parameters）将旋转矩阵转化为旋转轴
+    采用改进的罗德里格斯参数将旋转矩阵转化为旋转轴
     与旋转角的形式。基于多组观测数据，利用最小二乘法构建超定线性方程组，并利用奇
     异值分解（SVD）求得最优的旋转矩阵 $\mathbf{R}_X$。在解得 $\mathbf{R}_X$ 后，
     将其代入平移部分的方程中：
@@ -190,29 +203,30 @@ ArUco 是一种正方形的二进制特征标记。本系统采用的为\texttt{
 相互独立的机械臂末端位姿 $\mathbf{A}_i$。为验证算法在非理想条件下的鲁棒性，在相机观测
 数据 $\mathbf{B}_i$ 中引入了符合正态分布的复合视觉噪声：
 
-旋转噪声：引入标准差为 $0.01 \, \text{rad}$ 的轴角偏差。
+（1）旋转噪声：引入标准差为 $0.01 \, \text{rad}$ 的轴角偏差。
 
-平移噪声：引入标准差为 $2 \, \text{mm}$ 的空间位移偏差。
+（2）平移噪声：引入标准差为 $2 \, \text{mm}$ 的空间位移偏差。
 
 通过调用基于 Tsai-Lenz 法的求解程序，得到估计的变换矩阵 $\mathbf{X}_{est}$。
 
 实验结果表明，在存在噪声干扰的情况下，如图\ref{pic55}，系统的平均拟合残差稳定在 $10^{-3}$ 数量级，算法表现出极高的收敛精度。
 
-如图\ref{pic56}，仿真程序生成的 3D 坐标系分布图直观展示了基座、末端执行器与标记物之间的几何约束关系
-
+如图\ref{pic56}生成的 3D 坐标系分布图展示了基座、末端执行器与标记物之间几何关系
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.9\textwidth]{figures/残差.eps}
+    \includegraphics[width = 0.6\textwidth]{figures/标准差.eps}
     \caption{标定误差} % 图片标题
     \label{pic55} % 图片标签
+    \vspace{-0.5cm}
     \end{figure}
     \begin{figure}[H] % htbp代表图片插入位置的设置
         \centering %图片居中
         %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-        \includegraphics[width = 0.9\textwidth]{figures/3D.eps}
+        \includegraphics[width = 0.7\textwidth]{figures/标定1.eps}
         \caption{3D 坐标系分布图} % 图片标题
         \label{pic56} % 图片标签
+        \vspace{-0.5cm}
         \end{figure}
 \BiSection{目标位姿估计与抓取控制策略}{Subsubsection}
 
@@ -224,12 +238,10 @@ ArUco 是一种正方形的二进制特征标记。本系统采用的为\texttt{
 在待抓取的目标物表面黏贴特定的 ArUco 标志物。当相机捕获到该标志物时，视觉节点实时计算出标志物相对于相机的变换矩阵 $\mathbf{T}_{camera}^{target}$。
 
 目标物在机械臂基坐标系 $\{B\}$ 下的绝对位姿 $\mathbf{T}_{base}^{target}$ 可通过坐标链连续相乘求得：
-
-$$\mathbf{T}_{base}^{target} = \mathbf{T}_{base}^{end} \cdot \mathbf{T}_{end}^{camera} \cdot \mathbf{T}_{camera}^{target}$$
-
+\begin{equation}
+\mathbf{T}_{base}^{target} = \mathbf{T}_{base}^{end} \cdot \mathbf{T}_{end}^{camera} \cdot \mathbf{T}_{camera}^{target}
+\end{equation}
 式中，$\mathbf{T}_{base}^{end}$ 为当前时刻机械臂的正运动学矩阵；$\mathbf{T}_{end}^{camera}$ 为手眼标定矩阵。
-
-轨迹指令
 
 获取目标的三维空间坐标 $(X, Y, Z)$ 及姿态角后，视觉处理节点将该目标点作为笛卡尔空间轨迹规划的终端点 $\mathbf{P}_e$。
 
@@ -239,6 +251,6 @@ $$\mathbf{T}_{base}^{target} = \mathbf{T}_{base}^{end} \cdot \mathbf{T}_{end}^{c
 围绕机械臂实现视觉自主抓取的技术需求，本章确立了单目视觉下的目标检测与空间定位流程。
 前期工作基于单目成像几何原理，推导了三维空间物理点到二维像平面的映射关系，同时借助张正友平面标定法获取了相机内参及镜头畸变系数。
 鉴于本系统采用“眼在手外”的安装布局，本文通过布置 ArUco 视觉基准板建立手眼转换约束，进而利用 Tsai-Lenz 两步法分离算出系统的旋转和平移矩阵。
-MATLAB 数值仿真结果证实，即便注入复合视觉噪声，该解算方案依然表现出强大的抗干扰能力，平移相对误差均值被严格控制在 0.01% 以内。
-整体而言，本章工作成功解耦了相机视场与机械臂基座系之间的位姿传递机制，完成对目标物的空间精准定位。
-这为机械臂后续开展轨迹规划与抓取控制扫清了视觉引导层面的理论障碍，各项精度指标均符合系统预期。
+MATLAB 数值仿真结果证实，即便注入复合视觉噪声，相对误差均值仍被严格控制在 0.01\% 以内。
+
+% \newpage

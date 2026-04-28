@@ -124,8 +124,8 @@
   \caption{\protect\setlength{\baselineskip}{1.5em}#1}
   % \protect\setlength{\baselinestretch}{1.3}\selectfont
   \vspace{-1.3ex}%-0.5ex
-  \figencaption{\protect\setlength{\baselineskip}{1.5em}#2}%
-  \vspace{-3.4mm}
+  % \figencaption{\protect\setlength{\baselineskip}{1.5em}#2}%
+  \vspace{-8.4mm}
   % 子图形加入目录
   \def\hittemp{}
    \@for \hittemp:=\subfigencaptionlist \do {%
@@ -315,7 +315,7 @@
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}  % 使图编号为 7.1 的格式 %\protect{~}
 %\renewcommand\fnum@figure{\figurename\nobreakspace\thefigure\protect{~~~~~~~~~}} %
 
-\renewcommand{\thesubfigure}{\alph{subfigure})}  % 使子图编号为 a)的格式
+\renewcommand{\thesubfigure}{(\alph{subfigure})}  % 使子图编号为 a)的格式
 \renewcommand{\p@subfigure}{\thefigure ~~}  % 使子图引用为 7.1 a) 的格式，母图编号和子图编号之间用~~加一个空格 
 %\renewcommand{\thesubfigure}{\alph{subfigure}}
 %\renewcommand{\p@subfigure}{\thefigure}  % 使子图引用为 7.1a 的格式

@@ -6,6 +6,8 @@
 
 \BiChapter{试验样机搭建与试验研究}{To Template Maintainers}
 \BiSection{引言}{Simple Introduction about This Template}
+本章围绕绳驱机械臂的底层控制与上层软件展开设计，
+并开展整机实验测试，以验证方案的有效性。
 \BiSection{试验样机硬件系统组成}{Hardware System Composition of Experimental Prototype}
 
 为满足机械臂底层驱动、视觉以及数据交互的需求，本文搭建了相应的样机硬件平台。
@@ -13,7 +15,7 @@
 整体硬件架构可划分为电源分配、核心控制与执行单元、以及视觉三个模块。
 
 
-图\ref{fig:hardware_topo}展示了试验样机硬件系统的总体拓扑结构。
+图\ref{fig:hardware_topo}展示了试验样机硬件系统的接线图。
 
 \begin{figure}[H]
     \centering
@@ -21,39 +23,42 @@
     \includegraphics[width = 0.85\textwidth]{figures/接线.eps}
     \caption{样机硬件系统拓扑图}
     \label{fig:hardware_topo}
+    \vspace{-0.5cm}
 \end{figure}
 
 \textbf{（1）分级电源分配网络}
 
 系统采用 24\,V 直流总电源供电，并根据不同模块的工作电压分配了不同电压。
-\begin{itemize}
-    \item \textbf{动力供电链路}：24\,V 总电源直接馈入 3 个电机驱动器。
+
+\textcircled{\small{1}}动力供电链路：24\,V 总电源直接馈入 3 个电机驱动器。
     这种高压直供模式保证了伺服电机在瞬态加速和重载工况下具备充足的功率冗余。
-    \item \textbf{控制供电链路}：为了满足低压电路的需求，
+
+    \textcircled{\small{2}}控制供电链路：为了满足低压电路的需求，
     总电源通过 DC-DC 降压模块转换为稳定的 5\,V 电压，
     为 STM32 扩展主控板、舵机、485转232通信模块以及树莓派提供电压。
     
-\end{itemize}
+
 
 \textbf{（2）核心控制与执行单元}
 
 系统构建了“树莓派 + STM32”的异构主从控制架构：
-\begin{itemize}
-    \item \textbf{主从通信总线}：树莓派作为舱内的上位运算节点，
+
+\textcircled{\small{1}}主从通信总线：树莓派作为舱内的上位运算节点，
     通过 USB 接口与下位机 STM32 建立串口通信，
     负责下发规划轨迹并接收底层实时状态。
-    \item \textbf{执行器控制总线}：STM32 扩展板作为底层控制中枢，
+
+    \textcircled{\small{2}}执行器控制总线：STM32 扩展板作为底层控制中枢，
     集成了 RS485/RS232 通信转换模块。
     3 个电机驱动器与 1 个舵机通过 RS232 物理接口连接到 STM32 扩展板。
     单片机对高频发送各电机转角与状态采集。
-\end{itemize}
+
 
 \textbf{（3）环境感知与穿舱交互链路}
 
-\begin{itemize}
-    \item \textbf{视觉感知接口}：单目相机通过网线直连至树莓派的千兆网口。为后续的 ROS 2 视觉目标解算提供数据源。
-    \item \textbf{外部监控链路}：树莓派通过另一路网线，经由防水接插件穿透水下密封舱壁，连接至控制系统。该线路承载视频流和 ROS 2 话题控制指令，使操作人员能够进行实时监测与控制。
-\end{itemize}
+\textcircled{\small{1}}视觉感知接口：单目相机通过网线直连至树莓派的千兆网口。为后续的 ROS 2 视觉目标解算提供数据源。
+ 
+\textcircled{\small{2}}外部监控链路：树莓派通过另一路网线，经由防水接插件穿透水下密封舱壁，连接至控制系统。该线路承载视频流和 ROS 2 话题控制指令，使操作人员能够进行实时监测与控制。
+
 
 
 
@@ -75,11 +80,12 @@
 了高带宽、低延迟的底层控制基座。图\ref{pic61}为该系统的拓扑图
 
 
-\begin{figure}[H] % htbp代表图片插入位置的设置
+\begin{figure}[htbp] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.7\textwidth]{figures/stm.jpg}
+    \includegraphics[width = 0.5\textwidth]{figures/stm.jpg}
     \caption{系统拓扑图} % 图片标题
+    \vspace{-0.5cm}
     \label{pic61} % 图片标签
     \end{figure}
 
@@ -92,19 +98,17 @@
 输器（USART/UART）资源，构建了“中心化决策、分布式执行”的星型通信拓扑，具体配
 置如下：
 
-\begin{itemize}
-    \item \textbf{上位机异构通信链路}：利用 USART1 与 ROS 2 上位机进行高速数据
+（1）上位机异构通信链路：利用 USART1 与 ROS 2 上位机进行高速数据
     交互。为了有效缓解高频感知数据与控制指令并发产生的 CPU 负载压力，系统通过启
     用 \textbf{DMA（直接内存存取）循环缓冲机制} 配
     合 \textbf{串口空闲中断（IDLE Interrupt）}，实现了对非定长指令包的“无损”接收。
     该设计确保了即使在视觉算法高负载运行导致发包频率波动时，底层系统仍能维持控制链
     路的稳定性。
-    \item \textbf{驱动器专用执行链路}：利用 USART2、UART4、UART7 与 UART8 建立四
-    路物理隔离的执行通道，分别驱动各伺服关节。采用硬件抽象层（HAL）封装的数组化
-    管理模式（\texttt{joint\_uart[4]}），不仅显著降低了多路中断调度冲突的概率，也
-    为未来机械臂自由度的平滑扩展提供了软件接口保障。
-\end{itemize}
 
+（2）驱动器专用执行链路：利用 USART2、UART4、UART7 与 UART8 建立四
+    路物理隔离的执行通道，分别驱动各伺服关节。采用硬件抽象层（HAL）封装的数组化
+    管理模式，不仅显著降低了多路中断调度冲突的概率，也
+    为未来机械臂自由度的平滑扩展提供了软件接口保障。
 \BiSubsection{通信协议与解析系统设计}{Multi-level Communication Protocol and Parsing}
 为了确保系统间相互控制控制流的语义一致性，设计了STM32系统通信协议。
 
@@ -112,14 +116,17 @@
 
 在 \texttt{HAL\_UART\_RxCpltCallback} 中断服务程序中，系统集成了具备容错能力的
 指令解析器。系统通过识别起始符与结束符，对接收到的文本帧进行实时反序列化：
-\begin{enumerate}
-    \item \textbf{绝对角度控制（T 协议）}：格式为
+
+\textcircled{\small{1}} 绝对角度控制（T 协议）：格式为
     \texttt{T,Angle1,N,Angle2,N,Angle3}。系统解析出绝对位姿后，会将其映射至驱动器
     的位置模式（Position Profile Mode），用于执行全局轨迹规划指令。
-    \item \textbf{增量步进控制（M 协议）}：格式为 
+
+
+
+\textcircled{\small{2}}增量步进控制（M 协议）：格式为 
     \texttt{M,Angle1,N,Angle2,N,Angle3}。该协议优先满足手动调试与细微示教需求，
     通过计算相对当前位置的角度偏移量，实现高精度的微量位移。
-\end{enumerate}
+
 系统内置了解析校验，能自动过滤因为干扰产生的错误字符，防止错误的电机
 动作造成损坏。
 
@@ -142,7 +149,7 @@ u8CRC_n \gg 1 & \text{otherwise}
 了控制指令执行的正确性。
 
 \BiSubsection{关节运动控制策略实现}{Joint Motion Control Strategy Implementation}
-（1）初始化与自校准逻辑 (Homing)
+（1）初始化与自校准逻辑
 
 系统初始化流程遵循“先使能、后寻标”的逻辑。通过 \texttt{joint\_init()} 配置驱动器内
 部参数（如加速斜率、过载保护阈值）。由于绳驱系统存在断电位姿丢失的问题，系统执
@@ -154,25 +161,23 @@ u8CRC_n \gg 1 & \text{otherwise}
 （2）精细化动力输出与转换
 
 在执行指令时，系统通过 \texttt{joint\_move()} 等接口实现从逻辑角度到物理脉冲的转化：
-\begin{itemize}
-    \item \textbf{数据对齐}：针对 16 位控制字，系统采用
-     \textbf{小端模式（Little-endian）} 自动完成数据的拆分与重组，确保字节序在总
+
+\textcircled{\small{1}}数据对齐：针对 16 位控制字，系统采用小端模式 自动完成数据的拆分与重组，确保字节序在总
      线传输中的一致性。
-    \item \textbf{方向自适应映射}：根据设定角动反转报文的方向位
+
+     \textcircled{\small{2}}方向自适应映射：根据设定角动反转报文的方向位
     掩码。此举简化了电机旋转方向的修改。
-\end{itemize}
+
 
 （3）双向反馈闭环与同步监控
 
 系统不仅是指令的发布方，亦是状态的监控者。系统以 30\,ms 为固定周期触发轮询中断，
 周期性主动索取驱动器的状态字。利用位移运算重构实际角度反馈值，如式
  (\ref{eq:angle_calc}) 所示：
-
 \begin{equation}
 \label{eq:angle_calc}
 \text{Real\_Angle} = (\text{RxPacket}[8] \ll 8) \mid \text{RxPacket}[7]
 \end{equation}
-
 该实时关节数据被反向传输至 ROS 2 节点，实现了物理样机的状态同步，并为基于视觉反馈的抓取误差补偿提
 供位置参考。
 
@@ -183,18 +188,21 @@ u8CRC_n \gg 1 & \text{otherwise}
 \BiSubsection{系统总体逻辑架构}{Overall System Logic Architecture}
 
 控制系统整体由一系列独立的计算节点组成，通过话题、服务及动作进行交互。如图 \ref{pic62} 所示（此处引用您的流程图），系统逻辑可分为四个功能层：
-\begin{enumerate}
-    \item \textbf{感知层}：负责实时图像采集、目标物体框选交互及坐标解算。
-    \item \textbf{调度层}：维护机械臂抓取作业的有限状态机，指挥任务序列。
-    \item \textbf{规划层}：包含 G 代码解释器、直线/圆弧插补服务及逆运动学（IK）服务。
-    \item \textbf{执行层}：负责串口协议封装及与下位机 STM32 的双向握手。
-\end{enumerate}
-\begin{figure}[H] % htbp代表图片插入位置的设置
+
+（1）感知层：负责实时图像采集、目标物体框选交互及坐标解算。
+    
+（2）调度层：维护机械臂抓取作业的有限状态机，指挥任务序列。
+    
+（3）规划层：包含 G 代码解释器、直线/圆弧插补服务及逆运动学（IK）服务。
+   
+（4）执行层：负责串口协议封装及与下位机 STM32 的双向握手。
+\begin{figure}[htbp] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
     \includegraphics[width = \textwidth]{figures/ros2.jpg}
     \caption{系统拓扑图} % 图片标题
     \label{pic62} % 图片标签
+    \vspace{-0.5cm}
     \end{figure}
 
 \BiSubsection{视觉监控与目标交互定位模块}{Vision Monitoring and Target Interactive Positioning}
@@ -218,13 +226,16 @@ P_{base} = T_{eye}^{base} \cdot (K^{-1} \cdot s \cdot P_{uv})
 
 调度节点 \texttt{task\_manager} 是系统的核心，负责管理抓取作业的全生命周期。为了保证作业的稳健性，设计了如下状态机：
 
-\begin{itemize}
-    \item \textbf{待机状态}：系统完成自检，循环监听视觉节点发布的坐标信息。
-    \item \textbf{靠近状态}：获取目标坐标后，调度节点计算预抓取点（目标上方 5\,cm），并调用运动规划服务控制机械臂快速靠近。
-    \item \textbf{执行抓取}：机械臂到达预定点后，指令执行下降并触发手爪闭合，同时监测确认抓取成功。
-    \item \textbf{搬运状态}：规划至预设放置点的平滑轨迹，避开可能存在的机械限位。
-    \item \textbf{复位状态}：释放目标物，机械臂沿安全高度返回零点，等待下一轮框选指令。
-\end{itemize}
+（1）待机状态：系统完成自检，循环监听视觉节点发布的坐标信息。
+
+（2）靠近状态：获取目标坐标后，调度节点计算预抓取点（目标上方 5\,cm），并调用运动规划服务控制机械臂快速靠近。
+
+（3）执行抓取：机械臂到达预定点后，指令执行下降并触发手爪闭合，同时监测确认抓取成功。
+
+（4）搬运状态：规划至预设放置点的平滑轨迹，避开可能存在的机械限位。
+
+（5）复位状态：释放目标物，机械臂沿安全高度返回零点，等待下一轮框选指令。
+
 
 \BiSubsection{基于 G 代码的运动规划模块实现}{Implementation of Motion Planning Based on G-code}
 
@@ -242,88 +253,115 @@ P_{base} = T_{eye}^{base} \cdot (K^{-1} \cdot s \cdot P_{uv})
 \BiSubsection{串口通信发布与闭环状态监测}{Serial Communication and Closed-loop Monitoring}
 
 串口发布节点作为上位机与 STM32 的通讯门户。其核心逻辑包括：
-\begin{itemize}
-    \item \textbf{协议封装}：将规划角度编码为特定帧格式，包含校验位以防止数据误读。
-    \item \textbf{实时反馈映射}：接收 STM32 反馈的实时脉冲数据，反解为实际角度，并通过 节点发布。这一过程实现了物理样机到控制系统的同步。同时，便于实验者直观监视运动状态。
-\end{itemize}
+
+（1）协议封装：将规划角度编码为特定帧格式，包含校验位以防止数据误读。
+
+（2）实时反馈映射：接收 STM32 反馈的实时脉冲数据，反解为实际角度，并通过 节点发布。这一过程实现了物理样机到控制系统的同步。同时，便于实验者直观监视运动状态。
+
+
 
 
 \BiSection{机械臂基本运动性能试验}{Subsubsection}
+本次实验的核心目标是在空气环境中验证机械臂的基本轨迹跟踪与定位控制性能，暂不涉及水下密封与耐压测试。
 \BiSubsection{实验环境与平台}{Experimental Environment and Platform}
 实验于机电工程学院实验室开展。实验平台主要由水下绳驱机械臂原型、控制系统终端、高精度摄像机组成。
 实验环境光照稳定，符合视觉算法的测试要求。
 
 \BiSubsection{实验内容与流程}{Experimental Content and Process}
 为全面验证机械臂的运动性能及控制算法的有效性，本研究开展了如下实验流程：
-\begin{itemize}
-    \item \textbf{基础运动测试}：通过控制台指令完成机械臂的系统复位，验证各关节在工作空间内的独立运动性能。
-    \item \textbf{运动学与轨迹规划验证}：利用逆运动学算法，给定末端目标位姿，
+
+（1）基础运动测试：通过控制台指令完成机械臂的系统复位，验证各关节在工作空间内的独立运动性能。
+
+（2）运动学与轨迹规划验证：利用逆运动学算法，给定末端目标位姿，
     测试机械臂在笛卡尔空间下的轨迹规划能力。
-    \item \textbf{视觉引导下的闭环抓取实验}：集成 OpenCV 与 ROS2 环境下的视觉定位节点，
+
+    （3）视觉引导下的闭环抓取实验：集成 OpenCV 与 ROS2 环境下的视觉定位节点，
     利用 Aruco 码对目标物进行识别与定位，驱动机械臂完成自动抓取任务。
-\end{itemize}
+
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{figures/轴测图.jpg}
+    \includegraphics[width=0.35\textwidth]{figures/轴测图.jpg}
     \caption{机械臂运动学验证与轨迹规划实验现场}
     \label{fig:motion_test}
+    \vspace{-0.5cm}
 \end{figure}
 
 \BiSubsection{实验结果与误差分析}{Experimental Results and Error Analysis}
-实验结果表明，该系统具有较好的可靠性。
-在基础运动测试中，机械臂各关节响应灵敏，能够精确执行预定轨迹。
-在视觉抓取实验中，算法能够识别目标物空间坐标，机械臂抓取动作连贯，成功率较高。
+（1）基础运动测试
 \begin{figure}[H]
     \centering
     % 第一张子图
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[X:0.5Y:0.0Z:0.7]{\label{fig6:sub1}
-            \includegraphics[width = \textwidth]{figures/0.50-0.7.jpg}
+        \subfigure[X:0.5，Y:0.0，Z:0.7]{\label{fig6:sub1}
+            \includegraphics[width = 0.8\textwidth]{figures/0.50-0.7.jpg}
         }% 这里写第一张图的英文描述
     \end{minipage}
     % \hfill % 撑开左右间距
     % 第二张子图
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[X:0.5Y:0.0Z:0.6]{\label{fig6:sub2}
-            \includegraphics[width = \textwidth]{figures/506.jpg}
+        \subfigure[X:0.5，Y:0.0，Z:0.6]{\label{fig6:sub2}
+            \includegraphics[width = 0.75\textwidth]{figures/506.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[X:0.5Y:0.2Z:0.7]{\label{fig6:sub1}
-            \includegraphics[width = \textwidth]{figures/527.jpg}
+        \subfigure[X:0.5，Y:0.2，Z:0.7]{\label{fig6:sub1}
+            \includegraphics[width = 0.8\textwidth]{figures/527.jpg}
         }% 这里写第一张图的英文描述
     \end{minipage}
     % \hfill % 撑开左右间距
     % 第二张子图
     \begin{minipage}{0.45\textwidth}
         \centering
-        \subfigure[X:0.5Y:-0.2Z:0.7]{\label{fig6:sub2}
-            \includegraphics[width = \textwidth]{figures/5227.jpg}
+        \subfigure[X:0.5，Y:-0.2，Z:0.7]{\label{fig6:sub2}
+            \includegraphics[width = 0.75\textwidth]{figures/5227.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
     % 中英文总标题
     \caption{基础运动测试}
-    \label{fig:total_figure2}
+    \vspace{-0.5cm}
+    \label{fig:total_figure211}
   \end{figure}
+
+  （2）运动学与轨迹规划验证
+  \newline
+  \newline
+  \newline
+  \newline
+  （3）视觉引导下的闭环抓取实验
+  \newline
+  \newline
+  \newline
+  \newline
+  实验结果表明，该系统具有较好的可靠性。
+在基础运动测试中，机械臂各关节响应灵敏，能够精确执行预定轨迹。
+在视觉抓取实验中，算法能够识别目标物空间坐标，机械臂抓取动作连贯，成功率较高。
+
 然而，通过对实验数据的记录与对比发现，机械臂末端执行器的定位精度存在一定的误差。分析其原因，主要受以下因素影响：
-\begin{itemize}
-    \item \textbf{装配与制造公差}：由于机械零件的加工精度及装配过程中的累计误差，导致实际 D-H 参数与理论模型存在偏差。
-    \item \textbf{绳索传动特性}：绳驱系统存在的弹性形变与摩擦，在一定程度上影响了末端轨迹的跟随精度。
-    \item \textbf{视觉反馈频率}：摄像机分辨率及图像处理抓取过程中的补偿精度产生了一定误差。
-\end{itemize}
+
+（1）装配与制造公差：由于机械零件的加工精度及装配过程中的累计误差，导致实际 D-H 参数与理论模型存在偏差。
+
+（2）绳索传动特性：绳驱系统存在的弹性形变与摩擦，在一定程度上影响了末端轨迹的跟随精度。
+
+（3）视觉反馈频率：摄像机分辨率及图像处理抓取过程中的补偿精度产生了一定误差。
+
 尽管存在一些问题，但整体表现满足设计预期，验证了设计方案的可行性。
 \BiSection{本章小结}{Summary}
-
-围绕水下绳驱机械臂的物理试制需求，本章完成了底层控制板与上层分布式软件的闭环搭建，并对整机开展了实操性能评估。
-\begin{enumerate}
-    \item \textbf{软硬件协同控制体系构建}：搭建了以 STM32 微控制器为核心的底层驱动系统，通过设计基于 DMA 循环缓冲与串口空闲中断的通信机制，并引入 CRC-8 数据校验算法，有效规避了多轴伺服指令在传输过程中的丢包与堵塞隐患，保障了底层数据交互的稳定性。
-    \item \textbf{基于 ROS 2 的分布式软件架构设计}：利用 ROS 2 的模块化解耦合特性，构建了涵盖感知、调度、规划与执行四层逻辑的控制软件平台。实现了基于 ROI 交互的视觉定位模型、标准 G 代码轨迹插补算法以及任务调度状态机，打通了从视觉识别到动作执行的完整数据链路，实现了对机械臂作业流程的自动化管理。
-    \item \textbf{系统运动性能与视觉抓取验证}：在实验室环境下开展了样机试验。实验结果表明，机械臂能够精准执行复位、空间直线与圆弧轨迹规划等预定任务。视觉引导下的目标抓取动作连贯，系统反馈链路响应及时，证明了软硬件联调方案切实可行。
-    \item \textbf{误差来源深度剖析}：通过对比实验数据，分析了装配公差、绳索弹性形变及图像处理延迟对末端定位精度的影响。尽管存在客观的物理误差，但系统整体运行稳定，功能表现符合开发初衷。
-\end{enumerate}
-
-本章的联调测试将前文的运动学模型与轨迹规划算法成功落地于物理实体。这排除了前期理论推导的盲区，为该型设备未来在复杂水下环境中的进阶应用扫清了工程障碍。
+围绕水下绳驱机械臂，
+本章完成了底层控制与上层软件的搭建，
+并对整机开展了实验测试。
+在硬件层面，以STM32微控制器为核心构建底层驱动系统，
+通过DMA循环缓冲、串口空闲中断与CRC-8校验相结合的方式，
+保障了底层数据交互的可靠性。
+软件层面，基于ROS 2的模块化特性搭建了涵盖感知、调度、规划与执行四层逻辑的
+控制平台，打通了从视觉识别到动作执行的完整数据链路，实现了作业流程的自动化管理。
+实验验证结果表明，样机能够精准执行复位、空间直线与圆弧轨迹规划等预定任务，
+视觉引导下的目标抓取动作连贯，系统反馈链路响应及时，
+软硬件联调方案切实可行。并分析了现存的不足。
+\clearpage{
+  \pagestyle{plain}
+  \cleardoublepage
+}

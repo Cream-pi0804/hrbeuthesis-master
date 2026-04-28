@@ -12,14 +12,15 @@
 
 % eTex 将计数器等寄存器从 256 个扩展到 32768 个
 %   使用 etex 时需要用基于 etex 的引擎进行编译, 现在的引擎多已是基于 etex 的了
-
+% \usepackage{amsmath}
 \usepackage{etex}
-
+\usepackage[skip=0pt]{caption}   % 同时设置标题上下间距为 10pt
 \usepackage{listings}
 \usepackage{xcolor} % 颜色宏包
-
+\usepackage{fancyhdr}
 \lstset{
     basicstyle=\ttfamily\small, % 基本字体
+    lineskip=2pt,
     breaklines=true,            % 自动换行（极其重要，否则长代码会超出页面）
     frame=single,               % 给代码加个单线边框
     numbers=left,               % 在左侧显示行号

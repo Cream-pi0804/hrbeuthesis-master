@@ -10,20 +10,42 @@
   \textsc{Annotation:}\ #2\end{quotation}}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem{Zhang2024}
-张斌.
-\newblock 绳索驱动3d打印机的振动分析与抑振研究[D].
-\newblock 西安:西安理工大学, 2024.
+\bibitem{BIAN2025120845}
+D.~Bian, Y.~Liu, M.~Yuan, et~al.
+\newblock Fsi Characteristics and Structural Stability of a Large-size Underwater Robotic Arm with Various Rigidity Distribution[J].
+\newblock Ocean Engineering, 2025, 325:120845.
+\newblock \url{https://www.sciencedirect.com/science/article/pii/S0029801825005591}.
 
-\bibitem{Chai2026}
-柴永生, 王晨宇, 王昌辉, et~al.
-\newblock 基于称重模块测量绳索张力的绳驱机械臂串级pid控制方法[J].
-\newblock 烟台大学学报(自然科学与工程版), 2026.
+\bibitem{jmse9101131}
+Z.~Chang, Y.~Zhang, Z.~Zheng, et~al.
+\newblock Dynamics Simulation of Grasping Process of Underwater Vehicle-manipulator System[J].
+\newblock Journal of Marine Science and Engineering, 2021, 9(10).
+\newblock \url{https://www.mdpi.com/2077-1312/9/10/1131}.
 
-\bibitem{Ren2024}
-任龙.
-\newblock 作业型rov系统结构设计与运动性能分析[D].
-\newblock 盐城:盐城工学院, 2024.
+\bibitem{Yan2022}
+彦飞.
+\newblock 绳驱动水下机械臂动力学与控制研究[D].
+\newblock :南京航空航天大学, 2022.
+
+\bibitem{Schilling_ATLAS7R}
+{Schilling Robotics}.
+\newblock Atlas 7r/7p Manipulator Technical Specification[C].
+\newblock TechnipFMC, 2015.
+\newblock Product manual. Specifications include 7 functions, 6,500 msw depth rating, 73 kg weight in air, 250 kg lift at full reach, titanium and aluminum construction.
+
+\bibitem{Jiang_HR01_1988}
+X.~Jiang, D.~Tan.
+\newblock Underwater Remotely Operated Vehicle {HR-01}[C]//Proceedings of the 1988 IEEE International Conference on Systems, Man, and Cybernetics. Beijing, China: IEEE, 1988:602--605.
+
+\bibitem{Endo2019SuperDA}
+G.~Endo, A.~Horigome, A.~Takata.
+\newblock Super Dragon: A 10-m-long-coupled Tendon-driven Articulated Manipulator[J].
+\newblock IEEE Robotics and Automation Letters, 2019, 4:934--941.
+\newblock \url{https://api.semanticscholar.org/CorpusID:61805811}.
+
+\bibitem{Chen2011}
+W.~Chen, S.~Yu, Y.~Jin, et~al.
+\newblock Dynamic Modeling and Tension Analysis of a 7-dof Cable-driven Robotic Arm[C]//Proceedings of 2011 International Conference on Intelligent Computing and Integrated Systems (ICISS 2011). 2011:377--382.
 
 \bibitem{Wang2026}
 Y.~Wang, B.~Zhang, M.~Shan.
@@ -31,48 +53,24 @@ Y.~Wang, B.~Zhang, M.~Shan.
 \newblock Chinese Journal of Aeronautics, 2026, 39(02):614--630.
 
 \bibitem{Tang2025_1}
-唐炫铭, 全伟才, 刘博, et~al.
+唐炫铭, 全伟才, 刘博, 等.
 \newblock 多关节绳驱机械臂动力学响应分析[J].
 \newblock 机械制造与自动化, 2025, 54(04):224--230.
 
 \bibitem{Wang2025_1}
 王兴涛.
 \newblock 水下柔性绳驱机械臂运动学建模及轨迹规划研究[D].
-\newblock 哈尔滨:哈尔滨工程大学, 2025.
-
-\bibitem{Wang2025_2}
-王禄, 赵栋杰, 张伟涛, et~al.
-\newblock 绳驱柔性轮椅机械臂解耦设计与运动学分析[J].
-\newblock 机械传动, 2025, 49(01):98--104.
+\newblock :哈尔滨工程大学, 2025.
 
 \bibitem{Chen2025}
-陈彦霖, 邓小恒, 张宪民, et~al.
+陈彦霖, 邓小恒, 张宪民, 等.
 \newblock 绳驱机器人动力学建模与控制研究综述[J].
 \newblock 机械工程学报, 2025, 61(19):1--17.
-
-\bibitem{Sun2025_1}
-孙绍祖.
-\newblock 基于绳索驱动的小型协作机械臂系统设计及柔顺控制研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2025.
 
 \bibitem{Luo2025}
 H.~Luo, J.~Xu, S.~Li, et~al.
 \newblock D3-arm: High-dynamic, Dexterous and Fully Decoupled Cable-driven Robotic Arm[J].
 \newblock IEEE Robotics and Automation Letters, 2025:1--7.
-
-\bibitem{Liu2024}
-刘博.
-\newblock 水下绳驱多关节机械臂轨迹规划与避障控制研究[D].
-\newblock 湘潭:湖南科技大学, 2024.
-
-\bibitem{Ou2022}
-欧定超.
-\newblock 水下绳驱多关节机械手设计与控制研究[D].
-\newblock 湘潭:湖南科技大学, 2022.
-
-\bibitem{Chen2011}
-W.~Chen, S.~Yu, Y.~Jin, et~al.
-\newblock Dynamic Modeling and Tension Analysis of a 7-dof Cable-driven Robotic Arm[C]//Proceedings of 2011 International Conference on Intelligent Computing and Integrated Systems (ICISS 2011). 2011:377--382.
 
 \bibitem{Li2023}
 李伟杰, 王振宇, 李岩.
@@ -82,46 +80,86 @@ W.~Chen, S.~Yu, Y.~Jin, et~al.
 \bibitem{Li2022}
 李家磊.
 \newblock 六自由度差分式绳驱机械臂的研制[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2022.
-
-\bibitem{Yan2022}
-彦飞.
-\newblock 绳驱动水下机械臂动力学与控制研究[D].
-\newblock 南京:南京航空航天大学, 2022.
+\newblock :哈尔滨工业大学, 2022.
 
 \bibitem{Deng2021}
 邓孝伟.
 \newblock 一类绳驱机械臂的控制系统设计与实现[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2021.
+\newblock :哈尔滨工业大学, 2021.
 
 \bibitem{Li2024}
 李君祥.
 \newblock 绳驱分段多级联动机械臂设计与运动控制方法研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2024.
-
-\bibitem{Sun2025_2}
-孙绍祖.
-\newblock 基于绳索驱动的小型协作机械臂系统设计及柔顺控制研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2025.
-
-\bibitem{Lu2022}
-路帅博.
-\newblock 绳驱张拉机械臂的变刚度与形状控制研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2022.
+\newblock :哈尔滨工业大学, 2024.
 
 \bibitem{Wen2023}
 温要强.
 \newblock 绳驱动解耦机械臂的设计与运动控制[D].
-\newblock 杭州:浙江理工大学, 2023.
+\newblock :浙江理工大学, 2023.
 
 \bibitem{Tang2024_2}
 唐炫铭.
 \newblock 水下多关节绳驱机械臂动力学分析与运动控制研究[D].
-\newblock 湘潭:湖南科技大学, 2024.
+\newblock :湖南科技大学, 2024.
 
 \bibitem{Dai2024}
 代一诚.
 \newblock 绳驱柔性机械臂刚度-张力耦合建模及刚度调控方法研究[D].
-\newblock 哈尔滨:哈尔滨工业大学, 2024.
+\newblock :哈尔滨工业大学, 2024.
+
+\bibitem{Shi2025}
+Y.~Shi, T.~W. Chow, M.~T. Kwok, et~al.
+\newblock Lightweight and Low-cost Cable-driven Scara Robotic Arm with 9 Dof[J].
+\newblock 2025:161--161.
+
+\bibitem{Enriquez2025}
+M.~A.~D. Enriquez, G.~J. Lopez, A.~A.~R. Ramirez, et~al.
+\newblock Data-based Modeling and Control of a Single Link Soft Robotic Arm[J].
+\newblock 2025:294--294.
+
+\bibitem{Yang2023}
+K.~Yang, C.~Chen, Y.~Deng, et~al.
+\newblock Stiffness Modeling and Distribution of a Modular Cable-driven Human-like Robotic Arm[J].
+\newblock 2023.
+
+\bibitem{Yang2020}
+K.~Yang, G.~Yang, C.~Zhang, et~al.
+\newblock Cable Tension Analysis Oriented the Enhanced Stiffness of a 3-dof Joint Module of a Modular Cable-driven Human-like Robotic Arm[J].
+\newblock 2020:8871.
+
+\bibitem{Hydro_Dexterous}
+{Hydro International}.
+\newblock Dexterous Grabber Manipulator, 2014.
+\newblock Industry news article describing the ATLAS 7R seven-function dexterous grabber manipulator and its heavy-duty capabilities, \url{https://www.hydro-international.com/content/news/dexterous-grabber-manipulator}.
+
+\bibitem{JQRR202602010}
+金安平, 陶彦博, 焦春亭, 等.
+\newblock 面向移乘护理操作的大负载绳驱机器人设计与变刚度控制[J].
+\newblock 机器人, 2026, 48(02):325--339.
+
+\bibitem{JEXK202412007}
+梁斌, 黄学祥, 刘天亮, 等.
+\newblock 绳簇主被动混合驱动空间机械臂设计及其力-位-型融合控制[J].
+\newblock 中国科学:技术科学, 2024, 54(12):2319--2336.
+
+\bibitem{JQRR202201005}
+杨太玮, 郑旭东, 徐文福, 等.
+\newblock 考虑迟滞及变形影响的主被动混合驱动绳驱空间机械臂运动学建模及求解[J].
+\newblock 机器人, 2022, 44(01):45--54+65.
+
+\bibitem{JQRR202201002}
+朱晓俊, 王学谦, 马云萱, 等.
+\newblock 绳驱超冗余空间柔性机械臂遥操作系统设计与实验研究[J].
+\newblock 机器人, 2022, 44(01):9--18.
+
+\bibitem{JDGC201710003}
+徐伟, 陈柏, 李彬彬, 等.
+\newblock 7自由度冗余绳驱动机械臂运动分析及仿真[J].
+\newblock 机电工程, 2017, 34(10):1095--1100.
+
+\bibitem{YLJS202505002}
+代一诚, 徐依宁, 张育珠, 等.
+\newblock 柔性机械臂研究现状与水下应用展望[J].
+\newblock 水下无人系统学报, 2025, 33(05):744--757.
 
 \end{thebibliography}

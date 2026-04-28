@@ -1,26 +1,54 @@
 % -*-coding: utf-8 -*-
 
 \defaultfont
-\appendix
-\BiAppendixChapter{附~~~~录}{Acknowledgements}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\BiAppChapter{ROS2节点代码}{Full Appendix}%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\BiSection{motor\_serial节点}{Section in Appendix}
+% \ctexset{
+%   chapter/format = {\raggedright\hei\bfseries\sanhao} % 设置为左对齐，保持黑体三号
+% }
 
+\appendix
+
+
+
+% 1. 设置一级标题为“附录”
+% 注意：原代码中的 Acknowledgements 建议改为 Appendix
+\BiAppendixChapter{附~~~~录}{Appendix}
+\addtocontents{toc}{\protect\WidenAppendixTOC}
+% 2. 修改二级标题（section）的编号格式为“附录A”
+\setcounter{section}{0} % 重置 section 计数器
+\renewcommand{\thesection}{附录\Alph{section}}
+
+% 3. 修改三级标题（subsection）的编号格式为“A.1”
+\renewcommand{\thesubsection}{\Alph{section}.\arabic{subsection}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 二级标题：附录A ROS2节点代码
+% 如果模板没有 \BiSection，请确保导言区已定义，或直接使用 \section
+\BiSection{ROS2节点代码}{Full Appendix}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 三级标题：A.1 motor_serial节点
+% 注意：下划线 _ 必须转义为 \_
+% \BiSubsection{motor\_serial节点}{motor\_serial Node}
+
+
+% \BiAppendixChapter{附~~~~录}{Acknowledgements}
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \BiAppChapter{ROS2节点代码}{Full Appendix}%
+% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\BiSubsection{motor\_serial节点}{Section in Appendix}
 % 使用 \lstinputlisting 直接读取外部的 Python 文件
 % 假设你的 Python 文件和 main.tex 放在同一个目录下：
 \lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{motor_serial.py}
-\BiSection{solve\_arm\_ik节点}{Section in Appendix}
+\BiSubsection{solve\_arm\_ik节点}{Section in Appendix}
 \lstinputlisting[language=Python, caption={solve\_arm\_ik 节点完整实现代码}]{solve_arm_ik.py}
-\BiSection{linear\_move节点}{Section in Appendix}
+\BiSubsection{linear\_move节点}{Section in Appendix}
 \lstinputlisting[language=Python, caption={linear\_move 节点完整实现代码}]{linear_move.py}
-\BiSection{circular\_move节点}{Section in Appendix}
+\BiSubsection{circular\_move节点}{Section in Appendix}
 \lstinputlisting[language=Python, caption={circular\_move 节点完整实现代码}]{circular_move.py}
 % 如果你把代码放在了专门的 code 文件夹里，就写成：
 % \lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{code/motor_serial.py}
- \BiAppChapter{STM32底层代码}{appendix 2}
- \BiSection{电机底层驱动}{Section in Appendix}
+ \BiSection{STM32底层代码}{appendix 2}
+ \BiSubsection{电机底层驱动}{Section in Appendix}
  \lstinputlisting[language=C, caption={joint.c}]{joint.c}
  
 

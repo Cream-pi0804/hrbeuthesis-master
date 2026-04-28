@@ -26,7 +26,6 @@
 % TODO: 目前只测试了 xelatex
 
 \def\usewhat{xelatex}
-\special{dvipdfmx:config z 0}
 
 
 %% 定义 xelatex 的中间临时变量
@@ -86,7 +85,13 @@
 %\def\xueke{Management}  % 管理学
 %\def\xueke{Arts}  % 艺术学
 
-
+\makeatletter
+\newcommand{\WidenAppendixTOC}{
+    % 在原本的 \@dottedtocline 前面，加了一个 \vspace 控制垂直间距
+    \renewcommand*\l@section{\vspace{8pt}\@dottedtocline{1}{1.5em}{4.5em}}
+    \renewcommand*\l@section{\vspace{8pt}\@dottedtocline{2}{1.5em}{2.0em}}
+}
+\makeatother
 
 % 导入类型文件
 
@@ -133,8 +138,6 @@
 % 定义所有的 eps 图像文件在 figures 子目录下
 
 \graphicspath{{figures/}} 
-
-
 
 % 文档开始
 
@@ -243,8 +246,8 @@
 
 % 在中英文目录开始处增加空行
 
-\addtocontents{toc}{\protect\vskip1\baselineskip}
-\addtocontents{toe}{\protect\vskip1\baselineskip}
+% \addtocontents{toc}{\protect\vskip1\baselineskip}
+% \addtocontents{toe}{\protect\vskip1\baselineskip}
 
 
 
@@ -281,14 +284,13 @@
 
 % 加入你自己写的论文各章内容, 最好每章一个文件
 
-% \include{body/Introduction}
-
+\include{body/Introduction}
 \include{body/Tricks}
-% \include{body/UpdateLog}
 
-% \include{body/copyright}
-% \include{body/ruanjian}
-% \include{body/conclusion}
+\include{body/UpdateLog}
+\include{body/copyright}
+\include{body/ruanjian}
+\include{body/conclusion}
 
 % %%参考文献
 
@@ -328,8 +330,8 @@
 
 % 作品, 承诺, 致谢, 附录, 简历
 
-%\include{appendix/publications}    % 所发文章
-\include{appendix/Authorization}   % 承诺
+\include{appendix/publications}    % 所发文章
+% \include{appendix/Authorization}   % 承诺
 \include{appendix/acknowledgements} % 致谢
 \include{appendix/appA}             % 附录A
 %\include{appendix/Resume}          % 个人简历
