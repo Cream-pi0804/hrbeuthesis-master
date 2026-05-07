@@ -10,20 +10,24 @@
   \textsc{Annotation:}\ #2\end{quotation}}
 \providecommand{\eprint}[2][]{\url{#2}}
 
-\bibitem{Wang2026}
-Y.~Wang, B.~Zhang, M.~Shan.
-\newblock Dynamic Modeling and Analysis of an In-space Cable-driven Manipulator for On-orbit Servicing[J].
-\newblock Chinese Journal of Aeronautics, 2026, 39(02):614--630.
+\bibitem{BIAN2025120845}
+Fsi Characteristics and Structural Stability of a Large-size Underwater Robotic Arm with Various Rigidity Distribution[J].
+\newblock Ocean Engineering, 2025, 325:120845.
 
-\bibitem{Tang2025_1}
-唐炫铭, 全伟才, 刘博, 等.
-\newblock 多关节绳驱机械臂动力学响应分析[J].
-\newblock 机械制造与自动化, 2025, 54(04):224--230.
+\bibitem{jmse9101131}
+Z.~Chang, Y.~Zhang, Z.~Zheng, et~al.
+\newblock Dynamics Simulation of Grasping Process of Underwater Vehicle-manipulator System[J].
+\newblock Journal of Marine Science and Engineering, 2021, 9(10).
 
-\bibitem{Wang2025_1}
-王兴涛.
-\newblock 水下柔性绳驱机械臂运动学建模及轨迹规划研究[D].
-\newblock :哈尔滨工程大学, 2025.
+\bibitem{Schilling_ATLAS7R}
+{Schilling Robotics}.
+\newblock Atlas 7r/7p Manipulator Technical Specification[Z].
+\newblock TechnipFMC, 2015.
+
+\bibitem{YLJS202505002}
+代一诚, 徐依宁, 张育珠, 等.
+\newblock 柔性机械臂研究现状与水下应用展望[J].
+\newblock 水下无人系统学报, 2025, 33(05):744--757.
 
 \bibitem{Chen2025}
 陈彦霖, 邓小恒, 张宪民, 等.
@@ -35,9 +39,81 @@ H.~Luo, J.~Xu, S.~Li, et~al.
 \newblock D3-arm: High-dynamic, Dexterous and Fully Decoupled Cable-driven Robotic Arm[J].
 \newblock IEEE Robotics and Automation Letters, 2025:1--7.
 
+\bibitem{Shi2025}
+Y.~Shi, W.~T. Chow, T.~M. Kwok, et~al.
+\newblock Lightweight and Low-cost Cable-driven {SCARA} Robotic Arm with 9 {DOF}[J].
+\newblock Robotics, 2025, 14(11):161.
+
+\bibitem{Yan2022}
+彦飞.
+\newblock 绳驱动水下机械臂动力学与控制研究[D].
+\newblock 南京航空航天大学, 2022.
+
+\bibitem{Tang2025_1}
+唐炫铭, 全伟才, 刘博, 等.
+\newblock 多关节绳驱机械臂动力学响应分析[J].
+\newblock 机械制造与自动化, 2025, 54(04):224--230.
+
+\bibitem{Wang2025_1}
+王兴涛.
+\newblock 水下柔性绳驱机械臂运动学建模及轨迹规划研究[D].
+\newblock 哈尔滨工程大学, 2025.
+
+\bibitem{KAERI_2007}
+S.-U. Lee, Y.-S. Choi, K.-M. Jeong.
+\newblock Development of an Underwater Manipulator for Maintaining Nuclear Power Reactor[C]//2007 International Symposium on Micro-NanoMechatronics and Human Science. 2007:421--426.
+
+\bibitem{ISE_Magnum5_Review}
+S.~Siv{\v{c}}ev, J.~Coleman, E.~Omerdi{\'c}, et~al.
+\newblock Underwater Manipulators: A Review[J].
+\newblock Ocean Engineering, 2018, 163:431--450.
+
+\bibitem{GraalTech_UMA_TRIDENT}
+D.~Ribas, N.~Palomeras, P.~Ridao, et~al.
+\newblock I-auv Mechatronics Integration for the Trident Fp7 Project[J].
+\newblock IEEE/ASME Transactions on Mechatronics, 2015, 20(5):2583--2592.
+
+\bibitem{Jiang_HR01_1988}
+X.~Jiang, D.~Tan.
+\newblock Underwater Remotely Operated Vehicle {HR-01}[C]//Proceedings of the 1988 IEEE International Conference on Systems, Man, and Cybernetics. Beijing, China: IEEE, 1988:602--605.
+
+\bibitem{Ge_Hailong_2004}
+葛彤, 朱继懋.
+\newblock ``海龙''号3500m深海观测和取样型rov系统[J].
+\newblock 机器人, 2004, 26(5):462--466.
+
+\bibitem{Zhang_HEU_2007}
+张铭钧, 孙玉山, 褚建新.
+\newblock 基于auv的水下机械臂协调控制[J].
+\newblock 机器人, 2007, 29(4):374--379.
+
+\bibitem{Ha2024}
+S.-H. Ha, S.-W. Woo, M.-C. Kim, et~al.
+\newblock A Cable-driven Parallel Robot for High-rack Logistics Automation[J].
+\newblock International Journal of Control, Automation and Systems, 2024, 22:3329--3340.
+
 \bibitem{Chen2011}
 W.~Chen, S.~Yu, Y.~Jin, et~al.
 \newblock Dynamic Modeling and Tension Analysis of a 7-dof Cable-driven Robotic Arm[C]//Proceedings of 2011 International Conference on Intelligent Computing and Integrated Systems (ICISS 2011). 2011:377--382.
+
+\bibitem{ChenQZ}
+陈泉柱, 陈伟海, 王建华, 等.
+\newblock 七自由度绳驱动拟人臂的设计与运动学分析[J].
+\newblock 北京航空航天大学学报, 2013, 39(10):1364--1369.
+
+\bibitem{Endo2019SuperDA}
+G.~Endo, A.~Horigome, A.~Takata.
+\newblock Super Dragon: A 10-m-long-coupled Tendon-driven Articulated Manipulator[J].
+\newblock IEEE Robotics and Automation Letters, 2019, 4:934--941.
+
+\bibitem{Quigley2011}
+M.~Quigley, A.~Asbeck, A.~Y. Ng.
+\newblock A Low-cost Compliant 7-dof Robotic Manipulator[C]//2011 IEEE International Conference on Robotics and Automation. IEEE, 2011:6051--6058.
+
+\bibitem{Wang2026}
+Y.~Wang, B.~Zhang, M.~Shan.
+\newblock Dynamic Modeling and Analysis of an In-space Cable-driven Manipulator for On-orbit Servicing[J].
+\newblock Chinese Journal of Aeronautics, 2026, 39(02):614--630.
 
 \bibitem{Li2023}
 李伟杰, 王振宇, 李岩.
@@ -47,90 +123,47 @@ W.~Chen, S.~Yu, Y.~Jin, et~al.
 \bibitem{Li2022}
 李家磊.
 \newblock 六自由度差分式绳驱机械臂的研制[D].
-\newblock :哈尔滨工业大学, 2022.
-
-\bibitem{Yan2022}
-彦飞.
-\newblock 绳驱动水下机械臂动力学与控制研究[D].
-\newblock :南京航空航天大学, 2022.
+\newblock 哈尔滨工业大学, 2022.
 
 \bibitem{Deng2021}
 邓孝伟.
 \newblock 一类绳驱机械臂的控制系统设计与实现[D].
-\newblock :哈尔滨工业大学, 2021.
+\newblock 哈尔滨工业大学, 2021.
 
 \bibitem{Li2024}
 李君祥.
 \newblock 绳驱分段多级联动机械臂设计与运动控制方法研究[D].
-\newblock :哈尔滨工业大学, 2024.
-
-\bibitem{jmse9101131}
-Z.~Chang, Y.~Zhang, Z.~Zheng, et~al.
-\newblock Dynamics Simulation of Grasping Process of Underwater Vehicle-manipulator System[J].
-\newblock Journal of Marine Science and Engineering, 2021, 9(10).
-\newblock \url{https://www.mdpi.com/2077-1312/9/10/1131}.
+\newblock 哈尔滨工业大学, 2024.
 
 \bibitem{Wen2023}
 温要强.
 \newblock 绳驱动解耦机械臂的设计与运动控制[D].
-\newblock :浙江理工大学, 2023.
-
-\bibitem{Tang2024_2}
-唐炫铭.
-\newblock 水下多关节绳驱机械臂动力学分析与运动控制研究[D].
-\newblock :湖南科技大学, 2024.
+\newblock 浙江理工大学, 2023.
 
 \bibitem{Dai2024}
 代一诚.
 \newblock 绳驱柔性机械臂刚度-张力耦合建模及刚度调控方法研究[D].
-\newblock :哈尔滨工业大学, 2024.
-
-\bibitem{Shi2025}
-Y.~Shi, T.~W. Chow, M.~T. Kwok, et~al.
-\newblock Lightweight and Low-cost Cable-driven Scara Robotic Arm with 9 Dof[J].
-\newblock 2025:161--161.
+\newblock 哈尔滨工业大学, 2024.
 
 \bibitem{Enriquez2025}
-M.~A.~D. Enriquez, G.~J. Lopez, A.~A.~R. Ramirez, et~al.
+D.~A. Morales-Enr{\'\i}quez, J.~Guzm{\'a}n-L{\'o}pez, R.~A. Aguilar-Ram{\'\i}rez, et~al.
 \newblock Data-based Modeling and Control of a Single Link Soft Robotic Arm[J].
-\newblock 2025:294--294.
+\newblock Biomimetics, 2025, 10(5):294.
 
 \bibitem{Yang2023}
-K.~Yang, C.~Chen, Y.~Deng, et~al.
+K.~Yang, C.-Y. Chen, Y.~Ding, et~al.
 \newblock Stiffness Modeling and Distribution of a Modular Cable-driven Human-like Robotic Arm[J].
-\newblock 2023.
+\newblock Mechanism and Machine Theory, 2023, 180:105150.
 
 \bibitem{Yang2020}
 K.~Yang, G.~Yang, C.~Zhang, et~al.
-\newblock Cable Tension Analysis Oriented the Enhanced Stiffness of a 3-dof Joint Module of a Modular Cable-driven Human-like Robotic Arm[J].
-\newblock 2020:8871.
-
-\bibitem{BIAN2025120845}
-D.~Bian, Y.~Liu, M.~Yuan, et~al.
-\newblock Fsi Characteristics and Structural Stability of a Large-size Underwater Robotic Arm with Various Rigidity Distribution[J].
-\newblock Ocean Engineering, 2025, 325:120845.
-\newblock \url{https://www.sciencedirect.com/science/article/pii/S0029801825005591}.
-
-\bibitem{Endo2019SuperDA}
-G.~Endo, A.~Horigome, A.~Takata.
-\newblock Super Dragon: A 10-m-long-coupled Tendon-driven Articulated Manipulator[J].
-\newblock IEEE Robotics and Automation Letters, 2019, 4:934--941.
-\newblock \url{https://api.semanticscholar.org/CorpusID:61805811}.
-
-\bibitem{Schilling_ATLAS7R}
-{Schilling Robotics}.
-\newblock Atlas 7r/7p Manipulator Technical Specification[C].
-\newblock TechnipFMC, 2015.
-\newblock Product manual. Specifications include 7 functions, 6,500 msw depth rating, 73 kg weight in air, 250 kg lift at full reach, titanium and aluminum construction.
+\newblock Cable Tension Analysis Oriented the Enhanced Stiffness of a 3-{DOF} Joint Module of a Modular Cable-driven Human-like Robotic Arm[J].
+\newblock Applied Sciences, 2020, 10(24):8871.
 
 \bibitem{Hydro_Dexterous}
 {Hydro International}.
 \newblock Dexterous Grabber Manipulator, 2014.
-\newblock Industry news article describing the ATLAS 7R seven-function dexterous grabber manipulator and its heavy-duty capabilities, \url{https://www.hydro-international.com/content/news/dexterous-grabber-manipulator}.
-
-\bibitem{Jiang_HR01_1988}
-X.~Jiang, D.~Tan.
-\newblock Underwater Remotely Operated Vehicle {HR-01}[C]//Proceedings of the 1988 IEEE International Conference on Systems, Man, and Cybernetics. Beijing, China: IEEE, 1988:602--605.
+\newblock Industry news article describing the ATLAS 7R seven-function dexterous grabber manipulator and its heavy-duty capabilities.
 
 \bibitem{JQRR202602010}
 金安平, 陶彦博, 焦春亭, 等.
@@ -156,19 +189,5 @@ X.~Jiang, D.~Tan.
 徐伟, 陈柏, 李彬彬, 等.
 \newblock 7自由度冗余绳驱动机械臂运动分析及仿真[J].
 \newblock 机电工程, 2017, 34(10):1095--1100.
-
-\bibitem{YLJS202505002}
-代一诚, 徐依宁, 张育珠, 等.
-\newblock 柔性机械臂研究现状与水下应用展望[J].
-\newblock 水下无人系统学报, 2025, 33(05):744--757.
-
-\bibitem{Quigley2011}
-M.~Quigley, A.~Asbeck, A.~Y. Ng.
-\newblock A Low-cost Compliant 7-dof Robotic Manipulator[C]//2011 IEEE International Conference on Robotics and Automation. IEEE, 2011:6051--6058.
-
-\bibitem{ChenQZ}
-陈泉柱, 陈伟海, 王建华, 等.
-\newblock 七自由度绳驱动拟人臂的设计与运动学分析[J].
-\newblock 北京航空航天大学学报, 2013, 39(10):1364--1369.
 
 \end{thebibliography}

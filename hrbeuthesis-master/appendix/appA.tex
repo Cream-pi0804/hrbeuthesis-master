@@ -38,16 +38,34 @@
 \BiSubsection{motor\_serial节点}{Section in Appendix}
 % 使用 \lstinputlisting 直接读取外部的 Python 文件
 % 假设你的 Python 文件和 main.tex 放在同一个目录下：
+\label{gnodes}
 \lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{motor_serial.py}
 \BiSubsection{solve\_arm\_ik节点}{Section in Appendix}
+\label{ik}
 \lstinputlisting[language=Python, caption={solve\_arm\_ik 节点完整实现代码}]{solve_arm_ik.py}
-\BiSubsection{linear\_move节点}{Section in Appendix}
+\BiSubsection{linear\_move节点}{Section in Appendix}\label{gcode1}
 \lstinputlisting[language=Python, caption={linear\_move 节点完整实现代码}]{linear_move.py}
 \BiSubsection{circular\_move节点}{Section in Appendix}
 \lstinputlisting[language=Python, caption={circular\_move 节点完整实现代码}]{circular_move.py}
+
+\BiSubsection{gcode\_interpreter节点}{Section in Appendix}
+\label{gcode}
+\lstinputlisting[language=Python, caption={gcode\_interpreter 节点完整实现代码}]{gcode_interpreter.py}
+
+
+\BiSubsection{grasp\_scheduler\_node节点}{Section in Appendix} \label{gnode}
+\lstinputlisting[language=Python, caption={grasp\_scheduler\_node 节点完整实现代码}]{grasp_scheduler_node.py}
 % 如果你把代码放在了专门的 code 文件夹里，就写成：
 % \lstinputlisting[language=Python, caption={motor\_serial 节点完整实现代码}]{code/motor_serial.py}
+
+
+\BiSubsection{roi\_selector节点}{Section in Appendix}
+\label{roi}
+\lstinputlisting[language=Python, caption={roi\_selector 节点完整实现代码}]{roi_selector.py}
+
+
  \BiSection{STM32底层代码}{appendix 2}
+ \label{STM32}
  \BiSubsection{电机底层驱动}{Section in Appendix}
  \lstinputlisting[language=C, caption={joint.c}]{joint.c}
  

@@ -1381,8 +1381,8 @@ FUNCTION {mastersthesis}
   %bbl.mthesis format.thesis.type output.nonnull
   %school "school" bibinfo.warn output
   %address ":[" *   "address" bibinfo.check  output  
-  address ":" *  "address" bibinfo.check  output 
-  before.all 'output.state :=
+  % address ":" *  "address" bibinfo.check  output 
+  % before.all 'output.state :=
   %school "]" * "school" bibinfo.warn output
   school  "school" bibinfo.warn output
   format.date "year" output.check

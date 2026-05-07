@@ -27,16 +27,18 @@
 
 改进DH 法与传统 D-H 法的主要区别在于坐标系固定位置的不同：改进DH 法将坐标系 $\{i\}$ 固定在连杆 $i$ 的近端. 这种定义方式使得连杆 $i$ 的几何参数与其编号更加一致. 坐标系间的位姿变换由以下四个参数确定：
 
-\begin{itemize}
-    \item \textbf{连杆长度 $a_{i-1}$}：沿 $x_{i-1}$ 轴，从 $z_{i-1}$ 轴到 $z_i$ 轴的距离 ；
-    \item \textbf{连杆转角 $\alpha_{i-1}$}：绕 $x_{i-1}$ 轴，从 $z_{i-1}$ 轴旋转至 $z_i$ 轴的角度 ；
-    \item \textbf{连杆偏距 $d_i$}：沿 $z_i$ 轴，从 $x_{i-1}$ 轴到 $x_i$ 轴的距离 ；
-    \item \textbf{关节角 $\theta_i$}：绕 $z_i$ 轴，从 $x_{i-1}$ 轴旋转至 $x_i$ 轴的角度 。
-\end{itemize}
+连杆长度 $a_{i-1}$：沿 $x_{i-1}$ 轴，从 $z_{i-1}$ 轴到 $z_i$ 轴的距离 ；
+
+连杆转角 $\alpha_{i-1}$：绕 $x_{i-1}$ 轴，从 $z_{i-1}$ 轴旋转至 $z_i$ 轴的角度 ；
+
+连杆偏距 $d_i$：沿 $z_i$ 轴，从 $x_{i-1}$ 轴到 $x_i$ 轴的距离 ；
+
+关节角 $\theta_i$：绕 $z_i$ 轴，从 $x_{i-1}$ 轴旋转至 $x_i$ 轴的角度 。
+
 \begin{figure}[H] % htbp代表图片插入位置的设置
   \centering %图片居中
   %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-  \includegraphics[width = 0.8\textwidth]{figures/DH(1).png}
+  \includegraphics[width = 0.55\textwidth]{figures/DH(1).png}
   \caption{改进DH示意图} % 图片标题
   \label{pic24} % 图片标签      
   \vspace{-0.5cm}
@@ -58,7 +60,7 @@
     \end{aligned}
     \label{eq:mdh_matrix}
 \end{equation}
-式中，$i$ 表示第 $i$ 个关节，各参数意义详见前文描述.
+其中，$i$ 表示第 $i$ 个关节，各参数意义详见前文描述.
 
 (2)系统总变换方程
 
@@ -70,9 +72,9 @@
 
 在实际水下作业场景中，需考虑机械臂与运载器及末端执行器的坐标转换 ：
 
-\text{\textcircled{1}}末端补偿：末端执行器坐标系相对于腕部坐标系存在固定变换 $E$，则末端相对于基座坐标系的位姿变换为 ${}^{0}_{E}T = {}^{0}_{3}T \cdot E$.
+\ding{172}末端补偿：末端执行器坐标系相对于腕部坐标系存在固定变换 $E$，则末端相对于基座坐标系的位姿变换为 ${}^{0}_{E}T = {}^{0}_{3}T \cdot E$.
 
-\text{\textcircled{2}}基座补偿：机械臂基座坐标系相对于水下运载器坐标系存在固定变换 $Z$，则末端执行器相对于运载器参照坐标系的最终变换矩阵为：
+\ding{173}基座补偿：机械臂基座坐标系相对于水下运载器坐标系存在固定变换 $Z$，则末端执行器相对于运载器参照坐标系的最终变换矩阵为：
 
 
 \begin{equation}
@@ -87,16 +89,17 @@
 \begin{figure}[H] % htbp代表图片插入位置的设置
   \centering %图片居中
   %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-  \includegraphics[width = 0.7\textwidth]{机械臂111}
+  \includegraphics[width = 0.5\textwidth]{05071}
   \caption{机械臂各关节} % 图片标题
   \vspace{-0.5cm}
   \label{pic32} % 图片标签
   \end{figure}
 肘关节 2 采用特殊的关联双铰链滚动机构如图\ref{pic33}。
+\vspace{-0.5cm}
 \begin{figure}[H] % htbp代表图片插入位置的设置
   \centering %图片居中
   %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-  \includegraphics[width = 0.5\textwidth]{双铰链134}
+  \includegraphics[width = 0.4\textwidth]{双铰链134}
   \caption{双铰链示意图} % 图片标题
   \label{pic33} % 图片标签
   \vspace{-0.5cm}
@@ -113,18 +116,18 @@
 
 为了精确描述机械臂的位姿并便于之后分析，本文根据机械臂的物理结构建立了一系列局部坐标系。所有坐标系均为右手坐标系，且规定 $Z$ 轴正方向垂直向下。各坐标系定义如下：
 
-（1）坐标系 $\{1\}$ (基准坐标系)：原点位于密封仓上舱盖中心，作为整个机械臂运动链的起始参考点。
+\ding{172}坐标系 $\{1\}$ (基准坐标系)：原点位于密封仓上舱盖中心，作为整个机械臂运动链的起始参考点。
 
-（2）坐标系 $\{2\}$ (肩关节坐标系)：原点位于肩关节旋转中心，其位置相对于密封仓质心存在安装偏置。
+\ding{173}坐标系 $\{2\}$ (肩关节坐标系)：原点位于肩关节旋转中心，其位置相对于密封仓质心存在安装偏置。
 
-（3）坐标系 $\{3\}$ 与 $\{4\}$ (肘部双铰链坐标系)：针对绳驱机械臂特有的双铰链结构，分别在两个铰链的几何中点建立坐标系，用以描述肘部复杂的非线性运动特征。
+\ding{174}坐标系 $\{3\}$ 与 $\{4\}$ (肘部双铰链坐标系)：针对绳驱机械臂特有的双铰链结构，分别在两个铰链的几何中点建立坐标系，用以描述肘部复杂的非线性运动特征。
 
-（4）坐标系 $\{5\}$ (腕关节坐标系)：原点位于腕关节俯仰与偏航轴线的交汇中点。
+\ding{175}坐标系 $\{5\}$ (腕关节坐标系)：原点位于腕关节俯仰与偏航轴线的交汇中点。
 
-（5）坐标系 $\{6\}$ (末端执行器坐标系)：原点位于手爪几何中心，用于描述末端作业空间位姿。
+\ding{176}坐标系 $\{6\}$ (末端执行器坐标系)：原点位于手爪几何中心，描述末端空间位姿。
 
 
-如图\ref{pic34}所示。
+图\ref{pic34}为各坐标系在机械臂模型上的具体位置。
 
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
@@ -135,14 +138,15 @@
     \label{pic34} % 图片标签
     \end{figure}
 
-    考虑到水下复杂环境作业的安全需求及绳驱机械臂物理结构的固有约束，本文对各活动关节的运动范围（Joint Limits）进行了严格限定：
+    考虑到水下复杂环境作业的安全需求及绳驱机械臂物理结构的固有约束，
+    本文对各活动关节的运动范围进行了严格限定：
     
 
-    （1）肩关节 $q_1$：其角度范围设定为 $[-\pi/2, \pi/2]$。该范围确保了机械臂具备宽阔的前向作业视野。
+    （1）肩关节 $q_1$：其角度范围设定为 $[-\pi/2, \pi/2]$。确保机械臂前向作业视野宽阔。
 
     （2）肘关节 $q_2$：受限于绳驱双铰链机构的耦合特性，$q_2$ 同时驱动两个相邻的转动副实现同步俯仰，其运动范围限定在 $[0, \pi/2]$ 以保证传动张力的稳定性。
 
-    （3）腕关节 $q_3$：其角度范围设定为 $[0, \pi]$ ，显著增强了末端手爪在受限空间内的姿态灵活性。
+    （3）腕关节 $q_3$：其角度范围设定为 $[0, \pi]$ ，增强末端手爪在受限空间内的灵活性。
 
 
 综上所述，机械臂改进 D-H 参数如表 \ref{tab:dh_params_with_limits} 所示。
@@ -184,7 +188,7 @@
 % \BiSection{正运动学建模 }{Introduction}
 
 \subsection{系统总变换方程}
-本文采用改进 DH 法。相邻坐标系 $\{i-1\}$ 到 $\{i\}$ 的齐次变换矩阵通用表达式为：
+
 % \begin{equation}
 % {}^{i-1}_{i}T = \begin{bmatrix} 
 % \cos\theta_i & -\sin\theta_i & 0 & a_{i-1} \\ 
@@ -193,83 +197,17 @@
 % 0 & 0 & 0 & 1 
 % \end{bmatrix}
 % \end{equation}
-
-根据表 \ref{tab:dh_params_with_limits} 所列参数，带入公式\ref{eq:mdh_matrix}。
-
-% \begin{enumerate}
-%     \item \textbf{密封仓至肩关节 $\{1\} \to \{2\}$}：
-%     此时 $\alpha_0 = 0, a_0 = 0.135, d_1 = 0.0913, \theta_1 = q_1$，矩阵结果为：
-%     \begin{equation}
-%     {}^{1}_{2}T(q_1) = \begin{bmatrix} 
-%     \cos q_1 & -\sin q_1 & 0 & \alpha_0 \\ 
-%     \sin q_1 & \cos q_1 & 0 & 0 \\ 
-%     0 & 0 & 1 & d_1 \\ 
-%     0 & 0 & 0 & 1 
-%     \end{bmatrix}
-%     \end{equation}
-
-%     \item \textbf{肩关节至肘部铰链 I $\{2\} \to \{3\}$}：
-%     此时 $\alpha_1 = -\pi/2, a_1 = 0.135, d_2 = 0, \theta_2 = -q_2$，矩阵结果为：
-%     \begin{equation}
-%     {}^{2}_{3}T(q_2) = \begin{bmatrix} 
-%     \cos q_2 & \sin q_2 & 0 & \alpha_1 \\ 
-%     0 & 0 & 1 & 0 \\ 
-%     \sin q_2 & -\cos q_2 & 0 & 0 \\ 
-%     0 & 0 & 0 & 1 
-%     \end{bmatrix}
-%     \end{equation}
-
-%     \item \textbf{肘部双铰链联动变换 $\{3\} \to \{4\}$}：
-%     令 $\phi_2 = -q_2 + 0.06385$，此时 $\alpha_2 = 0, a_2 = 0.08, d_3 = 0$，矩阵结果为：
-%     \begin{equation}
-%     {}^{3}_{4}T(q_2) = \begin{bmatrix} 
-%     \cos \phi_2 & -\sin \phi_2 & 0 & \alpha_2 \\ 
-%     \sin \phi_2 & \cos \phi_2 & 0 & 0 \\ 
-%     0 & 0 & 1 & 0 \\ 
-%     0 & 0 & 0 & 1 
-%     \end{bmatrix}
-%     \end{equation}
-
-%     \item \textbf{肘部 II 至腕部关节 $\{4\} \to \{5\}$}：
-%     令 $\phi_3 = q_3 - 3.0054$，此时 $\alpha_3 = 0, a_3 = 0.43881, d_4 = 0$，矩阵结果为：
-%     \begin{equation}
-%     {}^{4}_{5}T(q_3) = \begin{bmatrix} 
-%     \cos \phi_3 & -\sin \phi_3 & 0 & \alpha_3 \\ 
-%     \sin \phi_3 & \cos \phi_3 & 0 & 0 \\ 
-%     0 & 0 & 1 & 0 \\ 
-%     0 & 0 & 0 & 1 
-%     \end{bmatrix}
-%     \end{equation}
-
-%     \item \textbf{末端执行器固定变换补偿 $E  \{5\} \to \{6\}$}：
-%     针对手爪相对于腕部的物理偏置，$\alpha_4 = -\pi/2, a_4 = 0.12286, d_5 = 0.02214, \theta_5 = 0$，其固定变换矩阵 $E$ 为：
-%     \begin{equation}
-%     E = \begin{bmatrix} 
-%     1 & 0 & 0 & \alpha_4 \\ 
-%     0 & 0 & 1 & d_5 \\ 
-%     0 & -1 & 0 & 0 \\ 
-%     0 & 0 & 0 & 1 
-%     \end{bmatrix}
-%     \end{equation}
-
-% \item \textbf{基座补偿固定变换补偿 $Z  \{0\} \to \{1\}$}：
-% 针对安装基座补偿相对于密封仓的物理偏置，默认没有旋转分量只有平移分量$Z_x,Z_y,Z_z $，其固定变换矩阵 $Z$ 为：
-% \begin{equation}
-% Z = \begin{bmatrix} 
-% 1 & 0 & 0 & Z_x \\ 
-% 0 & 1 & 0 & Z_y \\ 
-% 0 & 0 & 1 & Z_z \\ 
-% 0 & 0 & 0 & 1 
-% \end{bmatrix}
-% \end{equation}
-% \end{enumerate}
-% \subsection{系统总变换方程}
-设水下运载器坐标系为 $\{V\}$，机械臂基座坐标系相对于水下运载器的变换矩阵为 $Z$。则作业末端在运载器坐标系下的变换矩阵 ${}^{V}_{E}T$ 可表示为：
+本文采用改进 D-H 法对机械臂进行运动学建模。相邻坐标系 $\{i-1\}$ 到 $\{i\}$ 
+之间的齐次变换矩阵通用表达式如式 \ref{eq:mdh_matrix} 所示。根据表 
+\ref{tab:dh_params_with_limits} 所列的机械臂结构参数，将各关节变量代入
+该通用矩阵中，即可求得相邻连杆间的位姿变换关系。设
+水下运载器坐标系为 $\{V\}$，机械臂基座坐标系相对于运载器的安装变换
+矩阵为 $Z$，则作业末端执行器在运载器坐标系下的总变换矩阵 ${}^{V}_{E}T$ 
+可表示为：
 \begin{equation}
     {}^{V}_{E}T = Z \cdot {}^{0}_{1}T({q_1}) \cdot {}^{1}_{2}T({q_2}) \cdot {}^{2}_{3}T({q_2}) \cdot {}^{3}_{4}T({q_3})\cdot E
     \label{e31}
 \end{equation}
-
 将各关节之间的变换矩阵带入公式\ref{e31}中，得机械臂位置变换矩阵为:
 \begin{equation}
     {}^{V}_{E}T = \begin{bmatrix}
@@ -280,8 +218,7 @@
     \end{bmatrix}
     \label{e32}
     \end{equation}
-    
-    式中， $\theta_{L} = 2q_2 - 0.06385$,
+    其中， $\theta_{L} = 2q_2 - 0.06385$,
 $\Phi = 2q_2 - q_3 + 2.94155$,
 $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 
@@ -301,6 +238,7 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
       a_z = -C_{\Phi}
       \end{array}\right.
     \end{equation}
+
     (2) 位置矢量分量
     \begin{equation}
         \left\{\begin{array}{c}
@@ -309,7 +247,6 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
         P_z = Z_z + d_1 + a_2 \sin q_2 + a_3 \sin \theta_L - a_4 S_{\Phi} + d_5 C_{\Phi}
         \end{array}\right.
     \end{equation}
-    
     其中，各几何常数取值如下：$a_0=0.135, a_1=0.135, a_2=0.08, a_3=0.43881, a_4=0.12286, d_1=0.0913, d_5=0.02214$。
     
     由上述计算可得绳驱机械臂搭载的手爪位置相对于运载器的位置矩阵如下：
@@ -326,18 +263,17 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
         \end{equation}
 
     \BiSection{逆运动学分析}{Introduction}
-    逆运动学的核心任务是根据末端执行器的目标位置和姿态，
-    反求出各关节的角度。
-其求解方法主要分为解析解与数值解两大类。
+    逆运动学的核心任务是根据末端执行器的目标位置和姿态，反向求解出各关节所需的物理转角，这也是实现机械臂轨迹跟踪与底层控制的前提。
 
-    其中，解析解通过代数消元，直接求得关节变量。其主要优势在于计算
-    效率极高、无误差。
-
-    而数值解则利用目标位姿与当前位姿的差值构建误差
-    函数，通过迭代算法逐步逼近真实解。
-
-    鉴于本文绳驱机械臂自由度耦合程度较深，为保证算法的计算稳定性，本文选用数值解法对绳驱机
-    械臂进行逆运动学求解。
+    求解方法主要分为解析法与数值法两大类。其中，解析法通过代数消元或几何推
+    导直接求得关节解。其主要优势在于计算效率极高、无原理误差，但往往要求机械臂
+    结构满足一定条件。
+    
+    相比之下，数值解法则通常借助雅可比矩阵，利用目标位姿与当前实际位姿的差值
+    构建误差函数，通过迭代算法逐步逼近真实解。鉴于本文设计的绳驱机械臂引入了
+    双铰链等特殊结构。若强行推导解析解，过程极其繁琐。因此，为并保证系统在的
+    稳定性，本文最终选用
+    数值解法对该绳驱机械臂进行逆运动学求解。
     \subsection{基于雅可比矩阵的简单迭代求解}
     在已知机械手爪期望目标位置 $\boldsymbol{P}_{target} \in \mathbb{R}^{3}$ 的情况下，本文采用经典的牛顿-拉夫逊迭代法进行数值逼近。
     
@@ -355,11 +291,12 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \frac{\partial P_z}{\partial q_1} & \frac{\partial P_z}{\partial q_2} & \frac{\partial P_z}{\partial q_3}
     \end{bmatrix}
     \end{equation}
+
     利用伪逆矩阵（Pseudo-inverse）可以得到关节角的迭代更新律：
     \begin{equation}
         \boldsymbol{q}_{k+1} = \boldsymbol{q}_k + \boldsymbol{J}^{\dagger}(\boldsymbol{q}_k) \boldsymbol{e}_k
     \end{equation}
-    式中，$\boldsymbol{J}^{\dagger} = \boldsymbol{J}^T (\boldsymbol{J} \boldsymbol{J}^T)^{-1}$ 为雅可比矩阵的伪逆。通过不断重复上述更新过程，当位置误差范数 $\|\boldsymbol{e}_k\|$ 小于设定的容差阈值 $\epsilon$ 时，迭代终止，输出最终的关节角度。
+    其中，$\boldsymbol{J}^{\dagger} = \boldsymbol{J}^T (\boldsymbol{J} \boldsymbol{J}^T)^{-1}$ 为雅可比矩阵的伪逆。通过不断重复上述更新过程，当位置误差范数 $\|\boldsymbol{e}_k\|$ 小于设定的容差阈值 $\epsilon$ 时，迭代终止，输出最终的关节角度。
     
     
 
@@ -384,13 +321,17 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 (1)肘关节耦合
 
 肘关节的耦合现象主要发生在肩部导向轮，如图\ref{fig:total_figure32}
+如图所示，当肩关节旋转$\theta_1$时，
+肘关节的两根驱动绳会伸长和缩短长为$\theta_1R_1$的一个弧长
+（绿色为缩短，紫色为伸长），为了保证肘关节不动，
+肘关节电机需要在肩关节旋转的方向上旋转$\frac{R_2\theta_1}{r_1}$弧度。
 \begin{figure}[htbp]
     \centering
     % 第一张子图
     \begin{minipage}{\textwidth}
         \centering
         \subfigure[肩关节未旋转]{\label{fig32:sub1}
-            \includegraphics[width =0.7 \textwidth]{figures/耦合1.eps}
+            \includegraphics[width =0.6 \textwidth]{figures/耦合1.eps}
         }% 这里写第一张图的英文描述
     \end{minipage}
     % \hfill % 撑开左右间距
@@ -398,7 +339,7 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \begin{minipage}{\textwidth}
         \centering
         \subfigure[肩关节旋转$\theta_1$]{\label{fig32:sub2}
-            \includegraphics[width = 0.7 \textwidth]{figures/耦合2.eps}
+            \includegraphics[width = 0.6 \textwidth]{figures/耦合2.eps}
         } % 这里写第二张图的英文描述
              % 第一张子图
             \end{minipage}
@@ -408,27 +349,24 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \vspace{-0.5cm}
     \label{fig:total_figure32}
   \end{figure}
-如图所示，当肩关节旋转$\theta_1$时，
-肘关节的两根驱动绳会伸长和缩短长为$\theta_1R_1$的一个弧长
-（绿色为缩短，紫色为伸长），为了保证肘关节不动，
-肘关节电机需要在肩关节旋转的方向上旋转$\frac{R_2\theta_1}{r_1}$弧度。
+
 
 (2)腕关节耦合
 
 由于腕关节驱动绳也经过肩部导向轮，
 所以腕关节也会存在耦合现象且原理和肘关节相同，
-同时腕关节驱动绳同时绕过肘部导向轮上方如图
+同时腕关节驱动绳同时绕过肘部导向轮上方，如图
 \ref{fig:total_figure33}，当肘部关节旋转的
 时候腕关节驱动绳会同时伸长或缩短，所以肘部导向轮对腕关节无耦合影响，
 腕关节电机只需在肩关节旋转的方向上旋转$\frac{R_4\theta_1}{r_3}$弧度。
 
-\begin{figure}[H]
+\begin{figure}[htbp]
     \centering
     % 第一张子图
     \begin{minipage}{\textwidth}
         \centering
         \subfigure[肘关节未旋转]{\label{fig33:sub1}
-            \includegraphics[width =0.5 \textwidth]{figures/腕关节解耦.eps}
+            \includegraphics[width =0.4 \textwidth]{figures/腕关节解耦.eps}
         }% 这里写第一张图的英文描述
     \end{minipage}
     % \hfill % 撑开左右间距
@@ -436,7 +374,7 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \begin{minipage}{\textwidth}
         \centering
         \subfigure[肘关节旋转$\theta_2$]{\label{fig33:sub2}
-            \includegraphics[width = 0.5 \textwidth]{figures/腕关节耦合2.eps}
+            \includegraphics[width = 0.4 \textwidth]{figures/腕关节耦合2.eps}
         } % 这里写第二张图的英文描述
              % 第一张子图
             \end{minipage}
@@ -467,10 +405,9 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 \begin{bmatrix} \theta_1 \\ \theta_2 \\ \theta_3 \end{bmatrix}
 \label{eq:mapping_matrix}
 \end{equation}
+式中，$r_1, r_2, r_3$ 分别为电机端驱动绞盘的半径；$R_1$ 为肩关节驱动绞盘 ；$R_2$，$R_3$ 分别为肘关节和腕关节肩部导向轮半径；$R_4$为腕关节驱动绳肘部导向轮半径；对于肘关节，其传动比受绕线圈数 $N$ 及绕线轴中心距 $D$ 的综合影响。
 
-式中：$r_1, r_2, r_3$ 分别为电机端驱动绞盘的半径；$R_1$ 为肩关节驱动绞盘 ；$R_2$，$R_3$ 分别为肘关节和腕关节肩部导向轮半径；$R_4$为腕关节驱动绳肘部导向轮半径；对于肘关节，其传动比受绕线圈数 $N$ 及绕线轴中心距 $D$ 的综合影响。
-
-根据实验样机的实际物理参数，取 $r_1=r_2=r_3=13\text{mm}$，$R_1=32\text{mm}$，$R_2=20\text{mm}$，$R_3=20\text{mm}$，$R_4=15\text{mm}$，$N=2$，$D=28\text{mm}$。将其代入式 (\ref{eq:mapping_matrix}) 可得最终的传动映射矩阵：
+根据实验样机的实际物理参数，取 $r_1=r_2=r_3=13\text{mm}$，$R_1=32\text{mm}$，$R_2=20\text{mm}$，$R_3=20\text{mm}$，$R_4=15\text{mm}$，$N=4$，$D=28\text{mm}$。将其代入式 \ref{eq:mapping_matrix} 可得传动映射矩阵：
 \begin{equation}
 \begin{bmatrix} \phi_1 \\ \phi_2 \\ \phi_3 \end{bmatrix} = 
 \begin{bmatrix} 
@@ -491,17 +428,14 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 并进行了一系列仿真实验。
 从仿真结果来看，对于工作空间内的目标点，
 迭代法能够稳定求解各关节角度，末端位置误差始终控制在 0.005\% 以内。
-在多次随机采样测试中，算法均可收敛至容许误差范围，
-即使从偏离目标较远的初始关节角出发，也未出现发散或跳变。
-对靠近工作空间边界的奇异点附近位置，迭代过程依然平稳，
-解的连续性保持良好。
-\begin{figure}[htbp]
+在多次随机采样测试中，算法均可收敛至误差范围，解未出现发散或跳变。
+\begin{figure}[H]
         \centering
         % 第一张子图
         \begin{minipage}{0.45\textwidth}
             \centering
             \subfigure[X:0.6 Y:0.0 Z:0.6]{\label{fig31:sub1}
-                \includegraphics[width =\textwidth]{figures/0.600.6.eps}
+                \includegraphics[width =\textwidth]{figures/05606.eps}
             }% 这里写第一张图的英文描述
         \end{minipage}
         % \hfill % 撑开左右间距
@@ -509,22 +443,22 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
         \begin{minipage}{0.45\textwidth}
             \centering
             \subfigure[X:0.6 Y:0.1 Z:0.6]{\label{fig31:sub2}
-                \includegraphics[width = \textwidth]{figures/0.60.10.6.eps}
+                \includegraphics[width =1.1\textwidth]{figures/05616.eps}
             } % 这里写第二张图的英文描述
                  % 第一张子图
                 \end{minipage}
         \begin{minipage}{0.45\textwidth}
             \centering
             \subfigure[X:0.7 Y:0.0 Z:0.5]{\label{fig31:sub3}
-                \includegraphics[width =\textwidth]{figures/705.eps}
+                \includegraphics[width =\textwidth]{figures/50705.eps}
             }% 这里写第一张图的英文描述
         \end{minipage}
         % \hfill % 撑开左右间距
         % 第二张子图
         \begin{minipage}{0.45\textwidth}
             \centering
-            \subfigure[X:0.6 Y:-0.5 Z:0.6]{\label{fig31:sub4}
-                \includegraphics[width = 0.7\textwidth]{figures/7-251.eps}
+            \subfigure[X:0.7 Y:-0.2 Z:0.5]{\label{fig31:sub4}
+                \includegraphics[width = 1.1\textwidth]{figures/05057225.eps}
             } % 这里写第二张图的英文描述
         \end{minipage}
       
@@ -582,6 +516,7 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \ddot{q}(t) = 2c_2 + 6c_3 t + 12c_4 t^2 + 20c_5 t^3
     \end{cases}
 \end{equation}
+
 将轨迹规划的始末边界条件代入上述方程，可得到如下 $6 \times 6$ 的约束方程组：
 \begin{equation}
     \begin{cases}
@@ -593,7 +528,9 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
         \ddot{q}(T) = 2c_2 + 6c_3 T + 12c_4 T^2 + 20c_5 T^3 = a_f
     \end{cases}
 \end{equation}
+
 为了便于在计算系统中进行离散化求解，将其转换为矩阵表达形式：
+
 \begin{equation}
     \begin{bmatrix}
         1 & 0 & 0 & 0 & 0 & 0 \\
@@ -628,16 +565,16 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     \begin{cases}
     c_0 = q_0 \\
     c_1 = v_0 \\
-    c_2 = \dfrac{a_0}{2}
-    \end{cases}
-    \end{equation}
-    \begin{equation*}
-    \begin{cases}
+    c_2 = \dfrac{a_0}{2}\\
+    % \end{cases}
+    % \end{equation}
+    % \begin{equation*}
+    % \begin{cases}
     c_3 = \dfrac{20(q_f - q_0) - (8v_f + 12v_0)T - (3a_0 - a_f)T^2}{2T^3} \\[8pt]
     c_4 = \dfrac{-30(q_f - q_0) + (14v_f + 16v_0)T + (3a_0 - 2a_f)T^2}{2T^4} \\[8pt]
     c_5 = \dfrac{12(q_f - q_0) - 6(v_f + v_0)T - (a_0 - a_f)T^2}{2T^5}
     \end{cases}
-    \end{equation*}
+    \end{equation}
 
 将上述系数带回原多项式，即可生成给定时间 $T$ 内平滑且满足运动学约束的轨迹。
 
@@ -651,6 +588,7 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 \begin{equation}
     t_a = \frac{v_{max}}{a_{max}}, \quad T = \frac{|q_f - q_0|}{v_{max}} + t_a
 \end{equation}
+
 假设 $q_f > q_0$ 且系统的起止速度均为 $0$，该规划算法在时间轴上速度方程如下：
 
 \textbf{（1）匀加速段 ($0 \le t \le t_a$)}
@@ -697,72 +635,105 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 
 （1）关节规划仿真环境与参数设置
 
-实验设定机械臂某电机从起始角度 $q_0 = 0^\circ$ 运动至目标角度 $q_f = 90^\circ$。为了确保仿真的真实性，结合电机的物理性能，设定了最大速度与加速度限制。具体参数如表 \ref{tab:params} 所示。
+实验设定机械臂某电机从起始角度 $q_0 = 0^\circ$ 运动至目标角度 $q_f = 90^\circ$。为了确保仿真符合工程实际，结合电机的物理性能，设定了最大速度与加速度限制。具体参数如表 \ref{tab:params} 所示。
 
 \begin{table}[htbp]
     \centering
     \caption{关节空间轨迹规划仿真参数}
     \label{tab:params}
     \begin{tabular}{lcc}
-    \toprule[2pt]
+    \toprule[1.5pt]
     \textbf{参数名称} & \textbf{符号} & \textbf{设定值} \\
     \midrule
-    起始位置 (Start Position) & $q_0$ & $0^\circ$ \\
-    目标位置 (Final Position) & $q_f$ & $90^\circ$ \\
-    最大允许速度 (Max Velocity) & $v_{max}$ & $20^\circ/s$ \\
-    最大允许加速度 (Max Acceleration) & $a_{max}$ & $10^\circ/s^2$ \\
-    仿真步长 (Time Step) & $\Delta t$ & $0.01s$ \\
-    \bottomrule[2pt]
+    起始位置  & $q_0$ & $0^\circ$ \\
+    目标位置 & $q_f$ & $90^\circ$ \\
+    最大允许速度 & $v_{max}$ & $20^\circ/s$ \\
+    最大允许加速度  & $a_{max}$ & $10^\circ/s^2$ \\
+    仿真步长  & $\Delta t$ & $0.01s$ \\
+    \bottomrule[1.5pt]
     \end{tabular}
     \end{table}
 
-（2）仿真结果分析
+    （2）仿真结果分析
 
-基于上述参数，分别进行梯形速度规划与五次多项式插值，得到对比曲线并分析如下：
-\begin{figure}[H] % htbp代表图片插入位置的设置
-    \centering %图片居中
-    %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 1.1\textwidth]{关节插值}
-    \caption{对比曲线} % 图片标题
-    \label{pic41} % 图片标签
-    \vspace{-0.5cm}
-    \end{figure}
-\begin{enumerate}
-    \item \textbf{位置曲线分析}：
-    如图\ref{pic41}所示，梯形速度规划在中间段为线性增长，而五次多
-    项式轨迹则呈现出圆滑的“S”型曲线。
+    基于上述参数，进行梯形速度规划与五次多项式插值，得到对比曲线如图\ref{fig:total_figure311}所示。
+    \begin{figure}[H]
+        \centering
+        % 第一张子图
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \subfigure[位置曲线对比]{\label{fig311:sub1}
+                \includegraphics[width =0.9\textwidth]{figures/关节1.eps}
+            }% 这里写第一张图的英文描述
+        \end{minipage}
+        % \hfill % 撑开左右间距
+        % 第二张子图
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \subfigure[速度曲线对比]{\label{fig311:sub2}
+                \includegraphics[width =0.9\textwidth]{figures/关节2.eps}
+            } % 这里写第二张图的英文描述
+                 % 第一张子图
+                \end{minipage}
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \subfigure[加速度曲线对比]{\label{fig311:sub3}
+                \includegraphics[width =0.9\textwidth]{figures/关节3.eps}
+            }% 这里写第一张图的英文描述
+        \end{minipage}
+        % \hfill % 撑开左右间距
+        % 第二张子图
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \subfigure[Jerk曲线对比]{\label{fig311:sub4}
+                \includegraphics[width = 0.9\textwidth]{figures/关节4.eps}
+            } % 这里写第二张图的英文描述
+        \end{minipage}
+        % 中英文总标题
+        \caption{对比曲线（实线为五次多项式，虚线为梯形规划）}
+        \vspace{-0.5cm}
+        \label{fig:total_figure311}
+      \end{figure}
+    % \begin{figure}[H] % htbp代表图片插入位置的设置
+    %     \centering %图片居中
+    %     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
+    %     \includegraphics[width = \textwidth]{关节轨迹规划}
+    %     \caption{对比曲线} % 图片标题
+    %     \label{pic41} % 图片标签
+    %     \vspace{-0.5cm}
+    % \end{figure}
+    结合上述仿真对比曲线，现从位置、速度与加速度、加加速度三个方面对两种规划
+    算法的运动学特性进行详细分析：
     
-    \item \textbf{速度与加速度分析}：
-    梯形速度规划在加速段和减速段保持恒定的加速度，这虽然缩短了运动时间，但
-    其加速度曲线在 $t=t_a$ 等时刻存在明显的阶跃突变。相比之下，
-    五次多项式算法的速度曲线呈钟形，加速度曲线连续且在两端
-    均为 0，能够显著降低由于惯性力突变带来的冲击。
+    \ding{172} 位置曲线分析：
+    如图\ref{fig:total_figure311}所示，梯形速度规划在中间段为线性增长，而五次多项式轨迹则
+    呈现出圆滑的“S”型曲线。
     
-    \item \textbf{加加速度分析}：
-    加加速度 曲线是评价系统平稳性的核心指标。梯形规划在速度转换点处的 加
-    加速度 趋于无穷大，表现为脉冲形式。这对于绳驱系统而言，极易诱发绳索的
-    弹性颤动，甚至导致绳索在瞬间松弛后又被剧烈张紧，严重影响使用寿命。五
-    次多项式规划的 加加速度 曲线幅值有限且连续，展现了极佳的柔顺性。
-\end{enumerate}
-
-
-综上所述，实验结果表明：
-\begin{itemize}
-    \item \textbf{梯形速度规划}适用于对作业效率要求较高、且具有明确匀速
-    作业需求的场景。
-    \item \textbf{五次多项式插值}虽然在运动时间上略长，但其在加速度连续
-    性及震动抑制方面具有优势。
-\end{itemize}
-综合考虑水下绳驱机械臂的柔性特性与流体环境干扰，本文后续研究将优先采用五
-次多项式规划作为底层控制的参考输入。
-
+    \ding{173} 速度与加速度分析：
+    梯形速度规划在加速段和减速段保持恒定的加速度，这虽然缩短了运动时间，但其
+    加速度曲线在 $t=t_a$ 等时刻存在明显的阶跃突变。相比之下，五次多项式算法
+    的速度曲线呈钟形，加速度曲线连续且在两端均为 0，能够显著降低由于惯性力
+    突变带来的冲击。
+    
+    \ding{174} 加加速度分析：
+    加加速度曲线是评价系统平稳性的核心指标。梯形规划在速度转换点处的加加速
+    度趋于无穷大，表现为脉冲形式。这对于绳驱系统而言，极易诱发绳索的弹性颤
+    动，甚至导致绳索在瞬间松弛后又被剧烈张紧，严重影响使用寿命。五次多项式
+    规划的加加速度曲线幅值有限且连续，展现了极佳的柔顺性。
+    
+    综上所述，实验结果表明。梯形速度规划适用于对作业效率要求较高、且具有明确匀速作业需求的场景。
+    五次多项式插值虽然在运动时间上略长，但其在加速度连续性及震动抑制方面具有显著优势。
+    综合考虑水下绳驱机械臂的柔性特性与流体环境干扰，本文后续研究将优先采用五次多项式规划作为底层控制的参考输入。
 
 
 \BiSection{笛卡尔空间轨迹规划}{Subsubsection}
 
-笛卡尔空间轨迹规划直接描述机械臂末端执行器在作业空间中的运动几何特征。对于水下绳驱机械臂而言，其作业任务（如焊缝跟踪、圆周扫描）通常定义在笛卡尔坐标系下。
-
-本研究采用“路径离散化，关节空间连续规划”的策略：即首先根据几何约束生成笛卡尔空间的离散点集，通过逆运动学将位姿序列映射为关节角序列，最后在关节空间完成平滑化处理。
+笛卡尔空间轨迹规划直接描述机械臂末端执行器在作业空间中的运动几何特征。对于
+水下绳驱机械臂而言，其作业任务（如焊缝跟踪、圆周扫描）通常定义在笛卡尔坐标
+系下。
+本研究采用“路径离散化，关节空间连续规划”的策略：即首先根据几何约束生成笛卡
+尔空间的离散点集，通过逆运动学将位姿序列映射为关节角序列，最后在关节空间完
+成五次多项式规划处理。
 
 \BiSubsection{直线轨迹规划}{Subsubsection}
 
@@ -801,10 +772,6 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 （1）空间几何模型建立
 
 如图\ref{pic43},定义两向量 $\mathbf{v}_1 = \mathbf{P}_1 - \mathbf{P}_0$ 和 $\mathbf{v}_2 = \mathbf{P}_2 - \mathbf{P}_0$。通过向量叉乘获得圆弧平面单位法向量 $\mathbf{n}_w$：
-
-
-
-
 \begin{equation}
     \mathbf{n}_w = \frac{\mathbf{v}_1 \times \mathbf{v}_2}{\|\mathbf{v}_1 \times \mathbf{v}_2\|}
 \end{equation}
@@ -814,12 +781,14 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
     c_u = \frac{\|\mathbf{v}_1\|}{2}, \quad c_v = \frac{\mathbf{v}_2 \cdot \mathbf{v}_2 - \mathbf{v}_2 \cdot \mathbf{v}_1}{2 \mathbf{v}_2 \cdot \mathbf{v}}
 \end{equation}
 
-进而得到世界坐标系下的空间圆心 $\mathbf{P}_c = \mathbf{P}_0 + c_u \mathbf{u} + c_v \mathbf{v}$。
-
+进而得到世界坐标系下的空间圆心 。
+\begin{equation}
+    \mathbf{P}_c = \mathbf{P}_0 + c_u \mathbf{u} + c_v \mathbf{v}
+\end{equation}
 \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = 0.35\textwidth]{圆弧.jpg}
+    \includegraphics[width = 0.3\textwidth]{圆弧.jpg}
     \caption{圆弧轨迹} % 图片标题
     \label{pic43} % 图片标签
     \vspace{-0.5cm}
@@ -837,14 +806,14 @@ $c_1 = \cos q_1, s_1 = \sin q_1, C_{\Phi} = \cos \Phi, S_{\Phi} = \sin \Phi$
 
 \BiSubsection{笛卡尔空间至关节空间}{Simple Introduction about This
 Template}
-本研究的核心逻辑是将上述生成的笛卡尔点序列转化为关节空间的控制指令，流程如图~\ref{pic44} 所示。
+本研究的核心是将生成的笛卡尔点序列转化为关节的控制指令，流程如图\ref{pic44}所示。
 
 
 
-\begin{figure}[H] % htbp代表图片插入位置的设置
+    \begin{figure}[H] % htbp代表图片插入位置的设置
     \centering %图片居中
     %添加图片；[]中为可选参数，可以设置图片的宽高；{}中为图片的相对位置
-    \includegraphics[width = \textwidth]{流程图.jpg}
+    \includegraphics[width = 0.7\textwidth]{0507流程图.jpg}
     \caption{算法流程图} % 图片标题
     \vspace{-0.5cm}
     \label{pic44} % 图片标签
@@ -855,7 +824,7 @@ Template}
 
 （1）逐点逆运动学映射
 
-对于生成的点序列 $\mathcal{P} = \{ \mathbf{P}_0, \mathbf{P}_1, \dots, \mathbf{P}_n \}$，通过逆运动学函数 $IK(\cdot)$ 求解对应的关节角序列 $\mathcal{Q} = \{ \mathbf{q}_0, \mathbf{q}_1, \dots, \mathbf{q}_n \}$：
+对于生成的点序列 $\mathcal{P} = \{ \mathbf{P}_0, \mathbf{P}_1, \dots, \mathbf{P}_n \}$，通过逆运动学函数 IK 求解对应的关节角序列 $\mathcal{Q} = \{ \mathbf{q}_0, \mathbf{q}_1, \dots, \mathbf{q}_n \}$：
 \begin{equation}
     \mathbf{q}_k = IK(\mathbf{P}_k, \mathbf{q}_{k-1}), \quad k \in [1, n]
 \end{equation}
@@ -869,7 +838,7 @@ Template}
 关节在启动、运行及停止时刻的加速度连续。
 \BiSubsection{轨迹规划仿真与结果分析}{Simple Introduction about ThisTemplate}
 为了验证本文所提出的笛卡尔空间离散插补算法及逆运动学映射策略的有效性，本章利用 MATLAB 
-仿真平台，针对水下绳驱机械臂的两种典型作业工况——直线运动与空间圆弧运动进行了仿真实验。
+仿真平台，针对水下绳驱机械臂的两种典型作业工况：直线运动与空间圆弧运动进行了仿真实验。
 
 % \BiSubsection{仿真环境与参数设置}{Subsubsection}
 (1)仿真环境与参数设置
@@ -883,19 +852,19 @@ Template}
     \caption{机械臂关节运动空间约束}
     \label{tab:joint_limits}
     \begin{tabular}{ccc}
-        \toprule[2pt]   % 上粗线
+        \toprule[1.5pt]   % 上粗线
         关节序号 & 物理约束范围 & 运动学定义 \\
         \midrule
         Joint 1 & $[ \frac{-\pi}{2}, \frac{\pi}{2}]$ & 水平回转弧度 \\
         Joint 2 & $[0, \pi]$ & 升降大臂弧度 \\
         Joint 3 & $[0, \pi]$ & 俯仰小臂弧度 \\
-        \bottomrule[2pt] % 下粗线
+        \bottomrule[1.5pt] % 下粗线
     \end{tabular}
 \end{table}
 
 
 % \BiSubsection{直线轨迹规划仿真分析}{Subsubsection}
-(2)直线轨迹规划仿真分析
+(2)轨迹规划参数设置
 
 
 设定直线运动的起始点 $P_s = (0.6, -0.2, 0.3)$，终止点 $P_e = (0.6, 0.2, 0.5)$。
@@ -910,6 +879,7 @@ Template}
 如图 \ref{fig:total_figure45} 所示，机械臂末端在笛卡尔空间内严格遵循预设的路径。通过提
 取运动过程中的位姿叠影图可以看出，机械臂各连杆在空间中的过渡平滑。有效地抑制了关节解在
 多解空间中的跳变。
+\vspace{-0.5cm}
 \begin{figure}[htbp]
     \centering
     % 第一张子图
@@ -1017,7 +987,7 @@ Template}
 建立了电机转角与关节转角之间的映射关系，
 从而为底层驱动控制提供了直接依据。
 在 MATLAB 环境下对逆运动学算法进行了仿真验证，结果表明，
-对于工作空间内的目标点，关节角度的迭代求解误差可控制在 0.005\% 以内，
+对于工作空间内的目标点，关节角度的迭代求解误差可控制在 0.05\% 以内，
 算法精度与收敛性均满足要求。本章建立的模型和求解方法为后续的轨迹规划、
 动力学分析以及水下精细控制奠定了必要的理论基础。
 \clearpage{

@@ -1,0 +1,62 @@
+This is BibTeX, Version 0.99d (TeX Live 2023)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: body/Introduction.aux
+A level-1 auxiliary file: body/Tricks.aux
+A level-1 auxiliary file: body/UpdateLog.aux
+A level-1 auxiliary file: body/copyright.aux
+A level-1 auxiliary file: body/ruanjian.aux
+A level-1 auxiliary file: body/conclusion.aux
+The style file: chinesebst2005_UTF8.bst
+A level-1 auxiliary file: appendix/publications.aux
+A level-1 auxiliary file: appendix/acknowledgements.aux
+A level-1 auxiliary file: appendix/appA.aux
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: reference/reference.bib
+Warning--entry type for "Hydro_Dexterous" isn't style-file defined
+--line 409 of file reference/reference.bib
+Warning--empty author in BIAN2025120845
+Warning--missing publisher in KAERI_2007
+Warning--missing publisher in Chen2011
+You've used 37 entries,
+            2984 wiz_defined-function locations,
+            901 strings with 11879 characters,
+and the built_in function-call counts, 116486 in all, are:
+= -- 8952
+> -- 1548
+< -- 5945
++ -- 10439
+- -- 364
+* -- 765
+:= -- 13652
+add.period$ -- 110
+call.type$ -- 37
+change.case$ -- 299
+chr.to.int$ -- 974
+cite$ -- 40
+duplicate$ -- 13090
+empty$ -- 8393
+format.name$ -- 134
+if$ -- 18969
+int.to.chr$ -- 0
+int.to.str$ -- 37
+missing$ -- 364
+newline$ -- 193
+num.names$ -- 36
+pop$ -- 12349
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 6678
+stack$ -- 0
+substring$ -- 11335
+swap$ -- 694
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 3
+while$ -- 648
+width$ -- 39
+write$ -- 398
+(There were 4 warnings)
