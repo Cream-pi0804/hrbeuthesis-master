@@ -21,9 +21,9 @@
 
 (3) 机械臂运动部分重量不大于3kg；
 
-(4) 机械臂承载能力1kg的有效负载。
+
 \BiSection{机械臂总体结构设计}{Something About Templates}
-针对上述设计要求，机械臂的总体结构设计需在轻量化与作业能力之间寻求平衡。本节将从总体方案、本体结构及导向设计等几个方面，阐述机械臂的结构设计思路。
+针对上述设计要求，机械臂的总体结构设计需在轻量化与作业能力之间寻求平衡。本节将从总体方案、本体结构及导向设计等几个方面，阐述机械臂的结构设计思路。为后续的运动学建模、仿真分析与物理样机研制奠定基础。
 \BiSubsection{机械臂总体方案设计}{Necessary to Use Templates？}
 \label{tricks：necessaryornot}
 为兼顾小型化与低扰动设计需求，本文设计了一种水下绳驱机械臂。该方案采用驱动集成化策略，将所有动力源安置于单一密封舱内，通过绳索传动将电机力矩远端传递至各关节。这种设计不仅显著降低了机械臂的体积与质量，更有效减小了运动过程中的惯性扰动。针对多自由度带来的精度衰减与负载受限问题，本文在保证作业灵活性（通过载体-机械臂协同实现）的前提下，采用3自由度（肩部水平转动、肘部俯仰、腕部俯仰）的构型。其基本结构示意如图\ref{pic12}所示。
@@ -241,7 +241,7 @@
     \begin{minipage}{\textwidth}
         \centering
         \subfigure[完全下探状态]{\label{fig66：sub2}
-            \includegraphics[width =0.55 \textwidth]{figures/下探姿态.jpg}
+            \includegraphics[width =0.65 \textwidth]{figures/下探姿态.jpg}
         } % 这里写第二张图的英文描述
     \end{minipage}
     \hfill % 添加弹性间距
